@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Peggle"
+run/main_scene="uid://b1ovf5tp3cmpp"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/mode=2
+window/size/initial_position_type=2
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[dotnet]
+
+project/assembly_name="Peggle"
+
+[global_group]
+
+level=""
+
+[layer_names]
+
+2d_physics/layer_1="Balls"
+2d_physics/layer_2="Pegs"
+2d_physics/layer_3="Killzone"
+2d_physics/layer_4="Wall"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true

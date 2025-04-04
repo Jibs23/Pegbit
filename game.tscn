@@ -1,0 +1,394 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1ovf5tp3cmpp"]
+
+[ext_resource type="Script" uid="uid://blgyexpp0nhdq" path="res://level_1.gd" id="1_7jktm"]
+[ext_resource type="PackedScene" uid="uid://b4lj73n5y8edl" path="res://Entities/Pegs/peg.tscn" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://dscd5yhlqj2ec" path="res://launcher.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://dqxj2ml38s08u" path="res://killzone.tscn" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://dwv7wlypvxtnt" path="res://Entities/Pegs/pegs.gd" id="3_ryrav"]
+[ext_resource type="PackedScene" uid="uid://bqx88teutya4j" path="res://wall.tscn" id="6_ryrav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
+size = Vector2(544, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
+size = Vector2(16, 408)
+
+[node name="Game" type="Node"]
+
+[node name="Level 1" type="Node2D" parent="." groups=["level"]]
+script = ExtResource("1_7jktm")
+redPegs = 20
+
+[node name="Launcher" parent="Level 1" instance=ExtResource("2_feb5d")]
+position = Vector2(240, 0)
+
+[node name="Pegs" type="Node2D" parent="Level 1"]
+script = ExtResource("3_ryrav")
+metadata/_edit_lock_ = true
+
+[node name="Peg" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(64, 192)
+
+[node name="Peg2" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(128, 192)
+
+[node name="Peg3" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(192, 192)
+
+[node name="Peg4" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(256, 192)
+
+[node name="Peg5" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(320, 192)
+
+[node name="Peg6" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(32, 192)
+
+[node name="Peg7" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(96, 192)
+
+[node name="Peg8" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(160, 192)
+
+[node name="Peg9" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(224, 192)
+
+[node name="Peg10" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(288, 192)
+
+[node name="Peg11" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(352, 192)
+
+[node name="Peg12" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(48, 208)
+
+[node name="Peg13" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(112, 208)
+
+[node name="Peg14" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(176, 208)
+
+[node name="Peg16" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(304, 208)
+
+[node name="Peg17" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(16, 208)
+
+[node name="Peg18" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(80, 208)
+
+[node name="Peg19" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(144, 208)
+
+[node name="Peg20" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(208, 208)
+
+[node name="Peg21" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(272, 208)
+
+[node name="Peg22" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(336, 208)
+
+[node name="Peg23" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(368, 208)
+
+[node name="Peg24" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(64, 224)
+
+[node name="Peg25" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(128, 224)
+
+[node name="Peg26" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(192, 224)
+
+[node name="Peg27" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(256, 224)
+
+[node name="Peg28" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(320, 224)
+
+[node name="Peg29" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(32, 224)
+
+[node name="Peg30" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(96, 224)
+
+[node name="Peg31" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(160, 224)
+
+[node name="Peg32" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(224, 224)
+
+[node name="Peg33" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(288, 224)
+
+[node name="Peg34" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(352, 224)
+
+[node name="Peg35" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(48, 240)
+
+[node name="Peg36" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(112, 240)
+
+[node name="Peg37" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(176, 240)
+
+[node name="Peg39" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(304, 240)
+
+[node name="Peg40" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(16, 240)
+
+[node name="Peg41" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(80, 240)
+
+[node name="Peg42" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(144, 240)
+
+[node name="Peg43" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(208, 240)
+
+[node name="Peg44" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(272, 240)
+
+[node name="Peg45" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(336, 240)
+
+[node name="Peg46" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(368, 240)
+
+[node name="Peg47" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(64, 128)
+
+[node name="Peg48" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(128, 128)
+
+[node name="Peg49" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(192, 128)
+
+[node name="Peg50" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(256, 128)
+
+[node name="Peg51" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(320, 128)
+
+[node name="Peg52" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(32, 128)
+
+[node name="Peg53" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(96, 128)
+
+[node name="Peg54" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(160, 128)
+
+[node name="Peg55" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(224, 128)
+
+[node name="Peg56" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(288, 128)
+
+[node name="Peg57" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(352, 128)
+
+[node name="Peg58" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(48, 144)
+
+[node name="Peg59" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(112, 144)
+
+[node name="Peg60" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(176, 144)
+
+[node name="Peg62" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(304, 144)
+
+[node name="Peg63" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(16, 144)
+
+[node name="Peg64" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(80, 144)
+
+[node name="Peg65" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(144, 144)
+
+[node name="Peg66" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(208, 144)
+
+[node name="Peg67" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(272, 144)
+
+[node name="Peg68" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(336, 144)
+
+[node name="Peg69" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(368, 144)
+
+[node name="Peg70" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(64, 160)
+
+[node name="Peg71" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(128, 160)
+
+[node name="Peg72" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(192, 160)
+
+[node name="Peg73" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(256, 160)
+
+[node name="Peg74" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(320, 160)
+
+[node name="Peg75" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(32, 160)
+
+[node name="Peg76" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(96, 160)
+
+[node name="Peg77" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(160, 160)
+
+[node name="Peg78" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(224, 160)
+
+[node name="Peg79" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(288, 160)
+
+[node name="Peg80" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(352, 160)
+
+[node name="Peg81" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(48, 176)
+
+[node name="Peg82" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(112, 176)
+
+[node name="Peg83" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(176, 176)
+
+[node name="Peg85" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(304, 176)
+
+[node name="Peg86" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(16, 176)
+
+[node name="Peg87" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(80, 176)
+
+[node name="Peg88" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(144, 176)
+
+[node name="Peg89" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(208, 176)
+
+[node name="Peg90" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(272, 176)
+
+[node name="Peg91" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(336, 176)
+
+[node name="Peg92" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(368, 176)
+
+[node name="Peg93" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(384, 192)
+
+[node name="Peg94" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(448, 192)
+
+[node name="Peg96" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(416, 192)
+
+[node name="Peg100" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(432, 208)
+
+[node name="Peg102" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(400, 208)
+
+[node name="Peg103" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(464, 208)
+
+[node name="Peg106" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(384, 224)
+
+[node name="Peg107" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(448, 224)
+
+[node name="Peg109" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(416, 224)
+
+[node name="Peg113" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(432, 240)
+
+[node name="Peg115" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(400, 240)
+
+[node name="Peg116" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(464, 240)
+
+[node name="Peg119" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(384, 128)
+
+[node name="Peg120" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(448, 128)
+
+[node name="Peg122" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(416, 128)
+
+[node name="Peg126" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(432, 144)
+
+[node name="Peg128" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(400, 144)
+
+[node name="Peg129" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(464, 144)
+
+[node name="Peg132" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(384, 160)
+
+[node name="Peg133" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(448, 160)
+
+[node name="Peg135" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(416, 160)
+
+[node name="Peg139" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(432, 176)
+
+[node name="Peg141" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(400, 176)
+
+[node name="Peg142" parent="Level 1/Pegs" instance=ExtResource("1_e2o6t")]
+position = Vector2(464, 176)
+
+[node name="Balls" type="Node2D" parent="Level 1"]
+metadata/_edit_lock_ = true
+
+[node name="Stage" type="Node2D" parent="."]
+editor_description = "Level elements that are consisten through each level, such as killzones, ui and walls."
+
+[node name="Killzones" type="Node2D" parent="Stage"]
+
+[node name="Killzone bottom" parent="Stage/Killzones" instance=ExtResource("3_feb5d")]
+position = Vector2(240, 296)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Killzones/Killzone bottom"]
+shape = SubResource("RectangleShape2D_feb5d")
+debug_color = Color(0.987234, 0, 0.315206, 0.42)
+
+[node name="Wall" parent="Stage" instance=ExtResource("6_ryrav")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Wall"]
+position = Vector2(-8, 92)
+shape = SubResource("RectangleShape2D_ryrav")
+
+[node name="Wall2" parent="Stage" instance=ExtResource("6_ryrav")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Wall2"]
+position = Vector2(488, 92)
+shape = SubResource("RectangleShape2D_ryrav")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+metadata/_edit_lock_ = true

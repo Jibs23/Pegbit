@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dscd5yhlqj2ec"]
+
+[ext_resource type="Script" uid="uid://bd46s6g7w7rgv" path="res://launcher.gd" id="1_cvfd6"]
+[ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://icon.svg" id="2_vcerv"]
+
+[node name="Launcher" type="Node2D"]
+script = ExtResource("1_cvfd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 16.5)
+scale = Vector2(0.078125, 0.257813)
+texture = ExtResource("2_vcerv")
+
+[node name="BallLaunchPoint" type="Marker2D" parent="."]
+position = Vector2(0, 33)
+rotation = 1.5708
