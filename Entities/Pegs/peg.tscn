@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cavuh"]
 radius = 4.47214
 
-[node name="Peg" type="StaticBody2D" groups=["Pegs"]]
+[node name="Peg" type="StaticBody2D" groups=["Peg"]]
 collision_layer = 2
 script = ExtResource("1_y34qd")
 

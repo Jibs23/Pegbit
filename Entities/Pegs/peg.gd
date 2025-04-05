@@ -24,20 +24,23 @@ var sprite: Sprite2D
 var pegCount: int
 
 func _ready():
-    sprite = $Sprite2D  
-    if sprite == null:
-        print("Error: Sprite2D node not found!")
+	sprite = $Sprite2D  
+	if sprite == null:
+		print("Error: Sprite2D node not found!")
 
 func hit():
-    if !isHit:
-        isHit = true
-        get_node("Sprite2D").set_frame(spriteSheetNr["white"])
-        for number in range(whiteFlashTime):
-            await get_tree().process_frame
-        get_node("Sprite2D").set_frame(litColor)
-        pegCount -= 1
+	if !isHit:
+		isHit = true
+		get_node("Sprite2D").set_frame(spriteSheetNr["white"])		
+		for number in range(whiteFlashTime):
+			await get_tree().process_frame
+		get_node("Sprite2D").set_frame(litColor)
+		pegCount -= 1
 
 func removePeg():
-    if isHit:
-        queue_free()
+	if self.get_class() == "RedPeg":
+		Logic.redPegCount -= 1
+	elif self.get_class() == "BluePeg":
+		Logic.bluePegCount -= 1
+	queue_free()
 

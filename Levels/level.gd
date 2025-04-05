@@ -1,4 +1,4 @@
 class_name Level
 extends Node2D
 
-@export var redPegs: int
+@export var levelRedPegs: int

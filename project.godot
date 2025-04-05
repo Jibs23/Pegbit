@@ -14,7 +14,7 @@ config/name="Peggle"
 run/main_scene="uid://b1ovf5tp3cmpp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://Stage/icon.svg"
 
 [autoload]
 
@@ -37,12 +37,19 @@ project/assembly_name="Peggle"
 
 folder_colors={
 "res://Entities/": "pink",
-"res://Levels/": "blue"
+"res://Levels/": "blue",
+"res://Stage/": "orange"
 }
 
 [global_group]
 
 level=""
+PegsGroup=""
+BallsGroup=""
+PegRed=""
+PegBlue=""
+Peg=""
+Ball=""
 
 [layer_names]
 
