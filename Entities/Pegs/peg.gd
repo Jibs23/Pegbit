@@ -2,6 +2,7 @@ class_name Peg
 extends StaticBody2D
 
 @onready var audio: Node2D = get_node("/root/Game/Audio")
+@onready var pegs: Node2D = get_tree().get_nodes_in_group("PegsGroup")[0]
 
 var whiteFlashTime: int = 5
 
@@ -37,8 +38,11 @@ func hit():
 		for number in range(whiteFlashTime):
 			await get_tree().process_frame
 		get_node("Sprite2D").set_frame(litColor)
-		audio.playSoundEffect("SFXHitPeg")
 		pegCount -= 1
+		pegs.pegsActivated += 1
+		var sfxNote = 1.0 + (min(pegs.pegsActivated, 14) * 0.083) # 0.083 approximates one semitone
+
+		audio.playSoundEffect("SFXHitPeg").pitch_scale = sfxNote
 
 func removePeg():
 	if self.get_class() == "RedPeg":

@@ -1,6 +1,7 @@
 extends Node2D
 
 # Define the level requirement for red pegs
+var pegsActivated: int = 0
 
 func _ready():
 	var level = get_tree().get_nodes_in_group("level")[0]    
@@ -36,6 +37,7 @@ func callReady(peg):
 		peg._ready()
 
 func removeHitPegs():
+	pegsActivated = 0
 	if Logic.ballCount > 0:
 		for peg in get_children():
 			if not peg is Peg: # Check if the peg is of type Peg
