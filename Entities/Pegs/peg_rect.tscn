@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtq3ofe78mphc"]
+
+[ext_resource type="Script" uid="uid://b1pll6yr0kb5y" path="res://Entities/Pegs/peg.gd" id="1_0cius"]
+[ext_resource type="Texture2D" uid="uid://35v07ai27xkn" path="res://Entities/Pegs/Spritesheet_Pegs_Rectangles.png" id="2_0cius"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7747n"]
+size = Vector2(8, 6)
+
+[node name="Peg_rect" type="StaticBody2D" groups=["Peg"]]
+collision_layer = 2
+script = ExtResource("1_0cius")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_7747n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0cius")
+hframes = 4
+vframes = 2
