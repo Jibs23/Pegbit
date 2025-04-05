@@ -18,6 +18,7 @@ size = Vector2(16, 408)
 
 [node name="Level 1" type="Node2D" parent="." groups=["level"]]
 script = ExtResource("1_7jktm")
+levelRedPegs = 20
 
 [node name="Launcher" parent="Level 1" instance=ExtResource("2_feb5d")]
 position = Vector2(240, 0)

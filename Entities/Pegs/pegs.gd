@@ -6,7 +6,7 @@ func _ready():
 	var level = get_tree().get_nodes_in_group("level")[0]    
 	var pegs = get_children()
 	pegs.shuffle()
-	var red_peg_requirement: int = level.LevelRedPegs	
+	var red_peg_requirement: int = level.levelRedPegs	
 	var red_pegs_assigned: int = 0
 	var blue_pegs_assigned: int = 0
 
