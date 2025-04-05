@@ -9,7 +9,7 @@ var bluePegCount: int
 var totalPegCount: int
 var ballCount: int = 10
 
-func gameOver():
+func GameOver():
 	isGameOver = true
 	isGameStarted = false
 	print("Game Over! No more balls left.")
