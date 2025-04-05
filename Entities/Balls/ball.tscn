@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dquae5dhwvxaj"]
+[gd_scene load_steps=6 format=3 uid="uid://dquae5dhwvxaj"]
 
 [ext_resource type="Script" uid="uid://dibewghdngsep" path="res://Entities/Balls/ball.gd" id="1_x8fbi"]
 [ext_resource type="Texture2D" uid="uid://20wdc0vjoatr" path="res://Entities/Balls/Sprite_Ball.png" id="2_41u45"]
+[ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="3_ghkia"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 bounce = 0.9
@@ -27,6 +28,7 @@ shape = SubResource("CircleShape2D_e2o6t")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_41u45")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ghkia")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

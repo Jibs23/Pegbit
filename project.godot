@@ -18,7 +18,7 @@ config/icon="res://Stage/icon.svg"
 
 [autoload]
 
-Logic="*res://logic.gd"
+Logic="*res://Stage/logic.gd"
 
 [display]
 
@@ -50,6 +50,7 @@ PegRed=""
 PegBlue=""
 Peg=""
 Ball=""
+Audio=""
 
 [layer_names]
 

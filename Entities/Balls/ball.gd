@@ -6,7 +6,7 @@ func _on_body_entered(body:Node) -> void:
 		var peg = body as Peg
 		peg.hit()
 
+
 func endBall():
 	print("Ball ended")
 	queue_free()
-

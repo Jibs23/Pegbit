@@ -1,19 +1,21 @@
 class_name Peg
 extends StaticBody2D
 
+@onready var audio: Node2D = get_node("/root/Game/Audio")
+
 var whiteFlashTime: int = 5
 
 # PEG FRAMES
 var spriteSheetNr: Dictionary = {
-    "grey": 0,
-    "red": 1,
-    "blue": 2,
-    "black": 3,
-    "white": 7,
+	"grey": 0,
+	"red": 1,
+	"blue": 2,
+	"black": 3,
+	"white": 7,
 	
-    "grey_lit": 4,
-    "red_lit": 5,
-    "blue_lit": 6
+	"grey_lit": 4,
+	"red_lit": 5,
+	"blue_lit": 6
 }
 
 var litColor = spriteSheetNr["grey_lit"]
@@ -35,6 +37,7 @@ func hit():
 		for number in range(whiteFlashTime):
 			await get_tree().process_frame
 		get_node("Sprite2D").set_frame(litColor)
+		audio.playSoundEffect("SFXHitPeg")
 		pegCount -= 1
 
 func removePeg():
@@ -43,4 +46,3 @@ func removePeg():
 	elif self.get_class() == "BluePeg":
 		Logic.bluePegCount -= 1
 	queue_free()
-

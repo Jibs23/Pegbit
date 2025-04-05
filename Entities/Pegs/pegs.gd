@@ -38,11 +38,10 @@ func callReady(peg):
 func removeHitPegs():
 	if Logic.ballCount > 0:
 		for peg in get_children():
-			if not peg is Peg:
+			if not peg is Peg: # Check if the peg is of type Peg
 				print("Error: Peg class not found, for call removeHitPegs():" + peg.name)
 				continue
-			if peg.isHit == false: # Check if the peg is hit
-				print("Peg not hit, skipping removal."+ peg.name)
+			elif peg.isHit == false: # Check if the peg is hit
 				continue
 			peg.removePeg()
 	else:
