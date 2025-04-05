@@ -16,4 +16,5 @@ shape = SubResource("CircleShape2D_cavuh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_irdpu")
-hframes = 3
+hframes = 4
+vframes = 2

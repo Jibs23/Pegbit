@@ -2,6 +2,6 @@ class_name BluePeg
 extends Peg
 
 func _ready():
-	get_node("Sprite2D").set_frame(frameBlue)
-
-	
+	pegCount = Logic.bluePegCount
+	litColor = spriteSheetNr["blue_lit"]
+	get_node("Sprite2D").set_frame(spriteSheetNr["blue"])

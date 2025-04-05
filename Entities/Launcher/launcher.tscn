@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dscd5yhlqj2ec"]
 
-[ext_resource type="Script" uid="uid://bd46s6g7w7rgv" path="res://launcher.gd" id="1_cvfd6"]
+[ext_resource type="Script" uid="uid://bd46s6g7w7rgv" path="res://Entities/Launcher/launcher.gd" id="1_cvfd6"]
 [ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://icon.svg" id="2_vcerv"]
 
 [node name="Launcher" type="Node2D"]

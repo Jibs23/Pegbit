@@ -20,11 +20,14 @@ func _ready():
 			blue_pegs_assigned += 1
 			callReady(peg)
 	
-
-	
 	print("Red pegs: ", red_pegs_assigned)
+	Logic.redPegCount = red_pegs_assigned
+
 	print("blue pegs: ", blue_pegs_assigned)
+	Logic.bluePegCount = blue_pegs_assigned
+
 	print("Total pegs: ", len(pegs))
+	Logic.totalPegCount = len(pegs)
 
 func callReady(peg):
 	if peg.has_method("_ready"):

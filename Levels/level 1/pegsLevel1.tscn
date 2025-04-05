@@ -1,0 +1,344 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwjhqfqv1dkcp"]
+
+[ext_resource type="Script" uid="uid://dwv7wlypvxtnt" path="res://Entities/Pegs/pegs.gd" id="1_o33bt"]
+[ext_resource type="PackedScene" uid="uid://b4lj73n5y8edl" path="res://Entities/Pegs/peg.tscn" id="2_2cc8o"]
+
+[node name="Pegs" type="Node2D"]
+script = ExtResource("1_o33bt")
+metadata/_edit_lock_ = true
+
+[node name="Peg" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(64, 192)
+
+[node name="Peg2" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(128, 192)
+
+[node name="Peg3" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(192, 192)
+
+[node name="Peg4" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(256, 192)
+
+[node name="Peg5" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(320, 192)
+
+[node name="Peg6" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(32, 192)
+
+[node name="Peg7" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(96, 192)
+
+[node name="Peg8" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(160, 192)
+
+[node name="Peg9" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(224, 192)
+
+[node name="Peg10" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(288, 192)
+
+[node name="Peg11" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(352, 192)
+
+[node name="Peg12" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(48, 208)
+
+[node name="Peg13" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(112, 208)
+
+[node name="Peg14" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(176, 208)
+
+[node name="Peg16" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(304, 208)
+
+[node name="Peg17" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(16, 208)
+
+[node name="Peg18" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(80, 208)
+
+[node name="Peg19" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(144, 208)
+
+[node name="Peg20" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(208, 208)
+
+[node name="Peg21" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(272, 208)
+
+[node name="Peg22" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(336, 208)
+
+[node name="Peg23" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(368, 208)
+
+[node name="Peg24" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(64, 224)
+
+[node name="Peg25" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(128, 224)
+
+[node name="Peg26" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(192, 224)
+
+[node name="Peg27" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(256, 224)
+
+[node name="Peg28" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(320, 224)
+
+[node name="Peg29" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(32, 224)
+
+[node name="Peg30" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(96, 224)
+
+[node name="Peg31" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(160, 224)
+
+[node name="Peg32" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(224, 224)
+
+[node name="Peg33" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(288, 224)
+
+[node name="Peg34" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(352, 224)
+
+[node name="Peg35" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(48, 240)
+
+[node name="Peg36" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(112, 240)
+
+[node name="Peg37" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(176, 240)
+
+[node name="Peg39" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(304, 240)
+
+[node name="Peg40" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(16, 240)
+
+[node name="Peg41" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(80, 240)
+
+[node name="Peg42" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(144, 240)
+
+[node name="Peg43" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(208, 240)
+
+[node name="Peg44" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(272, 240)
+
+[node name="Peg45" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(336, 240)
+
+[node name="Peg46" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(368, 240)
+
+[node name="Peg47" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(64, 128)
+
+[node name="Peg48" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(128, 128)
+
+[node name="Peg49" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(192, 128)
+
+[node name="Peg50" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(256, 128)
+
+[node name="Peg51" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(320, 128)
+
+[node name="Peg52" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(32, 128)
+
+[node name="Peg53" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(96, 128)
+
+[node name="Peg54" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(160, 128)
+
+[node name="Peg55" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(224, 128)
+
+[node name="Peg56" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(288, 128)
+
+[node name="Peg57" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(352, 128)
+
+[node name="Peg58" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(48, 144)
+
+[node name="Peg59" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(112, 144)
+
+[node name="Peg60" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(176, 144)
+
+[node name="Peg62" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(304, 144)
+
+[node name="Peg63" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(16, 144)
+
+[node name="Peg64" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(80, 144)
+
+[node name="Peg65" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(144, 144)
+
+[node name="Peg66" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(208, 144)
+
+[node name="Peg67" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(272, 144)
+
+[node name="Peg68" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(336, 144)
+
+[node name="Peg69" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(368, 144)
+
+[node name="Peg70" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(64, 160)
+
+[node name="Peg71" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(128, 160)
+
+[node name="Peg72" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(192, 160)
+
+[node name="Peg73" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(256, 160)
+
+[node name="Peg74" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(320, 160)
+
+[node name="Peg75" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(32, 160)
+
+[node name="Peg76" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(96, 160)
+
+[node name="Peg77" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(160, 160)
+
+[node name="Peg78" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(224, 160)
+
+[node name="Peg79" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(288, 160)
+
+[node name="Peg80" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(352, 160)
+
+[node name="Peg81" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(48, 176)
+
+[node name="Peg82" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(112, 176)
+
+[node name="Peg83" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(176, 176)
+
+[node name="Peg85" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(304, 176)
+
+[node name="Peg86" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(16, 176)
+
+[node name="Peg87" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(80, 176)
+
+[node name="Peg88" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(144, 176)
+
+[node name="Peg89" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(208, 176)
+
+[node name="Peg90" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(272, 176)
+
+[node name="Peg91" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(336, 176)
+
+[node name="Peg92" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(368, 176)
+
+[node name="Peg93" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(384, 192)
+
+[node name="Peg94" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(448, 192)
+
+[node name="Peg96" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(416, 192)
+
+[node name="Peg100" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(432, 208)
+
+[node name="Peg102" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(400, 208)
+
+[node name="Peg103" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(464, 208)
+
+[node name="Peg106" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(384, 224)
+
+[node name="Peg107" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(448, 224)
+
+[node name="Peg109" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(416, 224)
+
+[node name="Peg113" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(432, 240)
+
+[node name="Peg115" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(400, 240)
+
+[node name="Peg116" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(464, 240)
+
+[node name="Peg119" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(384, 128)
+
+[node name="Peg120" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(448, 128)
+
+[node name="Peg122" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(416, 128)
+
+[node name="Peg126" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(432, 144)
+
+[node name="Peg128" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(400, 144)
+
+[node name="Peg129" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(464, 144)
+
+[node name="Peg132" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(384, 160)
+
+[node name="Peg133" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(448, 160)
+
+[node name="Peg135" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(416, 160)
+
+[node name="Peg139" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(432, 176)
+
+[node name="Peg141" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(400, 176)
+
+[node name="Peg142" parent="." instance=ExtResource("2_2cc8o")]
+position = Vector2(464, 176)

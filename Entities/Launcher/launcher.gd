@@ -1,11 +1,11 @@
 class_name Launcher
 extends Node2D
 
-var ball: PackedScene = load("res://ball.tscn")
+var ball: PackedScene = load("res://Entities/Balls/ball.tscn")
 var ballSpeed: float = 300
-
 var rotationSpeed: float = 1.5
 var maxRotation: float = deg_to_rad(85)
+
 @onready var launchPoint = $BallLaunchPoint
 
 
@@ -18,12 +18,12 @@ func _process(delta):
 		rotation -= rotationSpeed * delta
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay:
 		shoot()
 
 func shoot():
 	var new_ball = ball.instantiate() as RigidBody2D  # Ensure the ball is a RigidBody2D
-	if new_ball:
+	if new_ball: #instantiate new ball
 		var ball_counter: int = 0  # Counter to track ball numbers
 		ball_counter += 1  
 		new_ball.name = "Ball %d" % ball_counter  
@@ -36,3 +36,5 @@ func shoot():
 		new_ball.linear_velocity = direction * ballSpeed
 	else:
 		print("Error: Failed to instantiate the ball.")
+
+	

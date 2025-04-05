@@ -13,7 +13,12 @@ config_version=5
 config/name="Peggle"
 run/main_scene="uid://b1ovf5tp3cmpp"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
+
+[autoload]
+
+Logic="*res://logic.gd"
 
 [display]
 
@@ -27,6 +32,13 @@ window/stretch/scale_mode="integer"
 [dotnet]
 
 project/assembly_name="Peggle"
+
+[file_customization]
+
+folder_colors={
+"res://Entities/": "pink",
+"res://Levels/": "blue"
+}
 
 [global_group]
 

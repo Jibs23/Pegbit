@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dscd5yhlqj2ec" path="res://Entities/Launcher/launcher.tscn" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dqxj2ml38s08u" path="res://killzone.tscn" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://dwv7wlypvxtnt" path="res://Entities/Pegs/pegs.gd" id="3_ryrav"]
-[ext_resource type="Script" uid="uid://ct857ri57hvh8" path="res://balls.gd" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bqx88teutya4j" path="res://wall.tscn" id="6_ryrav"]
+
+[sub_resource type="GDScript" id="GDScript_ryrav"]
+script/source = "extends Node
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(544, 20)
@@ -15,6 +18,7 @@ size = Vector2(544, 20)
 size = Vector2(16, 408)
 
 [node name="Game" type="Node" groups=["Game"]]
+script = SubResource("GDScript_ryrav")
 
 [node name="Level 1" type="Node2D" parent="." groups=["level"]]
 script = ExtResource("1_7jktm")
@@ -364,7 +368,6 @@ position = Vector2(400, 176)
 position = Vector2(464, 176)
 
 [node name="Balls" type="Node2D" parent="Level 1"]
-script = ExtResource("5_eow3j")
 metadata/_edit_lock_ = true
 
 [node name="Stage" type="Node2D" parent="."]
@@ -394,5 +397,3 @@ shape = SubResource("RectangleShape2D_ryrav")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 metadata/_edit_lock_ = true
-
-[connection signal="child_order_changed" from="Level 1/Balls" to="Level 1/Balls" method="_on_child_order_changed"]

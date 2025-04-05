@@ -9,3 +9,4 @@ func _on_body_entered(body:Node) -> void:
 func endBall():
     print("Ball ended")
     queue_free()
+
