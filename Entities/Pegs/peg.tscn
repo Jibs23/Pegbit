@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4lj73n5y8edl"]
+[gd_scene load_steps=5 format=3 uid="uid://b4lj73n5y8edl"]
 
 [ext_resource type="Texture2D" uid="uid://txnq4jrmmnsn" path="res://Entities/Pegs/Spritesheet_Pegs.png" id="1_irdpu"]
 [ext_resource type="Script" uid="uid://b1pll6yr0kb5y" path="res://Entities/Pegs/peg.gd" id="1_y34qd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5s76b"]
+friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cavuh"]
 radius = 4.47214
 
 [node name="Peg" type="StaticBody2D" groups=["Peg"]]
 collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_5s76b")
 script = ExtResource("1_y34qd")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

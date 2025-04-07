@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=13 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="Script" uid="uid://blgyexpp0nhdq" path="res://Levels/level 1/level_1.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b4lj73n5y8edl" path="res://Entities/Pegs/peg.tscn" id="1_e2o6t"]
@@ -16,14 +16,17 @@ size = Vector2(544, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
 size = Vector2(16, 408)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p7sh"]
+size = Vector2(544, 20)
+
 [node name="Game" type="Node" groups=["Game"]]
 
 [node name="Level 1" type="Node2D" parent="." groups=["level"]]
 script = ExtResource("1_7jktm")
-levelRedPegs = 20
+levelRedPegs = 30
 
 [node name="Launcher" parent="Level 1" instance=ExtResource("2_feb5d")]
-position = Vector2(240, 0)
+position = Vector2(240, 8)
 
 [node name="Pegs" type="Node2D" parent="Level 1" groups=["PegsGroup"]]
 script = ExtResource("3_ryrav")
@@ -392,6 +395,31 @@ shape = SubResource("RectangleShape2D_ryrav")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Wall2"]
 position = Vector2(488, 92)
 shape = SubResource("RectangleShape2D_ryrav")
+
+[node name="game UI" type="CanvasLayer" parent="Stage"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stage/game UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="Stage/game UI/VBoxContainer"]
+layout_mode = 2
+text = "Score:"
+
+[node name="Balls" type="Label" parent="Stage/game UI/VBoxContainer"]
+layout_mode = 2
+text = "Balls:"
+
+[node name="Multiplier" type="Label" parent="Stage/game UI/VBoxContainer"]
+layout_mode = 2
+text = "Multiplier:"
+
+[node name="Wall3" parent="Stage" instance=ExtResource("6_ryrav")]
+position = Vector2(224, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Wall3"]
+position = Vector2(16, 104)
+shape = SubResource("RectangleShape2D_7p7sh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

@@ -25,6 +25,7 @@ var isHit: bool = false
 var sprite: Sprite2D
 
 var pegCount: int
+var scoreValue : int = 10
 
 func _ready():
 	sprite = $Sprite2D  
@@ -40,8 +41,9 @@ func hit():
 		get_node("Sprite2D").set_frame(litColor)
 		pegCount -= 1
 		pegs.pegsActivated += 1
-		var sfxNote = 1.0 + (min(pegs.pegsActivated, 14) * 0.083) # 0.083 approximates one semitone
 
+		Logic.score += scoreValue * Logic.scoreMultiplier
+		var sfxNote = 1.0 + (min(pegs.pegsActivated, 15) * 0.083) # 0.083 approximates one semitone
 		audio.playSoundEffect("SFXHitPeg").pitch_scale = sfxNote
 
 func removePeg():
@@ -49,4 +51,8 @@ func removePeg():
 		Logic.redPegCount -= 1
 	elif self.get_class() == "BluePeg":
 		Logic.bluePegCount -= 1
+
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2(0, 0), 0.5)
+	await tween.finished
 	queue_free()

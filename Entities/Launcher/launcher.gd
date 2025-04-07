@@ -4,21 +4,28 @@ extends Node2D
 var ball: PackedScene = load("res://Entities/Balls/ball.tscn")
 var ballSpeed: float = 300
 var rotationSpeed: float = 1.5
-var maxRotation: float = deg_to_rad(85)
+@export var maxRotation: float = deg_to_rad(90)
+@export var launcherInch: float = 0.1
 
 @onready var launchPoint = $BallLaunchPoint
 
 
 # Called every frame
 func _process(delta):
-	if Input.is_action_pressed("ui_left") and rotation <= maxRotation:
-		rotation += rotationSpeed * delta
+	if Input.is_action_pressed("launcher_turn_left") and rotation <= maxRotation:
+		if !Input.is_action_pressed("launcher_inch"):
+			rotation += rotationSpeed * delta
+		else:
+			rotation += rotationSpeed * delta * launcherInch
 
-	if Input.is_action_pressed("ui_right") and rotation >= -maxRotation:
-		rotation -= rotationSpeed * delta
+	if Input.is_action_pressed("launcher_turn_right") and rotation >= -maxRotation:
+		if !Input.is_action_pressed("launcher_inch"):
+			rotation -= rotationSpeed * delta
+		else:
+			rotation -= rotationSpeed * delta * launcherInch
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay:
+	if event.is_action_pressed("launcher_shoot") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay:
 		shoot()
 
 func shoot():
