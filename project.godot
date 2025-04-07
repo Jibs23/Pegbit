@@ -19,6 +19,7 @@ config/icon="res://Stage/icon.svg"
 [autoload]
 
 Logic="*res://Stage/logic.gd"
+Ui="*res://Stage/game_ui.gd"
 
 [display]
 

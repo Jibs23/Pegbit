@@ -14,7 +14,7 @@
 size = Vector2(544, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
-size = Vector2(16, 408)
+size = Vector2(16, 312)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p7sh"]
 size = Vector2(544, 20)
@@ -23,7 +23,6 @@ size = Vector2(544, 20)
 
 [node name="Level 1" type="Node2D" parent="." groups=["level"]]
 script = ExtResource("1_7jktm")
-levelRedPegs = 30
 
 [node name="Launcher" parent="Level 1" instance=ExtResource("2_feb5d")]
 position = Vector2(240, 8)
@@ -387,13 +386,13 @@ debug_color = Color(0.987234, 0, 0.315206, 0.42)
 [node name="Wall" parent="Stage" instance=ExtResource("6_ryrav")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Wall"]
-position = Vector2(-8, 92)
+position = Vector2(-8, 140)
 shape = SubResource("RectangleShape2D_ryrav")
 
 [node name="Wall2" parent="Stage" instance=ExtResource("6_ryrav")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Wall2"]
-position = Vector2(488, 92)
+position = Vector2(488, 144)
 shape = SubResource("RectangleShape2D_ryrav")
 
 [node name="game UI" type="CanvasLayer" parent="Stage"]
@@ -404,15 +403,15 @@ offset_bottom = 40.0
 
 [node name="Score" type="Label" parent="Stage/game UI/VBoxContainer"]
 layout_mode = 2
-text = "Score:"
+text = "Score: "
 
 [node name="Balls" type="Label" parent="Stage/game UI/VBoxContainer"]
 layout_mode = 2
-text = "Balls:"
+text = "Balls: "
 
 [node name="Multiplier" type="Label" parent="Stage/game UI/VBoxContainer"]
 layout_mode = 2
-text = "Multiplier:"
+text = "Multiplier: "
 
 [node name="Wall3" parent="Stage" instance=ExtResource("6_ryrav")]
 position = Vector2(224, -120)

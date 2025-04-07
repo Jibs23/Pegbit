@@ -7,5 +7,3 @@ func _on_child_order_changed() -> void:
 		Logic.isBallInPlay = true
 	else: # if no children
 		Logic.isBallInPlay = false
-		Logic.ballCount -= 1
-		pegs.removeHitPegs()

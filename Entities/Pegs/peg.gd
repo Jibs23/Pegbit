@@ -45,14 +45,31 @@ func hit():
 		Logic.score += scoreValue * Logic.scoreMultiplier
 		var sfxNote = 1.0 + (min(pegs.pegsActivated, 15) * 0.083) # 0.083 approximates one semitone
 		audio.playSoundEffect("SFXHitPeg").pitch_scale = sfxNote
+		
+		Ui.update_ui()
+		removePeg()
 
 func removePeg():
-	if self.get_class() == "RedPeg":
-		Logic.redPegCount -= 1
-	elif self.get_class() == "BluePeg":
+	if self is BluePeg:
 		Logic.bluePegCount -= 1
+		print("Blue Peg Removed! Remaining Blue Pegs: ", Logic.bluePegCount)
+	elif self is RedPeg:
+		Logic.redPegCount -= 1
+		print("Red Peg Removed! Remaining Red Pegs: ", Logic.redPegCount)
+		
+		Logic.removedRedPegs += 1
+		Logic.updateMultiplier()
 
+
+	while Logic.isBallInPlay == true: # wait for the ball to NOT be in play
+		await get_tree().process_frame
+
+	# shrink animation
 	var tween := create_tween()
 	tween.tween_property(self, "scale", Vector2(0, 0), 0.5)
 	await tween.finished
+
+	pegs.pegsActivated = 0
+
+	# remove peg from the scene
 	queue_free()

@@ -35,16 +35,3 @@ func _ready():
 func callReady(peg):
 	if peg.has_method("_ready"):
 		peg._ready()
-
-func removeHitPegs():
-	pegsActivated = 0
-	if Logic.ballCount > 0:
-		for peg in get_children():
-			if not peg is Peg: # Check if the peg is of type Peg
-				print("Error: Peg class not found, for call removeHitPegs():" + peg.name)
-				continue
-			elif peg.isHit == false: # Check if the peg is hit
-				continue
-			peg.removePeg()
-	else:
-		Logic.GameOver()

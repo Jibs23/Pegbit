@@ -9,8 +9,6 @@ var rotationSpeed: float = 1.5
 
 @onready var launchPoint = $BallLaunchPoint
 
-
-# Called every frame
 func _process(delta):
 	if Input.is_action_pressed("launcher_turn_left") and rotation <= maxRotation:
 		if !Input.is_action_pressed("launcher_inch"):
@@ -25,7 +23,7 @@ func _process(delta):
 			rotation -= rotationSpeed * delta * launcherInch
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("launcher_shoot") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay:
+	if event.is_action_pressed("launcher_shoot") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay and Logic.ballCount > 0:
 		shoot()
 
 func shoot():
@@ -41,7 +39,9 @@ func shoot():
 		# Calculate the direction based on the launchPoint's global rotation
 		var direction = Vector2(cos(launchPoint.global_rotation), sin(launchPoint.global_rotation)).normalized()
 		new_ball.linear_velocity = direction * ballSpeed
+
+		# adjust ui and logic
+		Logic.ballCount -= 1
+		Ui.update_ui()
 	else:
 		print("Error: Failed to instantiate the ball.")
-
-	
