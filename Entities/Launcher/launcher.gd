@@ -34,7 +34,7 @@ func shoot():
 		new_ball.name = "Ball %d" % ball_counter  
 
 		new_ball.position = launchPoint.global_position
-		get_parent().get_node("Balls").add_child(new_ball)
+		$"../Balls".add_child(new_ball)
 		
 		# Calculate the direction based on the launchPoint's global rotation
 		var direction = Vector2(cos(launchPoint.global_rotation), sin(launchPoint.global_rotation)).normalized()

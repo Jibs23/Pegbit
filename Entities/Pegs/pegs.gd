@@ -15,12 +15,10 @@ func _ready():
 		if red_pegs_assigned < red_peg_requirement:
 			peg.set_script(preload("res://Entities/Pegs/redPeg.gd"))
 			red_pegs_assigned += 1
-			peg.add_to_group("PegRed")
 			callReady(peg)
 		else:
 			peg.set_script(preload("res://Entities/Pegs/bluePeg.gd"))
 			blue_pegs_assigned += 1
-			peg.add_to_group("PegBlue")
 			callReady(peg)
 	
 	print("Red pegs: ", red_pegs_assigned)

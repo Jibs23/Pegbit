@@ -52,10 +52,8 @@ func hit():
 func removePeg():
 	if self is BluePeg:
 		Logic.bluePegCount -= 1
-		print("Blue Peg Removed! Remaining Blue Pegs: ", Logic.bluePegCount)
 	elif self is RedPeg:
 		Logic.redPegCount -= 1
-		print("Red Peg Removed! Remaining Red Pegs: ", Logic.redPegCount)
 		
 		Logic.removedRedPegs += 1
 		Logic.updateMultiplier()
