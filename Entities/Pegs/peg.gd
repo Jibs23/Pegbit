@@ -27,6 +27,8 @@ var sprite: Sprite2D
 var pegCount: int
 var scoreValue : int = 10
 
+var hitSFX: String = "SFXHitPeg"
+
 func _ready():
 	sprite = $Sprite2D  
 	if sprite == null:
@@ -43,8 +45,8 @@ func hit():
 		pegs.pegsActivated += 1
 
 		Logic.score += scoreValue * Logic.scoreMultiplier
-		var sfxNote = 1.0 + (min(pegs.pegsActivated, 15) * 0.083) # 0.083 approximates one semitone
-		audio.playSoundEffect("SFXHitPeg").pitch_scale = sfxNote
+		var sfxNote: float = 1.0 + (min(pegs.pegsActivated, 15) * 0.083) # 0.083 approximates one semitone
+		audio.playSoundEffect(hitSFX).pitch_scale = sfxNote
 		
 		Ui.update_ui()
 		removePeg()
@@ -71,3 +73,7 @@ func removePeg():
 
 	# remove peg from the scene
 	queue_free()
+
+func _on_long_shot_bonus():
+	hitSFX = "SFXHitPegLongShot"
+	scoreValue = scoreValue * 3

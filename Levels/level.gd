@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-@export var levelRedPegs: int = 30
+@export var levelRedPegs: int
 @export var levelBalls: int = 10
 
 @onready var uiBallsCounter = get_tree().get_root().get_node("Game/Stage/game UI/VBoxContainer/Balls") as Label

@@ -37,7 +37,7 @@ func updateMultiplier():
 	elif removedRedPegs < 6:
 		scoreMultiplier = 1
 		print("Multiplier: 1")
-	elif removedRedPegs == redPegCount: # FEVER mode
+	elif removedRedPegs >= redPegCount: # FEVER mode
 		scoreMultiplier = 20
 		print("Multiplier: 20")
 	else:
