@@ -12,19 +12,19 @@
 [ext_resource type="AudioStream" uid="uid://et1p7g7llhe4" path="res://Entities/Balls/sfx_LongShot.wav" id="10_fsbs7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
-size = Vector2(544, 20)
+size = Vector2(500, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
-size = Vector2(16, 312)
+size = Vector2(8, 414.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p7sh"]
-size = Vector2(544, 20)
+size = Vector2(496, 8)
 
 [node name="Game" type="Node" groups=["Game"]]
 
 [node name="Level 1" type="Node2D" parent="." groups=["level"]]
 script = ExtResource("1_7jktm")
-levelRedPegs = 112
+levelRedPegs = 40
 
 [node name="Pegs" type="Node2D" parent="Level 1" groups=["PegsGroup"]]
 script = ExtResource("3_ryrav")
@@ -375,6 +375,7 @@ editor_description = "Level elements that are consisten through each level, such
 position = Vector2(240, 296)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Killzones/Killzone bottom"]
+position = Vector2(2, -20)
 shape = SubResource("RectangleShape2D_feb5d")
 debug_color = Color(0.987234, 0, 0.315206, 0.42)
 
@@ -401,27 +402,28 @@ script = ExtResource("5_eow3j")
 metadata/_edit_lock_ = true
 
 [node name="Launcher" parent="Stage" instance=ExtResource("2_feb5d")]
-position = Vector2(240, 8)
+position = Vector2(240, 0)
 
 [node name="Walls" type="Node2D" parent="Stage"]
+metadata/_edit_lock_ = true
 
 [node name="Wall" parent="Stage/Walls" instance=ExtResource("6_ryrav")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Walls/Wall"]
-position = Vector2(-8, 140)
+position = Vector2(-4, 198.75)
 shape = SubResource("RectangleShape2D_ryrav")
 
 [node name="Wall2" parent="Stage/Walls" instance=ExtResource("6_ryrav")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Walls/Wall2"]
-position = Vector2(488, 144)
+position = Vector2(484, 199.375)
 shape = SubResource("RectangleShape2D_ryrav")
 
 [node name="Wall3" parent="Stage/Walls" instance=ExtResource("6_ryrav")]
 position = Vector2(224, -120)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Walls/Wall3"]
-position = Vector2(16, 104)
+position = Vector2(16, 116)
 shape = SubResource("RectangleShape2D_7p7sh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -430,6 +432,7 @@ metadata/_edit_lock_ = true
 
 [node name="Audio" type="Node2D" parent="." groups=["Audio"]]
 script = ExtResource("8_yobtx")
+metadata/_edit_lock_ = true
 
 [node name="SFXHitPeg" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("9_7p7sh")
