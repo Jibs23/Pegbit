@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var pegs : Node2D = get_tree().get_nodes_in_group("PegsGroup")[0]
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	Logic.balls = self
 
 func _on_child_order_changed() -> void:

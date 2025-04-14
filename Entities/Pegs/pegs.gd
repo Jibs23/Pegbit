@@ -2,9 +2,10 @@ extends Node2D
 
 # Define the level requirement for red pegs
 var pegsActivated: int = 0
+func _enter_tree() -> void:
+	Logic.pegs = self
 
 func _ready():
-	Logic.pegs = self
 	var level = get_tree().get_nodes_in_group("level")[0]    
 	var pegs = get_children()
 	pegs.shuffle()

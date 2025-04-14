@@ -1,6 +1,6 @@
 extends Node2D
 
-func _ready() -> void:
+func _enter_tree() -> void:
     Logic.audio = self
 
 func playSoundEffect(effectName: String) -> Node:

@@ -12,7 +12,7 @@ var rotationSpeed: float = 1.5
 
 signal shoot_signal
 
-func _ready():
+func _enter_tree() -> void:
 	Logic.launcher = self
 
 func _process(delta):

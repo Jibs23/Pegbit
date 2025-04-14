@@ -7,9 +7,9 @@ extends Node2D
 # References to required child nodes
 @onready var pegsGroup: Node2D = $PegsGroup
 @onready var background: Sprite2D = $Background
-
-func _ready() -> void:
+func _enter_tree() -> void:
     Logic.level = self
+func _ready() -> void:
 
     # Initialize Logic variables
     Logic.redPegCount = levelRedPegs
