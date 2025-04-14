@@ -7,3 +7,9 @@ func _on_child_order_changed() -> void:
 		Logic.isBallInPlay = true
 	else: # if no children
 		Logic.isBallInPlay = false
+
+func _on_ball_end():
+	Logic.score += Logic.ballScoreCounter
+	Logic.ballScoreCounter = 0
+	print("Score: " + str(Logic.score))
+	Ui.update_ui()

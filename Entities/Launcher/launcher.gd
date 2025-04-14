@@ -8,6 +8,9 @@ var rotationSpeed: float = 1.5
 @export var launcherInch: float = 0.1
 
 @onready var launchPoint = $BallLaunchPoint
+@onready var smoke = $"Sprite2D/Smoke effect"
+
+signal shoot_signal
 
 func _process(delta):
 	if Input.is_action_pressed("launcher_turn_left") and rotation <= maxRotation:
@@ -29,6 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func shoot():
 	var new_ball = ball.instantiate() as RigidBody2D  # Ensure the ball is a RigidBody2D
 	if new_ball: #instantiate new ball
+		smoke.restart()
 		var ball_counter: int = 0  # Counter to track ball numbers
 		ball_counter += 1  
 		new_ball.name = "Ball %d" % ball_counter  
@@ -43,5 +47,6 @@ func shoot():
 		# adjust ui and logic
 		Logic.ballCount -= 1
 		Ui.update_ui()
+		emit_signal("shoot_signal")
 	else:
 		print("Error: Failed to instantiate the ball.")

@@ -29,10 +29,13 @@ var scoreValue : int = 10
 
 var hitSFX: String = "SFXHitPeg"
 
+signal extraBallCheck
+
 func _ready():
 	sprite = $Sprite2D  
 	if sprite == null:
 		print("Error: Sprite2D node not found!")
+	connect("extraBallCheck", Callable(Logic, "_on_extra_ball_check"))
 
 func hit():
 	if !isHit:
@@ -44,7 +47,11 @@ func hit():
 		pegCount -= 1
 		pegs.pegsActivated += 1
 
-		Logic.score += scoreValue * Logic.scoreMultiplier
+		Logic.ballScoreCounter += scoreValue * Logic.scoreMultiplier
+		if Logic.ballScoreCounter >= 1:
+			emit_signal("extraBallCheck")
+
+			
 		var sfxNote: float = 1.0 + (min(pegs.pegsActivated, 15) * 0.083) # 0.083 approximates one semitone
 		audio.playSoundEffect(hitSFX).pitch_scale = sfxNote
 		

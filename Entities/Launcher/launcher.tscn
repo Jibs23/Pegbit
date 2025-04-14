@@ -1,16 +1,147 @@
-[gd_scene load_steps=3 format=3 uid="uid://dscd5yhlqj2ec"]
+[gd_scene load_steps=20 format=3 uid="uid://dscd5yhlqj2ec"]
 
 [ext_resource type="Script" uid="uid://bd46s6g7w7rgv" path="res://Entities/Launcher/launcher.gd" id="1_cvfd6"]
-[ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://Stage/icon.svg" id="2_vcerv"]
+[ext_resource type="Texture2D" uid="uid://ddudjqhicfnck" path="res://Entities/Launcher/sprite_launcher.png" id="2_dcxq8"]
+[ext_resource type="Texture2D" uid="uid://11fp3240wg75" path="res://Entities/Launcher/sprite_launcher_background.png" id="3_dxmbr"]
+[ext_resource type="Texture2D" uid="uid://prj4w2sqrxnq" path="res://Entities/Launcher/sprite_launcher_shine.png" id="3_gnwcc"]
+[ext_resource type="Texture2D" uid="uid://5pcpqlye4pip" path="res://Entities/Launcher/spritesheet_Effect-Smoke.png" id="5_bq7gr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bq7gr"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_bq7gr"]
+offsets = PackedFloat32Array(0, 0.0671642)
+colors = PackedColorArray(0.393086, 0.393086, 0.393085, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ahcvu"]
+gradient = SubResource("Gradient_bq7gr")
+
+[sub_resource type="Curve" id="Curve_mv1yp"]
+_data = [Vector2(0, 0.505618), 0.0, 3.19601, 0, 0, Vector2(0.0779221, 1), -0.414866, -0.414866, 0, 0, Vector2(0.753247, 0), -5.71012, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cptt5"]
+curve = SubResource("Curve_mv1yp")
+
+[sub_resource type="Curve" id="Curve_78wap"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ahcvu"]
+curve = SubResource("Curve_78wap")
+
+[sub_resource type="Curve" id="Curve_bq7gr"]
+_data = [Vector2(0, 0), 0.0, -0.146268, 0, 0, Vector2(1, 1), -0.165475, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mv1yp"]
+curve = SubResource("Curve_bq7gr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cptt5"]
+direction = Vector3(0, 0.1, 0)
+spread = 10.0
+initial_velocity_min = 35.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, -50, 0)
+linear_accel_min = -27.97
+linear_accel_max = -27.97
+scale_curve = SubResource("CurveTexture_cptt5")
+scale_over_velocity_curve = SubResource("CurveTexture_ahcvu")
+color_ramp = SubResource("GradientTexture1D_ahcvu")
+turbulence_enabled = true
+turbulence_initial_displacement_min = -100.0
+turbulence_initial_displacement_max = 100.0
+turbulence_influence_over_life = SubResource("CurveTexture_mv1yp")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dxmbr"]
+friction = 2.0
+rough = true
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bq7gr"]
+b = Vector2(0, 17)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ahcvu"]
+a = Vector2(13, 10)
+b = Vector2(-1, 10)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mv1yp"]
+a = Vector2(-8, 2)
 
 [node name="Launcher" type="Node2D"]
 script = ExtResource("1_cvfd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 16.5)
-scale = Vector2(0.078125, 0.257813)
-texture = ExtResource("2_vcerv")
+z_index = 2000
+position = Vector2(0, 8)
+texture = ExtResource("2_dcxq8")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = -1000
+z_as_relative = false
+texture = ExtResource("3_dxmbr")
+
+[node name="Smoke effect" type="GPUParticles2D" parent="Sprite2D"]
+z_index = 3000
+material = SubResource("CanvasItemMaterial_bq7gr")
+position = Vector2(0, 21)
+emitting = false
+amount = 32
+texture = ExtResource("5_bq7gr")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-20.13, -0.81, 39.365, 33.255)
+process_material = SubResource("ParticleProcessMaterial_cptt5")
 
 [node name="BallLaunchPoint" type="Marker2D" parent="."]
-position = Vector2(0, 33)
+position = Vector2(0, 29)
 rotation = 1.5708
+
+[node name="BallContainer" type="AnimatableBody2D" parent="." groups=["Wall"]]
+visible = false
+collision_layer = 256
+physics_material_override = SubResource("PhysicsMaterial_dxmbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(-14, -7)
+shape = SubResource("SegmentShape2D_bq7gr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(-6, 6)
+shape = SubResource("SegmentShape2D_ahcvu")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(-6, -25)
+shape = SubResource("SegmentShape2D_ahcvu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(-6, 6)
+shape = SubResource("SegmentShape2D_mv1yp")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(14, -17)
+shape = SubResource("SegmentShape2D_mv1yp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(16, 16)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_mv1yp")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(-5, -7)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_mv1yp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BallContainer"]
+position = Vector2(14, -7)
+shape = SubResource("SegmentShape2D_bq7gr")
+
+[node name="shine" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+texture = ExtResource("3_gnwcc")

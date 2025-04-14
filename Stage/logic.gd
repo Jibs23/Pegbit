@@ -1,5 +1,7 @@
 extends Node
 
+@onready var ballsUI: Node2D = get_node("/root/Game/Stage/Launcher/BallsUI") as Node2D 
+
 var isBallInPlay: bool = false
 var isGameOver: bool = false
 var isGameStarted: bool = true
@@ -11,6 +13,7 @@ var totalPegCount: int
 var removedRedPegs: int = 0
 var removedBluePegs: int = 0
 
+var ballScoreCounter: int = 0
 var score: int = 0
 var scoreMultiplier: int = 1
 var ballCount: int
@@ -43,4 +46,36 @@ func updateMultiplier():
 	else:
 		print("ERROR: Multiplier not set correctly")
 	Ui.update_ui()
-	
+
+
+# Ball Score milestones for getting a free ball
+const extraBall1: int = 25000
+const extraBall2: int = 75000
+const extraBall3: int = 125000
+
+# Flags to check if extra balls have been obtained. Resets when ball ends.
+var gotExtraBall1: bool = false
+var gotExtraBall2: bool = false
+var gotExtraBall3: bool = false
+
+func _on_extra_ball_check():
+	if ballScoreCounter < extraBall1:
+		return
+	elif ballScoreCounter >= extraBall1 and !gotExtraBall1:
+		gotExtraBall1 = true
+		addBall()
+		print("Extra ball 1 added! "+ str(extraBall1))
+	elif ballScoreCounter >= extraBall2 and !gotExtraBall2:
+		gotExtraBall2 = true
+		addBall()
+		print("Extra ball 2 added! "+ str(extraBall2))
+	elif ballScoreCounter >= extraBall3 and !gotExtraBall3:
+		gotExtraBall3 = true
+		addBall()
+		print("Extra ball 3 added! "+ str(extraBall3))
+
+
+func addBall():
+	ballCount += 1
+	Ui.update_ui()
+	ballsUI.addExtraBall()

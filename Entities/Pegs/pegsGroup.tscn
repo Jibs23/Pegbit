@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dli1w07qwn7lp"]
+
+[ext_resource type="Script" uid="uid://dwv7wlypvxtnt" path="res://Entities/Pegs/pegs.gd" id="1_y2xca"]
+
+[node name="PegsGroup" type="Node2D" groups=["PegsGroup"]]
+script = ExtResource("1_y2xca")
+metadata/_edit_lock_ = true

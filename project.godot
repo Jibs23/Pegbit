@@ -29,6 +29,7 @@ window/size/mode=2
 window/size/initial_position_type=2
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+window/name="Pegbit"
 
 [dotnet]
 
@@ -52,6 +53,9 @@ PegBlue=""
 Peg=""
 Ball=""
 Audio=""
+Wall=""
+ballsUI=""
+Background=""
 
 [input]
 
@@ -98,6 +102,7 @@ restart_level={
 2d_physics/layer_2="Pegs"
 2d_physics/layer_3="Killzone"
 2d_physics/layer_4="Wall"
+2d_physics/layer_9="ui_ball_walls"
 
 [rendering]
 
