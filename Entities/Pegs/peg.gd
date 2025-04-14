@@ -1,8 +1,8 @@
 class_name Peg
 extends StaticBody2D
 
-@onready var audio: Node2D = get_node("/root/Game/Audio")
-@onready var pegs: Node2D = get_tree().get_nodes_in_group("PegsGroup")[0]
+@onready var audio: Node2D = Logic.audio
+@onready var pegs: Node2D = Logic.pegs
 
 var whiteFlashTime: int = 5
 

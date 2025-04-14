@@ -12,6 +12,9 @@ var rotationSpeed: float = 1.5
 
 signal shoot_signal
 
+func _ready():
+	Logic.launcher = self
+
 func _process(delta):
 	if Input.is_action_pressed("launcher_turn_left") and rotation <= maxRotation:
 		if !Input.is_action_pressed("launcher_inch"):

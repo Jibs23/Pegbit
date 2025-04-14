@@ -1,6 +1,11 @@
 extends Node
 
-@onready var ballsUI: Node2D = get_node("/root/Game/Stage/Launcher/BallsUI") as Node2D 
+var ballsUI: Node2D
+var launcher: Node2D
+var balls: Node2D
+var pegs: Node2D
+var audio: Node2D
+var level: Node2D
 
 var isBallInPlay: bool = false
 var isGameOver: bool = false

@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready() -> void:
+    Logic.audio = self
+
 func playSoundEffect(effectName: String) -> Node:
     if has_node(effectName):  # Check if the node exists
         var sound_effect = get_node(effectName)

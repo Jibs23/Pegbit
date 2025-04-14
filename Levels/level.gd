@@ -4,18 +4,12 @@ extends Node2D
 @export var levelRedPegs: int
 @export var levelBalls: int = 10
 
-@onready var uiBallsCounter = get_tree().get_root().get_node("Game/Stage/game UI/VBoxContainer/Balls") as Label
-
 # References to required child nodes
-@onready var pegsGroup: Node = $PegsGroup
+@onready var pegsGroup: Node2D = $PegsGroup
 @onready var background: Sprite2D = $Background
 
 func _ready() -> void:
-    # Ensure required child nodes exist at runtime
-    if pegsGroup == null:
-        push_error(self.name + " is missing a 'PegsGroup' child node!")
-    if background == null:
-        push_error(self.name + " is missing a 'Background' Sprite2D child node!")
+    Logic.level = self
 
     # Initialize Logic variables
     Logic.redPegCount = levelRedPegs
