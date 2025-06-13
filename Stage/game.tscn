@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=17 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="PackedScene" uid="uid://igddqiaj141a" path="res://Levels/level 1/level_1.tscn" id="1_fsbs7"]
 [ext_resource type="PackedScene" uid="uid://dscd5yhlqj2ec" path="res://Entities/Launcher/launcher.tscn" id="2_feb5d"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bs43l4i2nlp64" path="res://Stage/balls_ui.gd" id="5_08agn"]
 [ext_resource type="Script" uid="uid://ct857ri57hvh8" path="res://Stage/balls.gd" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bqx88teutya4j" path="res://Stage/wall.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://prjx0mnlqvnc" path="res://Entities/Bucket/bucket.tscn" id="8_08agn"]
+[ext_resource type="Script" uid="uid://df83v8i5kp6wd" path="res://Entities/Bucket/bucket_move.gd" id="8_64443"]
 [ext_resource type="Script" uid="uid://bcetlibe3k4ys" path="res://Stage/audio.gd" id="8_yobtx"]
 [ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="9_7p7sh"]
 [ext_resource type="Texture2D" uid="uid://dg2karma41bfv" path="res://Stage/sprite_stage_border.png" id="9_64443"]
@@ -19,6 +21,13 @@ size = Vector2(8, 414.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p7sh"]
 size = Vector2(496, 8)
+
+[sub_resource type="Curve2D" id="Curve2D_08agn"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(-21.3367, -77.0785, 0, 0, 80, 261, 0, 0, 392, 261, 400, 261)
+}
+point_count = 2
 
 [node name="Game" type="Node" groups=["Game"]]
 
@@ -73,7 +82,15 @@ script = ExtResource("5_08agn")
 script = ExtResource("5_eow3j")
 metadata/_edit_lock_ = true
 
+[node name="Border" type="Sprite2D" parent="Stage"]
+z_index = -4096
+z_as_relative = false
+texture = ExtResource("9_64443")
+centered = false
+metadata/_edit_lock_ = true
+
 [node name="Walls" type="Node2D" parent="Stage"]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="Wall" parent="Stage/Walls" instance=ExtResource("6_ryrav")]
@@ -95,12 +112,16 @@ position = Vector2(224, -120)
 position = Vector2(16, 140)
 shape = SubResource("RectangleShape2D_7p7sh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Stage/Walls"]
-z_index = -4096
-z_as_relative = false
-texture = ExtResource("9_64443")
-centered = false
-metadata/_edit_lock_ = true
+[node name="Bucket track" type="Path2D" parent="Stage"]
+curve = SubResource("Curve2D_08agn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage/Bucket track" node_paths=PackedStringArray("path_following_node")]
+position = Vector2(80, 261)
+script = ExtResource("8_64443")
+path_following_node = NodePath("../Bucket")
+
+[node name="Bucket" parent="Stage/Bucket track" instance=ExtResource("8_08agn")]
+position = Vector2(240, 296)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -116,6 +137,12 @@ volume_db = 5.333
 
 [node name="SFXHitPegLongShot" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("10_fsbs7")
+
+[node name="SFXBucketScore" type="AudioStreamPlayer2D" parent="Audio"]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+visible = false
 
 [connection signal="shoot_signal" from="Stage/Launcher" to="Stage/Launcher/BallsUI" method="_on_launcher_shoot_signal"]
 [connection signal="child_order_changed" from="Stage/Balls" to="Stage/Balls" method="_on_child_order_changed"]

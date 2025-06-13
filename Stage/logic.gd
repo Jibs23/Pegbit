@@ -7,9 +7,10 @@ var pegs: Node2D
 var audio: Node2D
 var level: Node2D
 
-var isBallInPlay: bool = false
 var isGameOver: bool = false
 var isGameStarted: bool = true
+var isBallInPlay: bool = false
+var isBucketMove: bool = true
 
 var redPegCount: int
 var bluePegCount: int

@@ -103,6 +103,7 @@ restart_level={
 2d_physics/layer_3="Killzone"
 2d_physics/layer_4="Wall"
 2d_physics/layer_9="ui_ball_walls"
+2d_physics/layer_10="bucket_score"
 
 [rendering]
 
