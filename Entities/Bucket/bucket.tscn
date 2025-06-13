@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://Stage/icon.svg" id="1_pssae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkwu7"]
-size = Vector2(48, 7)
+size = Vector2(53, 8)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pssae"]
 a = Vector2(-11, 1)
@@ -26,7 +26,7 @@ texture = ExtResource("1_pssae")
 collision_layer = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreBox"]
-position = Vector2(0, 4.5)
+position = Vector2(-0.5, 9)
 shape = SubResource("RectangleShape2D_gkwu7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -39,4 +39,4 @@ position = Vector2(12, -1)
 shape = SubResource("SegmentShape2D_d3cnq")
 debug_color = Color(0.977022, 0, 0.407356, 0.42)
 
-[connection signal="body_exited" from="ScoreBox" to="." method="_on_score_box_body_exited"]
+[connection signal="body_entered" from="ScoreBox" to="." method="_on_score_box_body_entered"]

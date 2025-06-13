@@ -12,7 +12,6 @@ func _enter_tree() -> void:
 func _ready() -> void:
 
 	# Initialize Logic variables
-	Ui.find_ui_elements()
 	Logic.redPegCount = levelRedPegs
 	Logic.ballCount = levelBalls
 	Logic.isGameStarted = true

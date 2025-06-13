@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=22 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="PackedScene" uid="uid://igddqiaj141a" path="res://Levels/level 1/level_1.tscn" id="1_fsbs7"]
 [ext_resource type="PackedScene" uid="uid://dscd5yhlqj2ec" path="res://Entities/Launcher/launcher.tscn" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dqxj2ml38s08u" path="res://Stage/killzone.tscn" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://bnro4pkt87dx0" path="res://Stage/ui_canvas.gd" id="3_wqv35"]
 [ext_resource type="Script" uid="uid://bs43l4i2nlp64" path="res://Stage/balls_ui.gd" id="5_08agn"]
 [ext_resource type="Script" uid="uid://ct857ri57hvh8" path="res://Stage/balls.gd" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bqx88teutya4j" path="res://Stage/wall.tscn" id="6_ryrav"]
@@ -13,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dg2karma41bfv" path="res://Stage/sprite_stage_border.png" id="9_64443"]
 [ext_resource type="PackedScene" uid="uid://tl1u7dhx6y7x" path="res://Entities/MissedBallFeature/missed_ball_feature.tscn" id="10_cydeg"]
 [ext_resource type="AudioStream" uid="uid://et1p7g7llhe4" path="res://Entities/Balls/sfx_LongShot.wav" id="10_fsbs7"]
+[ext_resource type="AudioStream" uid="uid://47bcnxeyrhqp" path="res://Entities/Launcher/sfx_shoot.wav" id="14_qv458"]
+[ext_resource type="AudioStream" uid="uid://ya5xhbe24adr" path="res://Entities/Bucket/sfx_splash.wav" id="15_5wghq"]
+[ext_resource type="AudioStream" uid="uid://t4ithbjdh5hs" path="res://Entities/Balls/sfx_extra_ball.wav" id="17_sik7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(500, 8)
@@ -50,6 +54,7 @@ shape = SubResource("RectangleShape2D_feb5d")
 debug_color = Color(0.987234, 0, 0.315206, 0.42)
 
 [node name="game UI" type="CanvasLayer" parent="Stage" groups=["UI"]]
+script = ExtResource("3_wqv35")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage/game UI"]
 offset_right = 40.0
@@ -138,15 +143,28 @@ metadata/_edit_lock_ = true
 [node name="SFXHitPeg" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("9_7p7sh")
 volume_db = 5.333
+panning_strength = 0.0
 
 [node name="SFXHitPegLongShot" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("10_fsbs7")
+panning_strength = 0.0
 
 [node name="SFXBucketScore" type="AudioStreamPlayer2D" parent="Audio"]
-visible = false
+stream = ExtResource("15_5wghq")
+panning_strength = 0.0
+
+[node name="SFXShoot" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("14_qv458")
+volume_db = 5.012
+panning_strength = 0.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 visible = false
+panning_strength = 0.0
+
+[node name="SFXExtraBall" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("17_sik7n")
+volume_db = 6.0
 
 [connection signal="shoot_signal" from="Stage/Launcher" to="Stage/Launcher/BallsUI" method="_on_launcher_shoot_signal"]
 [connection signal="child_order_changed" from="Stage/Balls" to="Stage/Balls" method="_on_child_order_changed"]

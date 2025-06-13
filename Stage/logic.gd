@@ -6,6 +6,7 @@ var balls: Node2D
 var pegs: Node2D
 var audio: Node2D
 var level: Node2D
+var ui_canvas: CanvasLayer
 
 var isGameOver: bool = false
 var isGameStarted: bool = true
@@ -79,14 +80,17 @@ func _on_extra_ball_check():
 	elif ballScoreCounter >= extraBall1 and !gotExtraBall1:
 		gotExtraBall1 = true
 		addBall()
+		audio.playSoundEffect("SFXExtraBall")
 		print("Extra ball 1 added! "+ str(extraBall1))
 	elif ballScoreCounter >= extraBall2 and !gotExtraBall2:
 		gotExtraBall2 = true
 		addBall()
+		audio.playSoundEffect("SFXExtraBall")
 		print("Extra ball 2 added! "+ str(extraBall2))
 	elif ballScoreCounter >= extraBall3 and !gotExtraBall3:
 		gotExtraBall3 = true
 		addBall()
+		audio.playSoundEffect("SFXExtraBall")
 		print("Extra ball 3 added! "+ str(extraBall3))
 
 

@@ -5,7 +5,6 @@ var uiMultiplierCounter
 var uiScoreCounterBall
 
 func _ready() -> void:
-	find_ui_elements()
 	update_ui()
 
 func update_ui() -> void:
@@ -24,10 +23,3 @@ func update_ui() -> void:
 			print("Warning: Value for " + display_text + " is null, setting to 0")
 		if label:
 			label.text = display_text + str(value)
-
-func find_ui_elements() -> void:
-	var ui_node = get_tree().get_nodes_in_group("UI")[0]
-	uiBallsCounter = ui_node.get_node("VBoxContainer/Balls") as Label
-	uiMultiplierCounter = ui_node.get_node("VBoxContainer/Multiplier") as Label
-	uiScoreCounter = ui_node.get_node("VBoxContainer/Score") as Label
-	uiScoreCounterBall = ui_node.get_node("VBoxContainer/BallScore") as Label

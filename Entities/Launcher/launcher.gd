@@ -37,6 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func shoot():
 	var new_ball = ball.instantiate() as RigidBody2D  # Ensure the ball is a RigidBody2D
 	if new_ball: #instantiate new ball
+		Logic.audio.playSoundEffect("SFXShoot")
 		smoke.restart()
 		var ball_counter: int = 0  # Counter to track ball numbers
 		ball_counter += 1  
