@@ -27,7 +27,16 @@ var ballCount: int
 func GameOver():
 	isGameOver = true
 	isGameStarted = false
+	isBucketMove = false
 	print("Game Over! No more balls left.")
+
+func reset_level():
+	var game_node = get_tree().get_nodes_in_group("Game")[0]
+	game_node.queue_free() # Remove the current game node
+	await get_tree().process_frame # Wait one frame to ensure it's freed
+
+	var new_game = preload("res://Stage/game.tscn").instantiate()
+	get_tree().root.add_child(new_game)
 
 func updateMultiplier():
 	# Adjust multiplier based on the number of red pegs remaining

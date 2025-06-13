@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=18 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="PackedScene" uid="uid://igddqiaj141a" path="res://Levels/level 1/level_1.tscn" id="1_fsbs7"]
 [ext_resource type="PackedScene" uid="uid://dscd5yhlqj2ec" path="res://Entities/Launcher/launcher.tscn" id="2_feb5d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bcetlibe3k4ys" path="res://Stage/audio.gd" id="8_yobtx"]
 [ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="9_7p7sh"]
 [ext_resource type="Texture2D" uid="uid://dg2karma41bfv" path="res://Stage/sprite_stage_border.png" id="9_64443"]
+[ext_resource type="PackedScene" uid="uid://tl1u7dhx6y7x" path="res://Entities/MissedBallFeature/missed_ball_feature.tscn" id="10_cydeg"]
 [ext_resource type="AudioStream" uid="uid://et1p7g7llhe4" path="res://Entities/Balls/sfx_LongShot.wav" id="10_fsbs7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
@@ -48,19 +49,11 @@ position = Vector2(2, -20)
 shape = SubResource("RectangleShape2D_feb5d")
 debug_color = Color(0.987234, 0, 0.315206, 0.42)
 
-[node name="game UI" type="CanvasLayer" parent="Stage"]
+[node name="game UI" type="CanvasLayer" parent="Stage" groups=["UI"]]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage/game UI"]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Score" type="Label" parent="Stage/game UI/VBoxContainer"]
-layout_mode = 2
-text = "Score: "
-
-[node name="BallScore" type="Label" parent="Stage/game UI/VBoxContainer"]
-layout_mode = 2
-text = "BallScore:"
 
 [node name="Balls" type="Label" parent="Stage/game UI/VBoxContainer"]
 layout_mode = 2
@@ -69,6 +62,14 @@ text = "Balls: "
 [node name="Multiplier" type="Label" parent="Stage/game UI/VBoxContainer"]
 layout_mode = 2
 text = "Multiplier: "
+
+[node name="Score" type="Label" parent="Stage/game UI/VBoxContainer"]
+layout_mode = 2
+text = "Score: "
+
+[node name="BallScore" type="Label" parent="Stage/game UI/VBoxContainer"]
+layout_mode = 2
+text = "BallScore:"
 
 [node name="Launcher" parent="Stage" instance=ExtResource("2_feb5d")]
 position = Vector2(240, 29)
@@ -122,6 +123,9 @@ path_following_node = NodePath("../Bucket")
 
 [node name="Bucket" parent="Stage/Bucket track" instance=ExtResource("8_08agn")]
 position = Vector2(240, 296)
+
+[node name="MissedBallFeature" parent="Stage" instance=ExtResource("10_cydeg")]
+position = Vector2(240, 144)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

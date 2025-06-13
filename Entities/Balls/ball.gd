@@ -4,10 +4,12 @@ extends RigidBody2D
 @onready var longShotTimer: Timer = $LongShotTimer
 signal long_shot_bonus
 signal end_ball
+signal missed_ball
 
 func _ready() -> void:
 	connect("end_ball", Callable(get_parent(), "_on_ball_end"))
 	connect("long_shot_bonus", Callable(self, "_on_long_shot_bonus"))
+	connect("missed_ball", Callable(get_node("/root/Game/Stage/MissedBallFeature"), "_on_missed_ball"))
 
 func _on_body_entered(body:Node) -> void:
 	if body.is_in_group("Peg"):
@@ -18,9 +20,11 @@ func _on_body_entered(body:Node) -> void:
 		body.hit()
 	longShotTimer.start()
 
-
 func endBall():
 	print("Ball ended")
+	if Logic.ballScoreCounter == 0:
+		print("Ball missed")
+		emit_signal("missed_ball")
 	emit_signal("end_ball")
 	Logic.gotExtraBall1 = false
 	Logic.gotExtraBall2 = false

@@ -8,20 +8,21 @@ extends Node2D
 @onready var pegsGroup: Node2D = $PegsGroup
 @onready var background: Sprite2D = $Background
 func _enter_tree() -> void:
-    Logic.level = self
+	Logic.level = self
 func _ready() -> void:
 
-    # Initialize Logic variables
-    Logic.redPegCount = levelRedPegs
-    Logic.ballCount = levelBalls
-    Logic.isGameStarted = true
-    Logic.isGameOver = false
-    Logic.isBallInPlay = false
-    Logic.score = 0
-    Logic.scoreMultiplier = 1
-    Logic.ballCount = levelBalls
-    Ui.update_ui()
+	# Initialize Logic variables
+	Ui.find_ui_elements()
+	Logic.redPegCount = levelRedPegs
+	Logic.ballCount = levelBalls
+	Logic.isGameStarted = true
+	Logic.isGameOver = false
+	Logic.isBallInPlay = false
+	Logic.score = 0
+	Logic.scoreMultiplier = 1
+	Logic.ballCount = levelBalls
+	Ui.update_ui()
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("launcher_shoot") and Logic.isGameOver:
-        get_tree().reload_current_scene()
+	if event.is_action_pressed("launcher_shoot") and Logic.isGameOver:
+		get_tree().reload_current_scene()

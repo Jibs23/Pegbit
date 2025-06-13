@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://tl1u7dhx6y7x"]
+
+[ext_resource type="Script" uid="uid://buiqxdyui5aje" path="res://Entities/MissedBallFeature/missed_ball_feature.gd" id="1_adr48"]
+[ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://Stage/icon.svg" id="2_7cwdm"]
+
+[node name="MissedBallFeature" type="Node2D"]
+script = ExtResource("1_adr48")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_7cwdm")

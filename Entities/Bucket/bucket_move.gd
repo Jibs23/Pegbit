@@ -9,6 +9,11 @@ func _physics_process(_delta):
 	if path_following_node:
 		path_following_node.global_position = global_position
 
+	if not Logic.isBucketMove and tween.is_running():
+		tween.pause()
+	elif Logic.isBucketMove and not tween.is_running():
+		tween.play()
+
 func _ready():
 	tween = create_tween()
 	_move_bucket()

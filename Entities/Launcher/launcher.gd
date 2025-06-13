@@ -31,6 +31,8 @@ func _process(delta):
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("launcher_shoot") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay and Logic.ballCount > 0:
 		shoot()
+	if event.is_action_pressed("restart_level"):
+		Logic.reset_level()
 
 func shoot():
 	var new_ball = ball.instantiate() as RigidBody2D  # Ensure the ball is a RigidBody2D
