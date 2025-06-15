@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dquae5dhwvxaj"]
+[gd_scene load_steps=7 format=3 uid="uid://dquae5dhwvxaj"]
 
 [ext_resource type="Script" uid="uid://dibewghdngsep" path="res://Entities/Balls/ball.gd" id="1_x8fbi"]
 [ext_resource type="Texture2D" uid="uid://20wdc0vjoatr" path="res://Entities/Balls/Sprite_Ball.png" id="2_41u45"]
+[ext_resource type="Script" uid="uid://c7pojruihp1yu" path="res://Entities/Balls/bullet_time_area.gd" id="3_ghkia"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 friction = 0.0
@@ -9,6 +10,9 @@ bounce = 0.7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 4.47214
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4n2nw"]
+radius = 24.0
 
 [node name="Ball" type="RigidBody2D" groups=["Ball"]]
 physics_interpolation_mode = 1
@@ -39,5 +43,16 @@ offset_top = -32.0
 offset_right = 16.0
 offset_bottom = -9.0
 
+[node name="BulletTimeArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_ghkia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletTimeArea"]
+shape = SubResource("CircleShape2D_4n2nw")
+debug_color = Color(0.63172, 0.528723, 0.0190226, 0.42)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LongShotTimer" to="." method="_on_long_shot_timer_timeout"]
+[connection signal="body_entered" from="BulletTimeArea" to="BulletTimeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="BulletTimeArea" to="BulletTimeArea" method="_on_body_exited"]

@@ -50,7 +50,7 @@ func hit():
 		Logic.ballScoreCounter += scoreValue * Logic.scoreMultiplier
 		emit_signal("extraBallCheck")
 			
-		var sfxNote: float = 1.0 + (min(pegs.pegsActivated, 15) * 0.083) # 0.083 approximates one semitone
+		var sfxNote: float = 1.0 + (min(pegs.pegsActivated, 25) * 0.083) # 0.083 approximates one semitone
 		audio.playSoundEffect(hitSFX).pitch_scale = sfxNote
 		
 		Ui.update_ui()

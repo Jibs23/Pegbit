@@ -57,6 +57,7 @@ Wall=""
 ballsUI=""
 Background=""
 UI=""
+Camera=""
 
 [input]
 

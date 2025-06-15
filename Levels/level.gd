@@ -17,9 +17,11 @@ func _ready() -> void:
 	Logic.isGameStarted = true
 	Logic.isGameOver = false
 	Logic.isBallInPlay = false
+	Logic.isBucketMove = true
 	Logic.score = 0
 	Logic.scoreMultiplier = 1
-	Logic.ballCount = levelBalls
+	Logic.removedBluePegs = 0
+	Logic.removedRedPegs = 0
 	Ui.update_ui()
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -39,5 +39,6 @@ func shakeBalls():
 
 func addExtraBall() -> void:
 	var new_ball = ui_ball.instantiate()
-	new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position
+	new_ball.set_deferred("monitoring", true) # deferred to avoid issues with physics processing
 	add_child(new_ball)
+	new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position

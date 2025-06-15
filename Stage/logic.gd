@@ -7,11 +7,13 @@ var pegs: Node2D
 var audio: Node2D
 var level: Node2D
 var ui_canvas: CanvasLayer
+var camera: Camera2D
 
 var isGameOver: bool = false
 var isGameStarted: bool = true
-var isBallInPlay: bool = false
 var isBucketMove: bool = true
+var isBallInPlay: bool = false
+var isLastRedPeg: bool = false
 
 var redPegCount: int
 var bluePegCount: int
@@ -93,8 +95,7 @@ func _on_extra_ball_check():
 		audio.playSoundEffect("SFXExtraBall")
 		print("Extra ball 3 added! "+ str(extraBall3))
 
-
 func addBall():
 	ballCount += 1
+	ballsUI.call_deferred("addExtraBall")
 	Ui.update_ui()
-	ballsUI.addExtraBall()

@@ -8,3 +8,9 @@ func _ready():
 	add_to_group("PegRed")
 	
 	scoreValue = 100
+
+func hit():
+	if Logic.redPegCount == 2:
+		Logic.isLastRedPeg = true
+		print("Last red peg!")
+	super() # Call the parent hit method
