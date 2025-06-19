@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=29 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="Script" uid="uid://dnyvxcpvncglx" path="res://Levels/level.gd" id="1_2ukda"]
 [ext_resource type="PackedScene" uid="uid://dli1w07qwn7lp" path="res://Entities/Pegs/pegsGroup.tscn" id="2_8xlxb"]
@@ -21,6 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://ya5xhbe24adr" path="res://Entities/Bucket/sfx_splash.wav" id="15_5wghq"]
 [ext_resource type="Script" uid="uid://b0bco56w3vrrn" path="res://Stage/camera_2d.gd" id="15_8xlxb"]
 [ext_resource type="AudioStream" uid="uid://t4ithbjdh5hs" path="res://Entities/Balls/sfx_extra_ball.wav" id="17_sik7n"]
+[ext_resource type="AudioStream" uid="uid://uh3ng45y3ant" path="res://Entities/Balls/sfx_crowd_anticipation.wav" id="22_6hjdb"]
+[ext_resource type="AudioStream" uid="uid://dmfw0541is3i6" path="res://Entities/Balls/sfx_crowd_anticipation_disapointed.wav" id="23_73311"]
+[ext_resource type="AudioStream" uid="uid://cl8d1j5v8fki0" path="res://Entities/Balls/sfx_crowd_cheer.wav" id="24_edk2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(500, 8)
@@ -48,17 +51,11 @@ levelRedPegs = 2
 
 [node name="PegsGroup" parent="Level/level debug" instance=ExtResource("2_8xlxb")]
 
-[node name="Peg_rect" parent="Level/level debug/PegsGroup" instance=ExtResource("3_6hjdb")]
-position = Vector2(256, 128)
-
-[node name="Peg_rect2" parent="Level/level debug/PegsGroup" instance=ExtResource("3_6hjdb")]
+[node name="Peg" parent="Level/level debug/PegsGroup" instance=ExtResource("4_73311")]
 position = Vector2(192, 128)
 
-[node name="Peg" parent="Level/level debug/PegsGroup" instance=ExtResource("4_73311")]
-position = Vector2(129, 128)
-
-[node name="Peg2" parent="Level/level debug/PegsGroup" instance=ExtResource("4_73311")]
-position = Vector2(320, 128)
+[node name="Peg_rect" parent="Level/level debug/PegsGroup" instance=ExtResource("3_6hjdb")]
+position = Vector2(256, 128)
 
 [node name="Stage" type="Node2D" parent="."]
 editor_description = "Level elements that are consisten through each level, such as killzones, ui and walls."
@@ -185,6 +182,18 @@ panning_strength = 0.0
 [node name="SFXExtraBall" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("17_sik7n")
 volume_db = 6.0
+
+[node name="SFXCrowdExcited" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("22_6hjdb")
+panning_strength = 0.0
+
+[node name="SFXCrowdDisappointed" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("23_73311")
+panning_strength = 0.0
+
+[node name="SFXCrowdCheer" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("24_edk2a")
+panning_strength = 0.0
 
 [connection signal="shoot_signal" from="Stage/Launcher" to="Stage/Launcher/BallsUI" method="_on_launcher_shoot_signal"]
 [connection signal="child_order_changed" from="Stage/Balls" to="Stage/Balls" method="_on_child_order_changed"]

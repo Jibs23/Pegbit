@@ -24,6 +24,8 @@ var litColor = spriteSheetNr["grey_lit"]
 var isHit: bool = false
 var sprite: Sprite2D
 
+var pegType: String = "Unspecified_Peg_Type"
+
 var pegCount: int
 var scoreValue : int = 10
 
@@ -32,9 +34,9 @@ var hitSFX: String = "SFXHitPeg"
 signal extraBallCheck
 
 func _ready():
-	sprite = $Sprite2D  
+	sprite = $Sprite2D 
 	if sprite == null:
-		print("Error: Sprite2D node not found!")
+		print("Error: Sprite2D node not found on" , self.name)
 	connect("extraBallCheck", Callable(Logic, "_on_extra_ball_check"))
 
 func hit():

@@ -9,11 +9,15 @@ var level: Node2D
 var ui_canvas: CanvasLayer
 var camera: Camera2D
 
+signal bullet_time_deactivated
+
 var isGameOver: bool = false
 var isGameStarted: bool = true
 var isBucketMove: bool = true
 var isBallInPlay: bool = false
-var isLastRedPeg: bool = false
+var isOneRedPegRemaining: bool = false
+var isBulletTimeActive: bool = false
+var levelClearedBonusModes: bool = false
 
 var redPegCount: int
 var bluePegCount: int
@@ -98,4 +102,10 @@ func _on_extra_ball_check():
 func addBall():
 	ballCount += 1
 	ballsUI.call_deferred("addExtraBall")
-	Ui.update_ui()
+
+func _on_hitLastRedPeg():
+	connect("bullet_time_deactivated", Callable(Logic.camera, "_on_bullet_time_deactivated"))
+	emit_signal("bullet_time_deactivated")
+	audio.playSoundEffect("SFXCrowdCheer")
+	camera.resetCamera()
+	levelClearedBonusModes = true
