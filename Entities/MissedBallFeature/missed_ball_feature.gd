@@ -2,9 +2,9 @@ extends Node2D
 
 var coin_flip_success: bool
 
-func _on_missed_ball():
-	roll_for_new_ball()	
-	
+func _ready() -> void:
+	Logic.missedBallFeature = self
+
 func roll_for_new_ball():
 	randomize()
 	var random_bit = randi() % 2

@@ -22,6 +22,6 @@ func hit():
 			if peg != self and peg is RedPeg:
 				peg.pegIsLastRedPeg = true
 				print("Last red peg ", peg.name)
-	if pegIsLastRedPeg:
+	if pegIsLastRedPeg and not isHit:
 		emit_signal("hitLastRedPeg")
 	super() # Call the parent hit method

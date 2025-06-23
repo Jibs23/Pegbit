@@ -5,6 +5,7 @@ extends PathFollow2D
 var tween: Tween
 var direction := 1
 
+
 func _physics_process(_delta):
 	if path_following_node:
 		path_following_node.global_position = global_position
@@ -16,6 +17,7 @@ func _physics_process(_delta):
 
 func _ready():
 	tween = create_tween()
+	LevelsManager.connect("levelLoaded", Callable(self, "_on_level_loaded"))
 	_move_bucket()
 
 # movement logic
@@ -26,6 +28,32 @@ func _move_bucket():
 
 # restart the tween when it finishes
 func _on_tween_finished():
-	direction *= -1
+	direction *= -1 # toggle direction
 	tween = create_tween()
 	_move_bucket()
+
+# reset the bucket to its initial position
+func reset_bucket():
+	print("Resetting bucket position")
+	if tween:
+		tween.stop()
+		if tween.is_connected("finished", _on_tween_finished):
+			tween.disconnect("finished", _on_tween_finished)
+	progress_ratio = 0.0
+	direction = 1
+	path_following_node.global_position = global_position
+	tween = create_tween() # Ensure a fresh tween
+	_move_bucket()
+
+func add_new_bucket():
+	if Logic.bucket == null:
+		var bucket_scene = load("res://Entities/Bucket/bucket.tscn")
+		var bucket_instance = bucket_scene.instantiate()
+		get_parent().add_child(bucket_instance)
+		print("New bucket added to the scene.")
+	else:
+		print("Bucket already exists, not adding a new one.")
+
+func _on_level_loaded():
+	add_new_bucket()
+	reset_bucket()

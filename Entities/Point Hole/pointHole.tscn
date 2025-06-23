@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://72abm8choxrx"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8sb86"]
+a = Vector2(20, 0)
+b = Vector2(-20, 0)
+
+[node name="pointHole" type="CollisionShape2D"]
+shape = SubResource("SegmentShape2D_8sb86")
+debug_color = Color(1, 0.933333, 0, 0.419608)
+metadata/ScoreValue = 0

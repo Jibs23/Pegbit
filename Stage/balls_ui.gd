@@ -5,7 +5,7 @@ var ui_ball: PackedScene = load("res://Entities/Balls/UI_ball.tscn")
 func _enter_tree() -> void:
 	Logic.ballsUI = self
 
-func _ready() -> void:
+func maintainBallCount():
 	while get_child_count() < Logic.ballCount:
 		var new_ball = ui_ball.instantiate()
 		new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position

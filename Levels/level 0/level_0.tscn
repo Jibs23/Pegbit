@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://obtn7ai8prgx"]
+
+[ext_resource type="PackedScene" uid="uid://dli1w07qwn7lp" path="res://Entities/Pegs/pegsGroup.tscn" id="1_1xr12"]
+[ext_resource type="Script" uid="uid://q2thlpcgfra" path="res://Levels/level 0/level_0.gd" id="1_wiibm"]
+[ext_resource type="PackedScene" uid="uid://b4lj73n5y8edl" path="res://Entities/Pegs/peg.tscn" id="2_24ufw"]
+
+[node name="Level 0" type="Node2D" groups=["level"]]
+script = ExtResource("1_wiibm")
+levelRedPegs = 2
+levelBalls = 1
+
+[node name="PegsGroup" parent="." instance=ExtResource("1_1xr12")]
+
+[node name="Peg" parent="PegsGroup" instance=ExtResource("2_24ufw")]
+position = Vector2(288, 144)
+
+[node name="Peg2" parent="PegsGroup" instance=ExtResource("2_24ufw")]
+position = Vector2(192, 144)
+
+[node name="Background" type="Sprite2D" parent="." groups=["Background"]]

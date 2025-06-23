@@ -18,7 +18,6 @@ func _enter_tree() -> void:
 	Logic.camera = self
 
 func _on_bullet_time_activated(ball: Ball, peg: Peg):
-	print("Bullet time activated! in camera_2d.gd")
 	lastPeg = peg
 	lastRedPegPositon = peg.global_position
 	standardPosition = global_position
@@ -32,7 +31,6 @@ func _on_bullet_time_activated(ball: Ball, peg: Peg):
 	tween_zoom.tween_property(self, "zoom", Vector2(3, 3), zoom_speed).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _on_bullet_time_deactivated():
-	print("Bullet time deactivated! in camera_2d.gd")
 	resetCamera()
 	ballToFollow = null
 	Engine.time_scale = 1.0

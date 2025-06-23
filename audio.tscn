@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://ie4fyb2punlu"]
+
+[ext_resource type="Script" uid="uid://bcetlibe3k4ys" path="res://Stage/audio.gd" id="1_5olcg"]
+[ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="2_pgqns"]
+[ext_resource type="AudioStream" uid="uid://et1p7g7llhe4" path="res://Entities/Balls/sfx_LongShot.wav" id="3_cqcg1"]
+[ext_resource type="AudioStream" uid="uid://ya5xhbe24adr" path="res://Entities/Bucket/sfx_splash.wav" id="4_564a7"]
+[ext_resource type="AudioStream" uid="uid://47bcnxeyrhqp" path="res://Entities/Launcher/sfx_shoot.wav" id="5_qf6oy"]
+[ext_resource type="AudioStream" uid="uid://t4ithbjdh5hs" path="res://Entities/Balls/sfx_extra_ball.wav" id="6_tor12"]
+[ext_resource type="AudioStream" uid="uid://uh3ng45y3ant" path="res://Entities/Balls/sfx_crowd_anticipation.wav" id="7_fajnq"]
+[ext_resource type="AudioStream" uid="uid://dmfw0541is3i6" path="res://Entities/Balls/sfx_crowd_anticipation_disapointed.wav" id="8_f6syg"]
+[ext_resource type="AudioStream" uid="uid://cl8d1j5v8fki0" path="res://Entities/Balls/sfx_crowd_cheer.wav" id="9_enkql"]
+
+[node name="Audio" type="Node2D" groups=["Audio"]]
+script = ExtResource("1_5olcg")
+metadata/_edit_lock_ = true
+
+[node name="SFXHitPeg" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_pgqns")
+volume_db = 5.333
+panning_strength = 0.0
+
+[node name="SFXHitPegLongShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cqcg1")
+panning_strength = 0.0
+
+[node name="SFXBucketScore" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_564a7")
+panning_strength = 0.0
+
+[node name="SFXShoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qf6oy")
+volume_db = 5.012
+panning_strength = 0.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+visible = false
+panning_strength = 0.0
+
+[node name="SFXExtraBall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tor12")
+volume_db = 6.0
+
+[node name="SFXCrowdExcited" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fajnq")
+panning_strength = 0.0
+
+[node name="SFXCrowdDisappointed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_f6syg")
+panning_strength = 0.0
+
+[node name="SFXCrowdCheer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_enkql")
+panning_strength = 0.0
