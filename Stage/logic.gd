@@ -109,7 +109,6 @@ func addBall():
 	ballsUI.call_deferred("maintainBallCount")
 
 func _on_hitLastRedPeg():
-	connect("bullet_time_deactivated", Callable(camera, "_on_bullet_time_deactivated"))
 	emit_signal("bullet_time_deactivated")
 	audio.playSoundEffect("SFXCrowdCheer")
 	camera.resetCamera()

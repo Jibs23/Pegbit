@@ -108,7 +108,6 @@ theme = SubResource("Theme_cydeg")
 text = "LOAD"
 
 [node name="BtnErase" type="Button" parent="UserInterface/MainMenu/MenuButtons"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_qv458")
 text = "ERASE"

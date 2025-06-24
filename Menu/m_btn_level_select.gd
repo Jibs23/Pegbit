@@ -5,7 +5,7 @@ var popup: PopupMenu
 func _ready() -> void:
 	popup = get_popup()
 	popup.connect("id_pressed", Callable(self, "_on_level_selected"))
-	SaveManager.connect("gameSaved", Callable(self, "_on_game_saved"))
+	SaveManager.connect("saveDataSaved", Callable(self, "_on_game_saved"))
 	add_levels_to_dropdown()
 	update_level_selection()
 

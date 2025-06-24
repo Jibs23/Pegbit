@@ -111,12 +111,11 @@ func unload_level():
 
 func level_Clear():
 	var current_level = get_current_level()
+	reached_level = max(reached_level, current_level)
 	if current_level >= 0:
 		levelsLibrary[current_level]["isLevelCleared"] = true
 		levelsLibrary[current_level]["HighScore"] = Logic.score
-		reached_level += 1
 		SaveManager.save_game()
 		print("Level cleared: " + str(current_level))
 	else:
 		print("No active level to clear!")
-

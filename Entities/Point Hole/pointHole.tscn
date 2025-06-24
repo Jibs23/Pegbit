@@ -1,10 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://72abm8choxrx"]
+[gd_scene load_steps=7 format=3 uid="uid://72abm8choxrx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8sb86"]
 a = Vector2(20, 0)
 b = Vector2(-20, 0)
 
+[sub_resource type="Curve" id="Curve_8sb86"]
+_limits = [0.0, 6.25039, 0.0, 0.509652]
+_data = [Vector2(0, 0.117931), 0.0, 18.4186, 0, 0, Vector2(0.509652, 6.25039), 2.94927e-05, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l6i8y"]
+curve = SubResource("Curve_8sb86")
+
+[sub_resource type="Curve" id="Curve_l6i8y"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.498155, 1), -5.23452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_udqb0"]
+curve = SubResource("Curve_l6i8y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_udqb0"]
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 1)
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 25.7
+initial_velocity_max = 73.13
+gravity = Vector3(0, 20, 0)
+linear_accel_min = -10.1
+linear_accel_max = -10.1
+damping_min = 1.683
+damping_max = 1.683
+damping_curve = SubResource("CurveTexture_l6i8y")
+scale_min = 2.0
+scale_max = 2.0
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 3.67
+turbulence_noise_scale = 0.5
+turbulence_initial_displacement_min = 6.5
+turbulence_initial_displacement_max = 15.6
+turbulence_influence_over_life = SubResource("CurveTexture_udqb0")
+
 [node name="pointHole" type="CollisionShape2D"]
 shape = SubResource("SegmentShape2D_8sb86")
 debug_color = Color(1, 0.933333, 0, 0.419608)
 metadata/ScoreValue = 0
+
+[node name="confetti" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 15.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+fixed_fps = 60
+trail_lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_udqb0")
