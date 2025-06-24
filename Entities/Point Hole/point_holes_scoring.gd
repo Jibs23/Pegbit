@@ -13,6 +13,7 @@ func _on_body_shape_entered(_body_id, _body, _body_shape, area_shape):
 	if scoredPointHole and scoredPointHole.has_meta("ScoreValue") and scoredPointHole.get_meta("ScoreValue") != 0:
 		scoredPointHole.get_node("confetti").restart()		
 		scoredPointHole.get_node("confetti").emitting = true
+		scoredPointHole.activate_score_text()
 		var value = scoredPointHole.get_meta("ScoreValue")
 		print("Entered point hole with value: ", value)
 		emit_signal("bonusHoleEntered", value)
