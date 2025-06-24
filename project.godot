@@ -21,6 +21,7 @@ config/icon="res://Stage/icon.svg"
 Logic="*res://Stage/logic.gd"
 Ui="*res://Stage/game_ui.gd"
 LevelsManager="*res://levels_manager.gd"
+SaveManager="*res://save_manager.gd"
 
 [display]
 

@@ -9,7 +9,7 @@ var ballMissed: bool = true
 var distance_since_last_hit: float = 0.0
 var last_position: Vector2
 var numberOfCollisions: int = 0
-const LONG_SHOT_DISTANCE: float = 170.0 # Adjust as needed
+const LONG_SHOT_DISTANCE: float = 170.0
 
 func _ready() -> void:
 	connect("end_ball", Callable(Logic.balls, "_on_ball_end"))

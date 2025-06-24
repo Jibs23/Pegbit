@@ -1,7 +1,20 @@
-extends CanvasLayer
+extends VBoxContainer
 
-@export var startLevel: int = 1
-
-func _on_button_pressed() -> void:
-	Logic.toggleMainMenu()
-	LevelsManager.load_level(startLevel)
+func toggleMainMenu():
+	var gameStage = Logic.game.get_node("Stage")
+	var mainMenu = Logic.userInterface.mainMenu
+	if mainMenu.visible:
+		# Stage mode
+		mainMenu.hide()
+		Logic.userInterface.hud.visible = true
+		Logic.isGamePaused = false
+		Logic.isInputDisabled = false
+		gameStage.show()
+	else:
+		# Menu mode
+		LevelsManager.unload_level()
+		mainMenu.show()
+		Logic.userInterface.hud.visible = false
+		Logic.isGamePaused = true
+		Logic.isInputDisabled = true
+		gameStage.hide()

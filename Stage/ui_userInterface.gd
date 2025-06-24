@@ -23,24 +23,29 @@ func _on_btn_retry_pressed() -> void:
 func _on_btn_next_level_pressed() -> void:
 	LevelsManager.level_Next()
 
-
-func _on_btn_previous_level_pressed() -> void:
-	LevelsManager.level_Previous()
-
-
 func _on_btn_play_pressed() -> void:
-	mainMenu.visible = false
-	var highest_cleared = -1
-	for level_num in LevelsManager.levelsLibrary.keys():
-		if LevelsManager.levelsLibrary[level_num]["isLevelCleared"]:
-			if level_num > highest_cleared:
-				highest_cleared = level_num
-	var next_level = highest_cleared + 1
-	if LevelsManager.levelsLibrary.has(next_level):
-		LevelsManager.load_level(next_level)
-	else:
-		print("No next level available.")
+	mainMenu.hide()
+	LevelsManager.load_level(LevelsManager.reached_level)
 
 
 func _on_btn_exit_pressed() -> void:
-	pass # Replace with function body.
+	SaveManager.save_game()
+	get_tree().quit()
+
+
+func _on_btn_main_menu_pressed() -> void:
+	LevelsManager.unload_level()
+	Logic.userInterface.mainMenu.toggleMainMenu()
+	Logic.userInterface.menu.toggle_menu(false)
+
+
+func _on_btn_save_pressed() -> void:
+	SaveManager.save_game()
+
+
+func _on_btn_load_pressed() -> void:
+	SaveManager.load_save()
+
+
+func _on_btn_erase_pressed() -> void:
+	SaveManager.delete_save()

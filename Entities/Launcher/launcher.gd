@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 	Logic.launcher = self
 
 func _process(delta):
-	if Logic.isInputDisabled: return 
+	if Logic.isInputDisabled or Logic.stage.levelContainer.get_child_count() == 0: return
 	if Input.is_action_pressed("launcher_turn_left") and rotation <= maxRotation:
 		if !Input.is_action_pressed("launcher_inch"):
 			rotation += rotationSpeed * delta
@@ -30,13 +30,14 @@ func _process(delta):
 			rotation -= rotationSpeed * delta * launcherInch
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Logic.isInputDisabled: return 
+	if Logic.isInputDisabled or Logic.stage.levelContainer.get_child_count() == 0: return
 	if event.is_action_pressed("launcher_shoot") and Logic.isGameStarted and !Logic.isGameOver and !Logic.isBallInPlay and Logic.ballCount > 0:
 		shoot()
 	if event.is_action_pressed("restart_level"):
 		LevelsManager.level_Restart()
 
 func shoot():
+	if Logic.isInputDisabled or Logic.stage.levelContainer.get_child_count() == 0: return
 	var new_ball = ball.instantiate() as RigidBody2D  # Ensure the ball is a RigidBody2D
 	if new_ball: #instantiate new ball
 		Logic.audio.playSoundEffect("SFXShoot")

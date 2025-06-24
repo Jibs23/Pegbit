@@ -4,6 +4,7 @@ func _enter_tree() -> void:
 	Logic.balls = self
 
 func _on_child_order_changed() -> void:
+	Logic.ballsUI.maintainBallCount()
 	if get_children().size() > 0: # Check if there are any children
 		Logic.isBallInPlay = true
 	else: # if no children
@@ -20,7 +21,7 @@ func _on_ball_end(ballMissed):
 		Logic.levelCompleted()
 	Ui.update_ui()
 
-const LONG_SHOT_BONUS = 10000
+const LONG_SHOT_BONUS = 25000
 
 func _on_long_shot_bonus():
 	Logic.score += LONG_SHOT_BONUS

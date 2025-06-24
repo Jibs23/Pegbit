@@ -7,11 +7,15 @@ func _enter_tree() -> void:
 
 func maintainBallCount():
 	while get_child_count() < Logic.ballCount:
-		var new_ball = ui_ball.instantiate()
-		new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position
-		add_child(new_ball)
+		addExtraBall()
 	while get_child_count() > Logic.ballCount:
 		remove_ball()
+
+func addExtraBall() -> void:
+	var new_ball = ui_ball.instantiate()
+	new_ball.set_deferred("monitoring", true) # deferred to avoid issues with physics processing
+	add_child(new_ball)
+	new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position
 
 func remove_ball() -> void:
 	if get_child_count() > 0:
@@ -37,8 +41,3 @@ func shakeBalls():
 		if ball is RigidBody2D:
 			ball.linear_velocity += Vector2(randf() * 100 - 50, -(randf() * 100))
 
-func addExtraBall() -> void:
-	var new_ball = ui_ball.instantiate()
-	new_ball.set_deferred("monitoring", true) # deferred to avoid issues with physics processing
-	add_child(new_ball)
-	new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position

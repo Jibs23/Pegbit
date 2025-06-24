@@ -14,7 +14,7 @@ func update_ui() -> void:
 		[uiMultiplierCounter, "Multiplier: ", Logic.scoreMultiplier],
 		[uiScoreCounter, "Score: ", Logic.score],
 		[uiScoreCounterBall, "BallScore: ", Logic.ballScoreCounter],
-		[uiCurrentLevel, "Current Level: ", LevelsManager.current_level]  # Assuming LevelsManager.currentLevelIndex is zero-based
+		[uiCurrentLevel, "Current Level: ", LevelsManager.get_current_level()]
 	]
 	for element in ui_elements:
 		var label = element[0]

@@ -67,7 +67,7 @@ func updateMultiplier():
 		return
 	# Find the highest threshold that matches removedRedPegs
 	for threshold in sorted_thresholds:
-		if removedRedPegs >= threshold:
+		if removedRedPegs == threshold:
 			scoreMultiplier = multiplier_thresholds[threshold]
 			print("Multiplier: " + str(scoreMultiplier))
 			break
@@ -106,7 +106,7 @@ func _on_extra_ball_check():
 
 func addBall():
 	ballCount += 1
-	ballsUI.call_deferred("addExtraBall")
+	ballsUI.call_deferred("maintainBallCount")
 
 func _on_hitLastRedPeg():
 	connect("bullet_time_deactivated", Callable(camera, "_on_bullet_time_deactivated"))
@@ -134,19 +134,7 @@ func _on_bonusHoleEntered(bonusHoleValue: int):
 	score += bonusHoleValue
 	levelCompleted()
 
-func toggleMainMenu():
-	var gameStage = game.get_node("Stage")
-	var mainMenu = game.get_node("MainMenu")
-	if mainMenu.visible:
-		# Stage mode
-		mainMenu.hide()
-		userInterface.visible = true
-		gameStage.show()
-	else:
-		# Menu mode
-		mainMenu.show()
-		userInterface.visible = false
-		gameStage.hide()
+
 
 var prepauseTimeScale: float
 

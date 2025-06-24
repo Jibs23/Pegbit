@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=17 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="Script" uid="uid://kkconouvqvoh" path="res://game.gd" id="1_6hjdb"]
 [ext_resource type="PackedScene" uid="uid://dfrujxa3upvlx" path="res://Stage/stage.tscn" id="2_64443"]
@@ -7,8 +7,20 @@
 [ext_resource type="Script" uid="uid://8kg7mbsqc580" path="res://Stage/ui_userInterface.gd" id="5_43gal"]
 [ext_resource type="Script" uid="uid://cvqdu1gmfpmkq" path="res://Stage/ui_menu.gd" id="6_edk2a"]
 [ext_resource type="Script" uid="uid://cml6d63ssos7u" path="res://Menu/main_menu_buttons.gd" id="7_7p7sh"]
+[ext_resource type="Script" uid="uid://cyoh7e4m0v243" path="res://Menu/main_menu.gd" id="7_fsbs7"]
 [ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/ui_theme_menu_button.tres" id="8_yobtx"]
+[ext_resource type="Script" uid="uid://b7fxqy774irx" path="res://Menu/m_btn_level_select.gd" id="9_08agn"]
 [ext_resource type="Script" uid="uid://b0bco56w3vrrn" path="res://Stage/camera_2d.gd" id="15_8xlxb"]
+
+[sub_resource type="Theme" id="Theme_08agn"]
+
+[sub_resource type="Theme" id="Theme_64443"]
+
+[sub_resource type="Theme" id="Theme_cydeg"]
+
+[sub_resource type="Theme" id="Theme_qv458"]
+
+[sub_resource type="Theme" id="Theme_wqv35"]
 
 [node name="Game" type="Node" groups=["Game"]]
 script = ExtResource("1_6hjdb")
@@ -30,6 +42,7 @@ script = ExtResource("5_43gal")
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("8_yobtx")
 
 [node name="Balls" type="Label" parent="UserInterface/GameUI"]
 layout_mode = 2
@@ -53,15 +66,23 @@ text = "Level: "
 
 [node name="MainMenu" type="VBoxContainer" parent="UserInterface"]
 anchors_preset = -1
-anchor_left = 0.55
-anchor_top = 0.122
-anchor_right = 0.55
-anchor_bottom = 0.122
-offset_left = -95.0
-offset_top = 82.06
-offset_right = 49.0
-offset_bottom = 148.06
+anchor_left = 0.5
+anchor_top = 0.763
+anchor_right = 0.5
+anchor_bottom = 0.763
+offset_left = -96.0
+offset_top = -158.01
+offset_right = 96.0
+offset_bottom = 23.99
 grow_horizontal = 2
+theme = ExtResource("8_yobtx")
+script = ExtResource("7_fsbs7")
+
+[node name="Label" type="Label" parent="UserInterface/MainMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "PEGBIT"
+horizontal_alignment = 1
 
 [node name="Title" type="Sprite2D" parent="UserInterface/MainMenu"]
 
@@ -71,10 +92,36 @@ script = ExtResource("7_7p7sh")
 
 [node name="BtnPlay" type="Button" parent="UserInterface/MainMenu/MenuButtons"]
 layout_mode = 2
+theme = SubResource("Theme_08agn")
 text = "PLAY"
+
+[node name="BtnSave" type="Button" parent="UserInterface/MainMenu/MenuButtons"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_64443")
+text = "SAVE"
+
+[node name="BtnLoad" type="Button" parent="UserInterface/MainMenu/MenuButtons"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_cydeg")
+text = "LOAD"
+
+[node name="BtnErase" type="Button" parent="UserInterface/MainMenu/MenuButtons"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_qv458")
+text = "ERASE"
+
+[node name="MBtnLevelSelect" type="MenuButton" parent="UserInterface/MainMenu/MenuButtons"]
+layout_mode = 2
+text = "LEVELS"
+flat = false
+script = ExtResource("9_08agn")
 
 [node name="BtnExit" type="Button" parent="UserInterface/MainMenu/MenuButtons"]
 layout_mode = 2
+theme = SubResource("Theme_wqv35")
 text = "EXIT"
 
 [node name="Menu" type="VBoxContainer" parent="UserInterface"]
@@ -87,6 +134,7 @@ offset_top = 66.0
 offset_right = 103.0
 offset_bottom = 216.0
 grow_horizontal = 2
+theme = ExtResource("8_yobtx")
 script = ExtResource("6_edk2a")
 
 [node name="TxtHeader" type="Label" parent="UserInterface/Menu"]
@@ -105,19 +153,24 @@ alignment = 1
 [node name="BtnRetry" type="Button" parent="UserInterface/Menu/MenuButtons"]
 layout_mode = 2
 action_mode = 0
-text = "Retry"
+text = "RETRY"
 
 [node name="BtnNextLevel" type="Button" parent="UserInterface/Menu/MenuButtons"]
+visible = false
 layout_mode = 2
 action_mode = 0
-text = "Next Level"
+text = "NEXT LEVEL"
 
-[node name="BtnPreviousLevel" type="Button" parent="UserInterface/Menu/MenuButtons"]
+[node name="BtnMainMenu" type="Button" parent="UserInterface/Menu/MenuButtons"]
 layout_mode = 2
-text = "Previous Level"
+text = "MAIN MENU"
 
 [connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnPlay" to="UserInterface" method="_on_btn_play_pressed"]
+[connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnSave" to="UserInterface" method="_on_btn_save_pressed"]
+[connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnLoad" to="UserInterface" method="_on_btn_load_pressed"]
+[connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnErase" to="UserInterface" method="_on_btn_erase_pressed"]
+[connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/MBtnLevelSelect" to="UserInterface/MainMenu/MenuButtons/MBtnLevelSelect" method="_on_pressed"]
 [connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnExit" to="UserInterface" method="_on_btn_exit_pressed"]
 [connection signal="pressed" from="UserInterface/Menu/MenuButtons/BtnRetry" to="UserInterface" method="_on_btn_retry_pressed"]
 [connection signal="pressed" from="UserInterface/Menu/MenuButtons/BtnNextLevel" to="UserInterface" method="_on_btn_next_level_pressed"]
-[connection signal="pressed" from="UserInterface/Menu/MenuButtons/BtnPreviousLevel" to="UserInterface" method="_on_btn_previous_level_pressed"]
+[connection signal="pressed" from="UserInterface/Menu/MenuButtons/BtnMainMenu" to="UserInterface" method="_on_btn_main_menu_pressed"]
