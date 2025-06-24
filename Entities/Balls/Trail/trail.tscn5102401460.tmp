@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cclp2idnd7odb"]
+
+[ext_resource type="Script" uid="uid://b1ku6vjbneqe2" path="res://Entities/Balls/Trail/trail.gd" id="1_uv53m"]
+
+[sub_resource type="Curve" id="Curve_qj4sw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_aa74r"]
+offsets = PackedFloat32Array(0, 0.0769231)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="Trail" type="Line2D"]
+top_level = true
+z_index = -5
+points = PackedVector2Array(16, 24, 144, 48)
+width = 6.0
+width_curve = SubResource("Curve_qj4sw")
+gradient = SubResource("Gradient_aa74r")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_uv53m")
