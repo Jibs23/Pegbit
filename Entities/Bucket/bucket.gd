@@ -25,7 +25,8 @@ func _on_score_box_body_entered(body: Node2D) -> void:
 func bucket_score_valid(ball) -> void:
 	print("Ball scored in bucket!")
 	Logic.addBall()
-	ball.queue_free()  # Remove the ball from the scene
+	ball.ballMissed = false  # Mark the ball as not missed
+	ball.endBall()  # Remove the ball from the scene
 	Logic.audio.playSoundEffect("SFXBucketScore")
 
 func on_bonus_mode_activated() -> void:
