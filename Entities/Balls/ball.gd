@@ -29,6 +29,7 @@ func _on_body_entered(body:Node) -> void:
 func endBall() -> void:
 	if Logic.ballScoreCounter > 0:
 		ballMissed = false
+	Logic.camera.resetCamera()
 	print("Ball ended")
 	emit_signal("end_ball", ballMissed)
 	Logic.gotExtraBall1 = false

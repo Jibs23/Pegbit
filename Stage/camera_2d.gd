@@ -17,10 +17,12 @@ func _physics_process(_delta):
 func _enter_tree() -> void:
 	Logic.camera = self
 
+func _ready() -> void:
+	standardPosition = global_position
+
 func _on_bullet_time_activated(ball: Ball, peg: Peg):
 	lastPeg = peg
 	lastRedPegPositon = peg.global_position
-	standardPosition = global_position
 	ballToFollow = ball
 
 	isFollowBall = true

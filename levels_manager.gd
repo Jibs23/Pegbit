@@ -8,6 +8,7 @@ extends Node
 
 var reached_level: int = 0
 var levelContainer: Node2D
+var levelTransition: Node2D
 signal levelLoaded
 
 # Helper functions to work with levelsLibrary
@@ -32,13 +33,17 @@ func get_current_level_instance() -> Node2D:
 		return levelsLibrary[current_level]["instance"]
 	return null
 
+
 func load_level(level_number: int):
+	levelTransition.play_bubbles_effect()
+	await get_tree().create_timer(levelTransition.transition_time).timeout
 	# Remove all active balls
 	for ball in Logic.balls.get_children():
 		ball.queue_free()
 
 	reached_level = max(reached_level, level_number)
 	print("Reached level updated to: " + str(reached_level))
+
 
 	# Unload the current level if it exists
 	if get_current_level_instance() != null:
@@ -58,6 +63,8 @@ func load_level(level_number: int):
 	emit_signal("levelLoaded")
 	print("Level loaded: " + str(level_number))
 	Ui.update_ui()
+	await get_tree().create_timer(levelTransition.transition_time).timeout
+	levelTransition.stop_bubbles_effect()
 
 
 func level_Restart():

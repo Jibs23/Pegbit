@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://edoq22nwxlhl"]
+[gd_scene load_steps=5 format=3 uid="uid://edoq22nwxlhl"]
 
 [ext_resource type="Script" uid="uid://3lbuvc5mcybh" path="res://Levels/level 2/level_2.gd" id="1_p76n8"]
 [ext_resource type="PackedScene" uid="uid://dli1w07qwn7lp" path="res://Entities/Pegs/pegsGroup.tscn" id="2_qfkek"]
 [ext_resource type="PackedScene" uid="uid://b4lj73n5y8edl" path="res://Entities/Pegs/peg.tscn" id="3_2olcp"]
+[ext_resource type="PackedScene" uid="uid://dtq3ofe78mphc" path="res://Entities/Pegs/peg_rect.tscn" id="3_olaj4"]
 
 [node name="Level 2" type="Node2D" groups=["level"]]
 script = ExtResource("1_p76n8")
@@ -10,136 +11,329 @@ levelRedPegs = 10
 
 [node name="PegsGroup" parent="." instance=ExtResource("2_qfkek")]
 
+[node name="Peg_rect" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(194, 196)
+rotation = 0.785398
+
+[node name="Peg_rect2" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(199, 201)
+rotation = 0.785398
+
+[node name="Peg_rect3" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(184, 186)
+rotation = 0.785398
+
+[node name="Peg_rect4" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(189, 191)
+rotation = 0.785398
+
+[node name="Peg_rect5" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(214, 216)
+rotation = 0.785398
+
+[node name="Peg_rect6" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(219, 221)
+rotation = 0.785398
+
+[node name="Peg_rect7" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(204, 206)
+rotation = 0.785398
+
+[node name="Peg_rect8" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(209, 211)
+rotation = 0.785398
+
+[node name="Peg_rect9" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(154, 156)
+rotation = 0.785398
+
+[node name="Peg_rect10" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(159, 161)
+rotation = 0.785398
+
+[node name="Peg_rect11" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(144, 146)
+rotation = 0.785398
+
+[node name="Peg_rect12" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(149, 151)
+rotation = 0.785398
+
+[node name="Peg_rect13" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(174, 176)
+rotation = 0.785398
+
+[node name="Peg_rect14" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(179, 181)
+rotation = 0.785398
+
+[node name="Peg_rect15" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(164, 166)
+rotation = 0.785398
+
+[node name="Peg_rect16" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(169, 171)
+rotation = 0.785398
+
+[node name="Peg_rect17" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(190, 216)
+rotation = 0.785398
+
+[node name="Peg_rect18" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(195, 221)
+rotation = 0.785398
+
+[node name="Peg_rect19" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(180, 206)
+rotation = 0.785398
+
+[node name="Peg_rect20" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(185, 211)
+rotation = 0.785398
+
+[node name="Peg_rect21" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(210, 236)
+rotation = 0.785398
+
+[node name="Peg_rect22" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(215, 241)
+rotation = 0.785398
+
+[node name="Peg_rect23" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(200, 226)
+rotation = 0.785398
+
+[node name="Peg_rect24" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(205, 231)
+rotation = 0.785398
+
+[node name="Peg_rect25" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(150, 176)
+rotation = 0.785398
+
+[node name="Peg_rect26" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(155, 181)
+rotation = 0.785398
+
+[node name="Peg_rect27" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(140, 166)
+rotation = 0.785398
+
+[node name="Peg_rect28" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(145, 171)
+rotation = 0.785398
+
+[node name="Peg_rect29" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(170, 196)
+rotation = 0.785398
+
+[node name="Peg_rect30" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(175, 201)
+rotation = 0.785398
+
+[node name="Peg_rect31" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(160, 186)
+rotation = 0.785398
+
+[node name="Peg_rect32" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(165, 191)
+rotation = 0.785398
+
+[node name="Peg_rect33" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(229, 221)
+rotation = -0.785398
+
+[node name="Peg_rect34" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(234, 216)
+rotation = -0.785398
+
+[node name="Peg_rect35" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(239, 211)
+rotation = -0.785398
+
+[node name="Peg_rect36" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(244, 206)
+rotation = -0.785398
+
+[node name="Peg_rect37" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(249, 201)
+rotation = -0.785398
+
+[node name="Peg_rect38" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(254, 196)
+rotation = -0.785398
+
+[node name="Peg_rect39" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(259, 191)
+rotation = -0.785398
+
+[node name="Peg_rect40" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(264, 186)
+rotation = -0.785398
+
+[node name="Peg_rect41" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(269, 181)
+rotation = -0.785398
+
+[node name="Peg_rect42" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(274, 176)
+rotation = -0.785398
+
+[node name="Peg_rect43" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(279, 171)
+rotation = -0.785398
+
+[node name="Peg_rect44" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(284, 166)
+rotation = -0.785398
+
+[node name="Peg_rect45" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(289, 161)
+rotation = -0.785398
+
+[node name="Peg_rect46" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(294, 156)
+rotation = -0.785398
+
+[node name="Peg_rect47" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(299, 151)
+rotation = -0.785398
+
+[node name="Peg_rect48" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(304, 146)
+rotation = -0.785398
+
+[node name="Peg_rect49" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(234, 241)
+rotation = -0.785398
+
+[node name="Peg_rect50" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(239, 236)
+rotation = -0.785398
+
+[node name="Peg_rect51" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(244, 231)
+rotation = -0.785398
+
+[node name="Peg_rect52" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(249, 226)
+rotation = -0.785398
+
+[node name="Peg_rect53" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(254, 221)
+rotation = -0.785398
+
+[node name="Peg_rect54" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(259, 216)
+rotation = -0.785398
+
+[node name="Peg_rect55" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(264, 211)
+rotation = -0.785398
+
+[node name="Peg_rect56" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(269, 206)
+rotation = -0.785398
+
+[node name="Peg_rect57" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(274, 201)
+rotation = -0.785398
+
+[node name="Peg_rect58" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(279, 196)
+rotation = -0.785398
+
+[node name="Peg_rect59" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(284, 191)
+rotation = -0.785398
+
+[node name="Peg_rect60" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(289, 186)
+rotation = -0.785398
+
+[node name="Peg_rect61" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(294, 181)
+rotation = -0.785398
+
+[node name="Peg_rect62" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(299, 176)
+rotation = -0.785398
+
+[node name="Peg_rect63" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(304, 171)
+rotation = -0.785398
+
+[node name="Peg_rect64" parent="PegsGroup" instance=ExtResource("3_olaj4")]
+position = Vector2(309, 166)
+rotation = -0.785398
+
+[node name="Peg" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(224, 184)
+
+[node name="Peg2" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(224, 200)
+
+[node name="Peg3" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(224, 152)
+
+[node name="Peg4" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(224, 168)
+
+[node name="Peg5" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(240, 168)
+
+[node name="Peg6" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(240, 184)
+
+[node name="Peg7" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(240, 136)
+
+[node name="Peg8" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(240, 152)
+
+[node name="Peg9" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(208, 168)
+
+[node name="Peg10" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(208, 184)
+
+[node name="Peg11" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(208, 136)
+
+[node name="Peg12" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(208, 152)
+
+[node name="Peg13" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(256, 152)
+
+[node name="Peg14" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(256, 168)
+
+[node name="Peg15" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(176, 136)
+
+[node name="Peg16" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(256, 136)
+
 [node name="Peg17" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(150, 125)
+position = Vector2(192, 152)
 
-[node name="Peg29" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(214, 125)
+[node name="Peg18" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(192, 168)
 
-[node name="Peg52" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(182, 125)
+[node name="Peg19" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(176, 152)
 
-[node name="Peg58" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(246, 125)
+[node name="Peg20" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(192, 136)
 
-[node name="Peg75" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(198, 141)
+[node name="Peg21" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(224, 136)
 
-[node name="Peg94" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(166, 141)
+[node name="Peg22" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(272, 136)
 
-[node name="Peg95" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(230, 141)
-
-[node name="Peg97" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(262, 141)
-
-[node name="Peg101" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(150, 157)
-
-[node name="Peg103" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(214, 157)
-
-[node name="Peg108" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(182, 157)
-
-[node name="Peg110" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(246, 157)
-
-[node name="Peg113" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(198, 173)
-
-[node name="Peg118" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(166, 173)
-
-[node name="Peg120" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(230, 173)
-
-[node name="Peg121" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(262, 173)
-
-[node name="Peg126" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(150, 61)
-
-[node name="Peg127" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(214, 61)
-
-[node name="Peg133" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(182, 61)
-
-[node name="Peg134" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(246, 61)
-
-[node name="Peg138" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(198, 77)
-
-[node name="Peg143" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(166, 77)
-
-[node name="Peg144" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(230, 77)
-
-[node name="Peg145" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(262, 77)
-
-[node name="Peg149" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(150, 93)
-
-[node name="Peg150" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(214, 93)
-
-[node name="Peg154" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(182, 93)
-
-[node name="Peg155" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(246, 93)
-
-[node name="Peg158" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(198, 109)
-
-[node name="Peg162" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(166, 109)
-
-[node name="Peg163" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(230, 109)
-
-[node name="Peg164" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(262, 109)
-
-[node name="Peg165" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(278, 125)
-
-[node name="Peg166" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(310, 125)
-
-[node name="Peg167" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(294, 141)
-
-[node name="Peg168" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(278, 157)
-
-[node name="Peg169" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(310, 157)
-
-[node name="Peg170" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(294, 173)
-
-[node name="Peg171" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(278, 61)
-
-[node name="Peg172" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(310, 61)
-
-[node name="Peg173" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(294, 77)
-
-[node name="Peg174" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(278, 93)
-
-[node name="Peg175" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(310, 93)
-
-[node name="Peg176" parent="PegsGroup" instance=ExtResource("3_2olcp")]
-position = Vector2(294, 109)
+[node name="Peg23" parent="PegsGroup" instance=ExtResource("3_2olcp")]
+position = Vector2(272, 152)
 
 [node name="Background" type="Sprite2D" parent="." groups=["Background"]]

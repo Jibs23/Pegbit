@@ -8,6 +8,8 @@ var ball: Ball
 
 func _ready() -> void:
 	ball = get_parent()
+	connect("bullet_time_activated", Callable(Logic.camera, "_on_bullet_time_activated"))
+	connect("bullet_time_deactivated", Callable(Logic.camera, "_on_bullet_time_deactivated"))
 
 func _on_body_entered(peg:Node2D) -> void:
 	if peg.pegType != "red":
@@ -15,8 +17,6 @@ func _on_body_entered(peg:Node2D) -> void:
 	elif peg.pegIsLastRedPeg and !peg.isHit:
 		Logic.isBulletTimeActive = true
 		Logic.audio.playSoundEffect("SFXCrowdExcited")
-		connect("bullet_time_activated", Callable(Logic.camera, "_on_bullet_time_activated"))
-		connect("bullet_time_deactivated", Callable(Logic.camera, "_on_bullet_time_deactivated"))
 		emit_signal("bullet_time_activated", ball, peg)
 	else:
 		return

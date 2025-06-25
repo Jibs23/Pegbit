@@ -109,8 +109,7 @@ position = Vector2(240, 144)
 position = Vector2(216, 263)
 script = ExtResource("11_hhly5")
 
-[node name="Bumpers" type="StaticBody2D" parent="BonusHoles"]
-collision_layer = 8
+[node name="Bumpers" parent="BonusHoles" instance=ExtResource("9_oxjqm")]
 
 [node name="RoundBumper" parent="BonusHoles/Bumpers" instance=ExtResource("13_11sey")]
 position = Vector2(-166, 6)

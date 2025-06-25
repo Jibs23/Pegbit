@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ie4fyb2punlu"]
+[gd_scene load_steps=13 format=3 uid="uid://ie4fyb2punlu"]
 
 [ext_resource type="Script" uid="uid://bcetlibe3k4ys" path="res://Stage/audio.gd" id="1_5olcg"]
 [ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="2_pgqns"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://dmfw0541is3i6" path="res://Entities/Balls/sfx_crowd_anticipation_disapointed.wav" id="8_f6syg"]
 [ext_resource type="AudioStream" uid="uid://b7x6g8okvpa0f" path="res://Entities/Balls/sfx_crowd_cheering.wav" id="9_pgqns"]
 [ext_resource type="AudioStream" uid="uid://brvspd8trovat" path="res://Entities/Point Hole/sfx_pointhole_splash.wav" id="10_pgqns"]
+[ext_resource type="AudioStream" uid="uid://gsgb3albm86w" path="res://LevelTransition/sfx_transition_bubble.wav" id="11_564a7"]
+[ext_resource type="AudioStream" uid="uid://cvbifbp80hd6f" path="res://LevelTransition/sfx_transition_bubble_start.wav" id="12_qf6oy"]
 
 [node name="Audio" type="Node2D" groups=["Audio"]]
 script = ExtResource("1_5olcg")
@@ -56,4 +58,12 @@ panning_strength = 0.0
 [node name="SFXBallInBonusHole" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_pgqns")
 volume_db = 3.812
+panning_strength = 0.0
+
+[node name="SFXTransitionBubbleStart" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_qf6oy")
+panning_strength = 0.0
+
+[node name="SFXTransitionBubble" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_564a7")
 panning_strength = 0.0

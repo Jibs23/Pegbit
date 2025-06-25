@@ -111,6 +111,7 @@ func addBall():
 func _on_hitLastRedPeg():
 	emit_signal("bullet_time_deactivated")
 	audio.playSoundEffect("SFXCrowdCheer")
+	isOneRedPegRemaining = false
 	camera.resetCamera()
 	initializeBonusMode()
 

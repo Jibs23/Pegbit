@@ -6,6 +6,8 @@ extends StaticBody2D
 
 var whiteFlashTime: int = 5
 
+signal hitPeg
+
 # PEG FRAMES
 var spriteSheetNr: Dictionary = {
 	"grey": 0,
@@ -37,17 +39,18 @@ func _ready():
 	sprite = $Sprite2D 
 	if sprite == null:
 		print("Error: Sprite2D node not found on" , self.name)
+	connect("hitPeg", Callable(Logic.pegs, "_on_hit_peg"))
 	connect("extraBallCheck", Callable(Logic, "_on_extra_ball_check"))
 
 func hit():
 	if !isHit:
 		isHit = true
+		emit_signal("hitPeg", self)
 		get_node("Sprite2D").set_frame(spriteSheetNr["white"])		
 		for number in range(whiteFlashTime):
 			await get_tree().process_frame
 		get_node("Sprite2D").set_frame(litColor)
 		pegCount -= 1
-		pegs.pegsActivated += 1
 
 		Logic.ballScoreCounter += scoreValue * Logic.scoreMultiplier
 		emit_signal("extraBallCheck")

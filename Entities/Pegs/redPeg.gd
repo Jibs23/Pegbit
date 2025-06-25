@@ -15,13 +15,8 @@ func _ready():
 	scoreValue = 100
 
 func hit():
-	if Logic.redPegCount == 2:
-		Logic.isOneRedPegRemaining = true
-		var redPegs = get_tree().get_nodes_in_group("PegRed")
-		for peg in redPegs:
-			if peg != self and peg is RedPeg:
-				peg.pegIsLastRedPeg = true
-				print("Last red peg ", peg.name)
-	if pegIsLastRedPeg and not isHit:
+	if pegIsLastRedPeg:
+		print("Last red peg hit! " + self.name)
 		emit_signal("hitLastRedPeg")
+
 	super() # Call the parent hit method
