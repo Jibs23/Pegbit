@@ -1,11 +1,17 @@
 extends VBoxContainer
 
+var gameStage: Node2D
+var menuButtons: Control
+
+func _ready() -> void:
+	menuButtons = $MenuButtons
+	gameStage = Logic.game.get_node("Stage")
+	
+
 func toggleMainMenu():
-	var gameStage = Logic.game.get_node("Stage")
-	var mainMenu = Logic.userInterface.mainMenu
-	if mainMenu.visible:
+	if self.visible:
 		# Stage mode
-		mainMenu.hide()
+		hide()
 		Logic.userInterface.hud.visible = true
 		Logic.isGamePaused = false
 		Logic.isInputDisabled = false
@@ -15,7 +21,8 @@ func toggleMainMenu():
 		LevelsManager.levelTransition.play_bubbles_effect()
 		await get_tree().create_timer(LevelsManager.levelTransition.transition_time).timeout
 		LevelsManager.unload_level()
-		mainMenu.show()
+		show()
+		menuButtons.btn_play.grab_focus()
 		Logic.userInterface.hud.visible = false
 		Logic.isGamePaused = true
 		Logic.isInputDisabled = true

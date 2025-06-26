@@ -20,6 +20,7 @@ func _ready() -> void:
 	txt_header = $TxtHeader
 
 func toggle_menu(isForceShow = null) -> void:
+	btn_retry.grab_focus()
 	if isForceShow == null: # If no argument is passed, toggle the menu visibility
 		self.visible = !self.visible
 	else:
@@ -28,6 +29,7 @@ func toggle_menu(isForceShow = null) -> void:
 	isMenuVisible = self.visible
 	if isMenuVisible:
 		emit_signal("gamePause")
+		btn_retry.grab_focus()
 		if Logic.isGamePaused:
 			txt_header.text = "PAUSE"
 			btn_next_level.visible = false
@@ -36,6 +38,7 @@ func toggle_menu(isForceShow = null) -> void:
 			btn_next_level.visible = false
 		if Logic.levelClearedBonusMode:
 			txt_header.text = "WINNER!"
+			btn_next_level.grab_focus()
 			btn_next_level.visible = true
 	else:
 		emit_signal("gameUnpause")

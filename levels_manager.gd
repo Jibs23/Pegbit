@@ -35,11 +35,12 @@ func get_current_level_instance() -> Node2D:
 
 
 func load_level(level_number: int):
-	levelTransition.play_bubbles_effect()
-	await get_tree().create_timer(levelTransition.transition_time).timeout
 	# Remove all active balls
 	for ball in Logic.balls.get_children():
 		ball.queue_free()
+		
+	levelTransition.play_bubbles_effect()
+	await get_tree().create_timer(levelTransition.transition_time).timeout
 
 	reached_level = max(reached_level, level_number)
 	print("Reached level updated to: " + str(reached_level))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1ovf5tp3cmpp"]
+[gd_scene load_steps=18 format=3 uid="uid://b1ovf5tp3cmpp"]
 
 [ext_resource type="Script" uid="uid://kkconouvqvoh" path="res://game.gd" id="1_6hjdb"]
 [ext_resource type="PackedScene" uid="uid://dfrujxa3upvlx" path="res://Stage/stage.tscn" id="2_64443"]
@@ -10,10 +10,7 @@
 [ext_resource type="Script" uid="uid://cyoh7e4m0v243" path="res://Menu/main_menu.gd" id="7_fsbs7"]
 [ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/ui_theme_menu_button.tres" id="8_yobtx"]
 [ext_resource type="Script" uid="uid://b7fxqy774irx" path="res://Menu/m_btn_level_select.gd" id="9_08agn"]
-[ext_resource type="Texture2D" uid="uid://ibv30f2anh47" path="res://LevelTransition/effect-bubbles-Sheet_large.png" id="12_qv458"]
-[ext_resource type="Script" uid="uid://bwhk34d7kltrr" path="res://LevelTransition/level_transition.gd" id="12_wqv35"]
-[ext_resource type="Texture2D" uid="uid://docdbjpeoikme" path="res://LevelTransition/effect-bubbles-Sheet_mediuml.png" id="13_wqv35"]
-[ext_resource type="Texture2D" uid="uid://ca46goxnxsn3s" path="res://LevelTransition/effect-bubbles-Sheet_small.png" id="14_5wghq"]
+[ext_resource type="PackedScene" uid="uid://c0jwqge6oqfsr" path="res://LevelTransition/level_transition.tscn" id="12_64443"]
 [ext_resource type="Script" uid="uid://b0bco56w3vrrn" path="res://Stage/camera_2d.gd" id="15_8xlxb"]
 
 [sub_resource type="Theme" id="Theme_08agn"]
@@ -26,65 +23,23 @@
 
 [sub_resource type="Theme" id="Theme_wqv35"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sik7n"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqv35"]
-particle_flag_damping_as_friction = true
-emission_shape = 3
-emission_box_extents = Vector3(250, 1, 1)
-direction = Vector3(0, -1, 0)
-spread = 11.982
-initial_velocity_min = 48.99
-initial_velocity_max = 92.22
-gravity = Vector3(0, -1000, 0)
-anim_speed_min = 0.5
-anim_speed_max = 0.55
-turbulence_enabled = true
-turbulence_noise_speed_random = 0.16
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1l5kf"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_elpx0"]
-particle_flag_damping_as_friction = true
-emission_shape = 3
-emission_box_extents = Vector3(250, 1, 1)
-direction = Vector3(0, -1, 0)
-spread = 11.982
-initial_velocity_min = 48.99
-initial_velocity_max = 92.22
-gravity = Vector3(0, -10, 0)
-anim_speed_min = 0.5
-anim_speed_max = 0.55
-turbulence_enabled = true
-turbulence_noise_strength = 3.21
-turbulence_noise_scale = 0.8
-turbulence_influence_min = 0.0
-turbulence_influence_max = 0.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wghq"]
-particle_flag_damping_as_friction = true
-emission_shape = 3
-emission_box_extents = Vector3(250, 1, 1)
-direction = Vector3(0, -1, 0)
-spread = 11.982
-initial_velocity_min = 48.99
-initial_velocity_max = 92.22
-gravity = Vector3(0, -600, 0)
-anim_speed_min = 0.5
-anim_speed_max = 0.55
-turbulence_enabled = true
-turbulence_noise_speed_random = 0.16
-
 [node name="Game" type="Node" groups=["Game"]]
 script = ExtResource("1_6hjdb")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+z_index = -4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -148.0
+offset_right = 278.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.565324, 0.77261, 0.868936, 1)
 
 [node name="Stage" parent="." instance=ExtResource("2_64443")]
 visible = false
@@ -225,42 +180,8 @@ text = "NEXT LEVEL"
 layout_mode = 2
 text = "MAIN MENU"
 
-[node name="Level Transition" type="Node2D" parent="."]
-top_level = true
-z_index = 4096
-z_as_relative = false
+[node name="Level Transition" parent="." instance=ExtResource("12_64443")]
 position = Vector2(240, 276)
-script = ExtResource("12_wqv35")
-
-[node name="LBubbles" type="GPUParticles2D" parent="Level Transition"]
-material = SubResource("CanvasItemMaterial_sik7n")
-emitting = false
-amount = 700
-texture = ExtResource("12_qv458")
-lifetime = 2.0
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_wqv35")
-
-[node name="SBubbles" type="GPUParticles2D" parent="Level Transition"]
-material = SubResource("CanvasItemMaterial_1l5kf")
-position = Vector2(-1, 0)
-emitting = false
-amount = 400
-texture = ExtResource("14_5wghq")
-lifetime = 3.22
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_elpx0")
-
-[node name="MBubbles" type="GPUParticles2D" parent="Level Transition"]
-material = SubResource("CanvasItemMaterial_sik7n")
-emitting = false
-amount = 300
-texture = ExtResource("13_wqv35")
-lifetime = 3.22
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_5wghq")
 
 [connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnPlay" to="UserInterface" method="_on_btn_play_pressed"]
 [connection signal="pressed" from="UserInterface/MainMenu/MenuButtons/BtnSave" to="UserInterface" method="_on_btn_save_pressed"]

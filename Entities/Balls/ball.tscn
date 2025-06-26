@@ -13,7 +13,7 @@ bounce = 0.7
 radius = 4.47214
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4n2nw"]
-radius = 24.0
+radius = 16.0
 
 [node name="Ball" type="RigidBody2D" groups=["Ball"]]
 physics_interpolation_mode = 1

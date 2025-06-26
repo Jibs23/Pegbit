@@ -10,21 +10,14 @@
 particles_animation = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 2
-particles_anim_loop = false
+particles_anim_loop = true
 
 [sub_resource type="Gradient" id="Gradient_bq7gr"]
-offsets = PackedFloat32Array(0, 0.0671642)
-colors = PackedColorArray(0.393086, 0.393086, 0.393085, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.166078, 0.816254, 1)
+colors = PackedColorArray(0.347817, 0.347817, 0.347816, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ahcvu"]
 gradient = SubResource("Gradient_bq7gr")
-
-[sub_resource type="Curve" id="Curve_mv1yp"]
-_data = [Vector2(0, 0.505618), 0.0, 3.19601, 0, 0, Vector2(0.0779221, 1), -0.414866, -0.414866, 0, 0, Vector2(0.753247, 0), -5.71012, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_cptt5"]
-curve = SubResource("Curve_mv1yp")
 
 [sub_resource type="Curve" id="Curve_78wap"]
 _limits = [0.0, 3.0, 0.0, 1.0]
@@ -34,6 +27,14 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_ahcvu"]
 curve = SubResource("Curve_78wap")
 
+[sub_resource type="Curve" id="Curve_ahcvu"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 132.115), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_78wap"]
+curve = SubResource("Curve_ahcvu")
+
 [sub_resource type="Curve" id="Curve_bq7gr"]
 _data = [Vector2(0, 0), 0.0, -0.146268, 0, 0, Vector2(1, 1), -0.165475, 0.0, 0, 0]
 point_count = 2
@@ -42,19 +43,25 @@ point_count = 2
 curve = SubResource("Curve_bq7gr")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cptt5"]
-direction = Vector3(0, 0.1, 0)
-spread = 10.0
+lifetime_randomness = 0.1
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 15.0
 initial_velocity_min = 35.0
 initial_velocity_max = 80.0
 gravity = Vector3(0, -50, 0)
 linear_accel_min = -27.97
 linear_accel_max = -27.97
-scale_curve = SubResource("CurveTexture_cptt5")
+tangential_accel_curve = SubResource("CurveTexture_78wap")
 scale_over_velocity_curve = SubResource("CurveTexture_ahcvu")
 color_ramp = SubResource("GradientTexture1D_ahcvu")
+anim_offset_max = 1.0
 turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.022
 turbulence_initial_displacement_min = -100.0
-turbulence_initial_displacement_max = 100.0
+turbulence_initial_displacement_max = 50.4
 turbulence_influence_over_life = SubResource("CurveTexture_mv1yp")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dxmbr"]
@@ -90,7 +97,7 @@ z_index = 3000
 material = SubResource("CanvasItemMaterial_bq7gr")
 position = Vector2(0, 21)
 emitting = false
-amount = 32
+amount = 64
 texture = ExtResource("5_bq7gr")
 lifetime = 3.0
 one_shot = true

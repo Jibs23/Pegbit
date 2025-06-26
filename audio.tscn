@@ -17,6 +17,10 @@
 script = ExtResource("1_5olcg")
 metadata/_edit_lock_ = true
 
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+visible = false
+panning_strength = 0.0
+
 [node name="SFXHitPeg" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_pgqns")
 volume_db = 5.333
@@ -33,10 +37,6 @@ panning_strength = 0.0
 [node name="SFXShoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qf6oy")
 volume_db = 5.012
-panning_strength = 0.0
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
-visible = false
 panning_strength = 0.0
 
 [node name="SFXExtraBall" type="AudioStreamPlayer2D" parent="."]

@@ -4,6 +4,10 @@ var hud: Control
 var menu: Control
 var mainMenu: Control
 
+func _ready() -> void:
+	mainMenu.menuButtons.btn_play.grab_focus()
+	
+
 func _enter_tree() -> void:
 	Logic.userInterface = self
 	hud = $GameUI
@@ -21,6 +25,7 @@ func _on_btn_retry_pressed() -> void:
 
 
 func _on_btn_next_level_pressed() -> void:
+	Logic.userInterface.menu.toggle_menu(false)
 	LevelsManager.level_Next()
 
 func _on_btn_play_pressed() -> void:

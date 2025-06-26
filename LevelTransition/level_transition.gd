@@ -3,7 +3,7 @@ extends Node2D
 var bubbles_small: GPUParticles2D
 var bubbles_medium: GPUParticles2D
 var bubbles_large: GPUParticles2D
-var transition_time: float = 1.8
+var transition_time: float = 1.6
 
 func _ready():
 	LevelsManager.levelTransition = self

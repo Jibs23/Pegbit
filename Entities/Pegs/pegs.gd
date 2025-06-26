@@ -43,6 +43,7 @@ func _on_hit_peg(peg):
 				unhit_red_pegs.append(redPeg)
 		if unhit_red_pegs.size() == 1:
 			var last_peg = unhit_red_pegs[0]
+			last_peg.particleCharged.emitting = true
 			last_peg.pegIsLastRedPeg = true
 			Logic.isOneRedPegRemaining = true
 			print("Last red peg set: ", last_peg.name)

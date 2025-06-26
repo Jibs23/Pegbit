@@ -6,6 +6,7 @@ extends StaticBody2D
 
 var whiteFlashTime: int = 5
 
+
 signal hitPeg
 
 # PEG FRAMES
@@ -14,11 +15,15 @@ var spriteSheetNr: Dictionary = {
 	"red": 1,
 	"blue": 2,
 	"black": 3,
-	"white": 7,
+	"green": 4,
+	"yellow": 5,
+	"white": 9,
 	
-	"grey_lit": 4,
-	"red_lit": 5,
-	"blue_lit": 6
+	"grey_lit": 6,
+	"red_lit": 7,
+	"blue_lit": 8,
+	"green_lit": 10,
+	"yellow_lit": 11,
 }
 
 var litColor = spriteSheetNr["grey_lit"]
