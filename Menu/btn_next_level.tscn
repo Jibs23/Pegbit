@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmw3s1fxqgyi2"]
+
+[ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="1_shbo4"]
+[ext_resource type="Script" uid="uid://r4a1e0jk5lmb" path="res://Menu/btn_next_level.gd" id="2_v38lm"]
+
+[node name="BtnNextLevel" type="Button"]
+mouse_filter = 2
+theme = ExtResource("1_shbo4")
+action_mode = 0
+text = "NEXT LEVEL"
+script = ExtResource("2_v38lm")
+metadata/FocusByDefault = true
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

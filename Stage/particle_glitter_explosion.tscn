@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://tn0w0pkk5sp8"]
+
+[ext_resource type="Material" uid="uid://daaypputht2lr" path="res://Stage/glitter_highlight_particle.tres" id="1_b1au8"]
+
+[node name="GPUParticles2D2" type="GPUParticles2D"]
+emitting = false
+amount = 64
+interp_to_end = 0.005
+one_shot = true
+speed_scale = 2.12
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 2184198032
+fixed_fps = 60
+process_material = ExtResource("1_b1au8")

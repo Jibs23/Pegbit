@@ -1,31 +1,40 @@
-extends VBoxContainer
+extends UiMenu
 
-var gameStage: Node2D
-var menuButtons: Control
+var menu: Control
+var menu_levels: Control
+var btn_play: Button
+var btn_exit: Button
+var btn_save: Button
+var btn_load: Button
+var btn_erase: Button
 
 func _ready() -> void:
-	menuButtons = $MenuButtons
-	gameStage = Logic.game.get_node("Stage")
-	
+	menu = $Menu
+	btn_play = menu.get_node("BtnPlay")
+	btn_exit = menu.get_node("BtnExit")
+	btn_save = menu.get_node("BtnSave")
+	btn_load = menu.get_node("BtnLoad")
+	btn_erase = menu.get_node("BtnErase")
+	menu_levels = menu.get_node("BtnLevels")
+	Logic.audio.music.song_play(Logic.audio.music.random_item_from_dic(Logic.audio.music.music_libraries["menu_music"]), Logic.audio.music.music_libraries["menu_music"])
 
-func toggleMainMenu():
-	if self.visible:
-		# Stage mode
-		hide()
-		Logic.userInterface.hud.visible = true
-		Logic.isGamePaused = false
-		Logic.isInputDisabled = false
-		gameStage.show()
-	else:
-		# Menu mode
-		LevelsManager.levelTransition.play_bubbles_effect()
-		await get_tree().create_timer(LevelsManager.levelTransition.transition_time).timeout
-		LevelsManager.unload_level()
-		show()
-		menuButtons.btn_play.grab_focus()
-		Logic.userInterface.hud.visible = false
-		Logic.isGamePaused = true
-		Logic.isInputDisabled = true
-		gameStage.hide()
-		LevelsManager.levelTransition.stop_bubbles_effect()
-		await get_tree().create_timer(LevelsManager.levelTransition.transition_time).timeout
+
+func _on_btn_play_pressed() -> void:
+	Ui.clearActiveUi()
+	LevelsManager.load_level(LevelsManager.reached_level)
+
+func _on_btn_levels_pressed() -> void:
+	Ui.changeActiveUi("mainMenu_levels")
+
+func _on_btn_save_pressed() -> void:
+	SaveManager.save_game()
+
+func _on_btn_load_pressed() -> void:
+	SaveManager.load_save()
+
+func _on_btn_erase_pressed() -> void:
+	SaveManager.delete_save()
+
+func _on_btn_exit_pressed() -> void:
+	SaveManager.save_game()
+	get_tree().quit()

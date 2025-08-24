@@ -2,42 +2,54 @@ extends Node2D
 
 var ui_ball: PackedScene = load("res://Entities/Balls/UI_ball.tscn")
 
-func _enter_tree() -> void:
+var ballContainer: AnimatableBody2D
+var ballSpawnPoint: Marker2D
+var valueCount: Label
+var containerSprite: Sprite2D
+var uiBalls: Node2D
+var levelUi: Node2D
+
+func _ready() -> void:
 	Logic.ballsUI = self
+	levelUi = get_parent()
+	Ui.uiBallsCounter = self
+	uiBalls = $uiBalls
+	containerSprite = $Barrel
+	valueCount = $Balls
+	ballSpawnPoint = $BallSpawnPoint
+	ballContainer = $BallContainer
 
 func maintainBallCount():
-	while get_child_count() < Logic.ballCount:
+	while uiBalls.get_child_count() < Logic.ballCount:
 		addExtraBall()
-	while get_child_count() > Logic.ballCount:
+		await get_tree().create_timer(0.1).timeout
+	while uiBalls.get_child_count() > Logic.ballCount:
 		remove_ball()
 
 func addExtraBall() -> void:
-	var new_ball = ui_ball.instantiate()
-	new_ball.set_deferred("monitoring", true) # deferred to avoid issues with physics processing
-	add_child(new_ball)
-	new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position
-
+	var new_uiBall = ui_ball.instantiate()
+	var random_offset = randf_range(-8, 8)
+	new_uiBall.position = Vector2(ballSpawnPoint.position.x + random_offset,ballSpawnPoint.position.y)
+	uiBalls.add_child(new_uiBall)
+	new_uiBall.smokeEffect.emitting = true
+	
 func remove_ball() -> void:
-	if get_child_count() > 0:
-		var lowest_ball = null
-		for child in get_children():
-			if lowest_ball == null or child.position.y > lowest_ball.position.y:
-				lowest_ball = child
-		if lowest_ball:
-			remove_child(lowest_ball)
+	if uiBalls.get_child_count() > 0:
+		var highest_ball = null
+		for uiBall in uiBalls.get_children():
+			if highest_ball == null or uiBall.position.y > highest_ball.position.y:
+				highest_ball = uiBall
+		if highest_ball:
+			highest_ball.smokeEffect.emitting = true
+			uiBalls.remove_child(highest_ball)
+
+func shakeBalls():
+	for uiBall in uiBalls.get_children():
+		if uiBall is RigidBody2D:
+			uiBall.linear_velocity += Vector2(randf() * 100 - 50, -(randf() * 100))
 
 func _on_launcher_shoot_signal() -> void:
 	shakeBalls()
 
-	while get_child_count() < Logic.ballCount:
-		var new_ball = ui_ball.instantiate()
-		new_ball.position = Vector2(randf() * 1, randf() * 1)  # Randomize position
-		add_child(new_ball)
-	while get_child_count() > Logic.ballCount:
-		remove_ball()
-
-func shakeBalls():
-	for ball in get_children():
-		if ball is RigidBody2D:
-			ball.linear_velocity += Vector2(randf() * 100 - 50, -(randf() * 100))
-
+func _on_uiBall_out_of_bounds():
+	Ui.update_ui()

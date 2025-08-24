@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxso8ocv3km71"]
+
+[ext_resource type="PackedScene" uid="uid://rrop5duawsrk" path="res://Menu/button_menu.tscn" id="1_aku6y"]
+[ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="1_jwuht"]
+[ext_resource type="Script" uid="uid://bbxsj5cmqej5" path="res://Menu/main_menu_levels_selection_screen.gd" id="1_v1ksn"]
+[ext_resource type="Script" uid="uid://b6xavvgxhaxyi" path="res://Menu/main_menu_levels.gd" id="2_jwuht"]
+
+[node name="MainMenuLevels" type="CanvasLayer"]
+script = ExtResource("1_v1ksn")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 384.0
+offset_bottom = 144.0
+theme = ExtResource("1_jwuht")
+theme_override_font_sizes/font_size = 56
+text = "levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuLevels" type="GridContainer" parent="."]
+offset_left = 144.0
+offset_top = 144.0
+offset_right = 336.0
+offset_bottom = 198.0
+mouse_filter = 2
+theme = ExtResource("1_jwuht")
+columns = 5
+script = ExtResource("2_jwuht")
+
+[node name="Menu" parent="." instance=ExtResource("1_aku6y")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 144.0
+offset_top = 205.0
+offset_right = 336.0
+offset_bottom = 222.0
+grow_horizontal = 1
+alignment = 2
+
+[node name="BtnBack" type="Button" parent="Menu"]
+layout_mode = 2
+mouse_filter = 2
+text = "back"
+metadata/FocusByDefault = true
+
+[connection signal="pressed" from="Menu/BtnBack" to="." method="_on_btn_back_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0jwqge6oqfsr"]
+[gd_scene load_steps=14 format=3 uid="uid://c0jwqge6oqfsr"]
 
 [ext_resource type="Script" uid="uid://bwhk34d7kltrr" path="res://LevelTransition/level_transition.gd" id="1_onqtn"]
 [ext_resource type="Texture2D" uid="uid://ibv30f2anh47" path="res://LevelTransition/effect-bubbles-Sheet_large.png" id="2_jljgm"]
+[ext_resource type="Texture2D" uid="uid://cdsedwt8uug7g" path="res://LevelTransition/effect-bubbles-Sheet_Xlarge.png" id="2_r0aox"]
 [ext_resource type="Texture2D" uid="uid://ca46goxnxsn3s" path="res://LevelTransition/effect-bubbles-Sheet_small.png" id="3_r0aox"]
 [ext_resource type="Texture2D" uid="uid://docdbjpeoikme" path="res://LevelTransition/effect-bubbles-Sheet_mediuml.png" id="4_x8gpu"]
 
@@ -11,15 +12,43 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 2
 particles_anim_loop = false
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x8gpu"]
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(300, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 11.982
+initial_velocity_min = 491.21
+initial_velocity_max = 1000.0
+gravity = Vector3(0, -1000, 0)
+anim_speed_min = 0.5
+anim_speed_max = 0.55
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.16
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqv35"]
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(300, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 11.982
+initial_velocity_min = 250.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, -1000, 0)
+anim_speed_min = 0.5
+anim_speed_max = 0.55
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.16
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wghq"]
 particle_flag_damping_as_friction = true
 emission_shape = 3
 emission_box_extents = Vector3(250, 1, 1)
 direction = Vector3(0, -1, 0)
 spread = 11.982
-initial_velocity_min = 48.99
-initial_velocity_max = 92.22
-gravity = Vector3(0, -1000, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, -900, 0)
 anim_speed_min = 0.5
 anim_speed_max = 0.55
 turbulence_enabled = true
@@ -31,36 +60,30 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 2
 particles_anim_loop = false
 
+[sub_resource type="Curve" id="Curve_jljgm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0867207, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r0aox"]
+curve = SubResource("Curve_jljgm")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_elpx0"]
 particle_flag_damping_as_friction = true
 emission_shape = 3
 emission_box_extents = Vector3(250, 1, 1)
 direction = Vector3(0, -1, 0)
-spread = 11.982
-initial_velocity_min = 138.12
-initial_velocity_max = 181.35
-gravity = Vector3(0, -10, 0)
+spread = 30.0
+initial_velocity_min = 294.96
+initial_velocity_max = 561.96
+gravity = Vector3(0, -800, 0)
 anim_speed_min = 0.5
 anim_speed_max = 0.55
 turbulence_enabled = true
-turbulence_noise_strength = 3.21
-turbulence_noise_scale = 0.8
+turbulence_noise_strength = 17.46
+turbulence_noise_scale = 9.24
 turbulence_influence_min = 0.0
-turbulence_influence_max = 0.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wghq"]
-particle_flag_damping_as_friction = true
-emission_shape = 3
-emission_box_extents = Vector3(250, 1, 1)
-direction = Vector3(0, -1, 0)
-spread = 11.982
-initial_velocity_min = 126.99
-initial_velocity_max = 170.22
-gravity = Vector3(0, -600, 0)
-anim_speed_min = 0.5
-anim_speed_max = 0.55
-turbulence_enabled = true
-turbulence_noise_speed_random = 0.16
+turbulence_influence_max = 0.053
+turbulence_influence_over_life = SubResource("CurveTexture_r0aox")
 
 [node name="Level Transition" type="Node2D"]
 top_level = true
@@ -68,32 +91,36 @@ z_index = 4096
 z_as_relative = false
 script = ExtResource("1_onqtn")
 
+[node name="XLBubbles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_sik7n")
+emitting = false
+amount = 500
+texture = ExtResource("2_r0aox")
+lifetime = 1.2
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_x8gpu")
+
 [node name="LBubbles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_sik7n")
 emitting = false
-amount = 700
+amount = 100
 texture = ExtResource("2_jljgm")
-lifetime = 2.0
-fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_wqv35")
+
+[node name="MBubbles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_sik7n")
+emitting = false
+amount = 100
+texture = ExtResource("4_x8gpu")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_5wghq")
 
 [node name="SBubbles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_1l5kf")
 position = Vector2(-1, 0)
 emitting = false
-amount = 400
+amount = 200
 texture = ExtResource("3_r0aox")
-lifetime = 3.22
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_elpx0")
-
-[node name="MBubbles" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_sik7n")
-emitting = false
-amount = 300
-texture = ExtResource("4_x8gpu")
-lifetime = 3.22
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_5wghq")

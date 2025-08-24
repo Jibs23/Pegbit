@@ -12,6 +12,7 @@ var bonusHoles: Node2D
 
 func _init() -> void:
 	Logic.stage = self
+	LevelsManager.connect("levelLoaded", Callable(self, "_on_level_loaded"))
 
 func _ready() -> void:
 	levelContainer = $LevelContainer
@@ -23,3 +24,9 @@ func _ready() -> void:
 	bucketTracker = $"Bucket track"
 	missedBallFeature = $MissedBallFeature
 	bonusHoles = $BonusHoles
+
+func _on_level_loaded() -> void:
+	#UI
+	Ui.uiMultiplierCounter.mapIndicator.goal = Logic.level.levelRedPegs
+	#bucket
+	bucketTracker.get_node("PathFollow2D").reset_bucket()

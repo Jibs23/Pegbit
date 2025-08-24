@@ -7,13 +7,23 @@
 [node name="Level 0" type="Node2D" groups=["level"]]
 script = ExtResource("1_wiibm")
 levelRedPegs = 2
+levelBalls = 3
 
 [node name="PegsGroup" parent="." instance=ExtResource("1_1xr12")]
 
 [node name="Peg" parent="PegsGroup" instance=ExtResource("2_24ufw")]
-position = Vector2(288, 144)
+position = Vector2(288, 168)
 
 [node name="Peg2" parent="PegsGroup" instance=ExtResource("2_24ufw")]
-position = Vector2(192, 144)
+position = Vector2(192, 168)
+
+[node name="Peg3" parent="PegsGroup" instance=ExtResource("2_24ufw")]
+position = Vector2(216, 192)
+
+[node name="Peg4" parent="PegsGroup" instance=ExtResource("2_24ufw")]
+position = Vector2(264, 192)
+
+[node name="Peg5" parent="PegsGroup" instance=ExtResource("2_24ufw")]
+position = Vector2(240, 216)
 
 [node name="Background" type="Sprite2D" parent="." groups=["Background"]]

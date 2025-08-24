@@ -11,6 +11,7 @@ size = Vector2(115.538, 4.62012)
 [node name="Level 1" type="Node2D" groups=["level"]]
 script = ExtResource("1_evao8")
 levelRedPegs = 20
+levelBalls = 8
 
 [node name="PegsGroup" parent="." instance=ExtResource("2_ncvhp")]
 

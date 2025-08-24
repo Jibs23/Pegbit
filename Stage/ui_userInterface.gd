@@ -1,56 +1,28 @@
 extends CanvasLayer
 
-var hud: Control
-var menu: Control
-var mainMenu: Control
+var activeUi: UiMenu = null
 
 func _ready() -> void:
-	mainMenu.menuButtons.btn_play.grab_focus()
-	
+	Ui.userInterface = self
+	if !activeUi: Ui.changeActiveUi("mainMenu")
 
-func _enter_tree() -> void:
-	Logic.userInterface = self
-	hud = $GameUI
-	menu = $Menu
-	mainMenu = $MainMenu
-	var ui_container = get_child(0)
-	Ui.uiBallsCounter = ui_container.get_node("Balls") as Label
-	Ui.uiMultiplierCounter = ui_container.get_node("Multiplier") as Label
-	Ui.uiScoreCounter = ui_container.get_node("Score") as Label
-	Ui.uiScoreCounterBall = ui_container.get_node("BallScore") as Label
-	Ui.uiCurrentLevel = ui_container.get_node("CurrentLevel") as Label
+func _on_tree_exiting() -> void:
+	var caller = get_script().get_instance_id()
+	push_warning("userInterface is being deleted!!!!! Called by: caller: " + str(caller))
 
-func _on_btn_retry_pressed() -> void:
-	LevelsManager.level_Restart()
+func _input(event): #toggle the game menu
+		if !Logic.stage or !Logic.level: return
+		if event.is_action_pressed("toggle_menu"):
+			if !Logic.levelClearedBonusMode and !Logic.isGameOver and !Logic.isBulletTimeActive:
+				if Logic.isGamePaused:
+					Ui.clearActiveUi()
+				else:
+					Ui.changeActiveUi("gameMenu")
+			else:
+				print("cant toggle menu, stage is over")
+				return
 
-
-func _on_btn_next_level_pressed() -> void:
-	Logic.userInterface.menu.toggle_menu(false)
-	LevelsManager.level_Next()
-
-func _on_btn_play_pressed() -> void:
-	mainMenu.hide()
-	LevelsManager.load_level(LevelsManager.reached_level)
-
-
-func _on_btn_exit_pressed() -> void:
-	SaveManager.save_game()
-	get_tree().quit()
-
-
-func _on_btn_main_menu_pressed() -> void:
-	LevelsManager.unload_level()
-	Logic.userInterface.mainMenu.toggleMainMenu()
-	Logic.userInterface.menu.toggle_menu(false)
-
-
-func _on_btn_save_pressed() -> void:
-	SaveManager.save_game()
-
-
-func _on_btn_load_pressed() -> void:
-	SaveManager.load_save()
-
-
-func _on_btn_erase_pressed() -> void:
-	SaveManager.delete_save()
+func _on_child_entered_tree(child) -> void:
+	if child.get_parent() == self:
+		Logic.audio.call_deferred("buttons_connect_sound")
+		Ui.call_deferred("etsablishFocus")

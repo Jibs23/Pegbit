@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp5odu6f5gx0i"]
+[gd_scene load_steps=18 format=3 uid="uid://bp5odu6f5gx0i"]
 
+[ext_resource type="Script" uid="uid://dwvd6eon8ye2b" path="res://Entities/Balls/ui_ball.gd" id="1_myfy4"]
 [ext_resource type="Texture2D" uid="uid://20wdc0vjoatr" path="res://Entities/Balls/Sprite_Ball.png" id="2_lb5ct"]
+[ext_resource type="Texture2D" uid="uid://5pcpqlye4pip" path="res://Entities/Launcher/spritesheet_Effect-Smoke.png" id="3_lb5ct"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 friction = 0.0
@@ -9,9 +11,74 @@ bounce = 0.4
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 3.0
 
-[node name="UI_Ball" type="RigidBody2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fit5x"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_h4ika"]
+offsets = PackedFloat32Array(0.816254, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xxnon"]
+gradient = SubResource("Gradient_h4ika")
+
+[sub_resource type="Curve" id="Curve_lb5ct"]
+_data = [Vector2(0.501618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fit5x"]
+curve = SubResource("Curve_lb5ct")
+
+[sub_resource type="Curve" id="Curve_ipw10"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ahcvu"]
+curve = SubResource("Curve_ipw10")
+
+[sub_resource type="Curve" id="Curve_6ca7m"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 132.115), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_78wap"]
+curve = SubResource("Curve_6ca7m")
+
+[sub_resource type="Curve" id="Curve_6pmcj"]
+_data = [Vector2(0, 0), 0.0, -0.146268, 0, 0, Vector2(1, 1), -0.165475, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mv1yp"]
+curve = SubResource("Curve_6pmcj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mtxvs"]
+lifetime_randomness = 0.1
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_max = 53.65
+gravity = Vector3(0, -50, 0)
+linear_accel_min = -27.97
+linear_accel_max = -27.97
+tangential_accel_curve = SubResource("CurveTexture_78wap")
+scale_curve = SubResource("CurveTexture_fit5x")
+scale_over_velocity_curve = SubResource("CurveTexture_ahcvu")
+color_ramp = SubResource("GradientTexture1D_xxnon")
+anim_offset_max = 1.0
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.022
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_mv1yp")
+
+[node name="UI_Ball" type="RigidBody2D" groups=["uiBall"]]
 physics_interpolation_mode = 1
-collision_mask = 257
+collision_mask = 261
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 gravity_scale = 0.4
@@ -19,13 +86,33 @@ can_sleep = false
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
+script = ExtResource("1_myfy4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.472484, 0.836985, 1, 1)
 texture = ExtResource("2_lb5ct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_e2o6t")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+scale = Vector2(0.4, 0.4)
+
+[node name="SmokeEffect" type="GPUParticles2D" parent="."]
+z_index = 3000
+material = SubResource("CanvasItemMaterial_fit5x")
+emitting = false
+amount = 24
+texture = ExtResource("3_lb5ct")
+lifetime = 0.8
+one_shot = true
+speed_scale = 1.4
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-50, -25, 100, 50)
+process_material = SubResource("ParticleProcessMaterial_mtxvs")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

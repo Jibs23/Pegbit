@@ -13,7 +13,8 @@ func _ready() -> void:
 	if get_parent() is Path2D:
 		bucket_track = get_parent()
 		bucket_path_follow = bucket_track.get_node("PathFollow2D")
-		bucket_path_follow.path_following_node = self
+		bucket_path_follow.bucket = self
+	bucket_path_follow.bucket = self
 
 func _on_score_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Ball"):
@@ -30,5 +31,4 @@ func bucket_score_valid(ball) -> void:
 	Logic.audio.playSoundEffect("SFXBucketScore")
 
 func on_bonus_mode_activated() -> void:
-	print("killed bucket")
 	queue_free()

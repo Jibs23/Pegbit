@@ -29,11 +29,11 @@ func coin_flipping():
 	await _flash(sprite, flash_count, flash_time, final_color, alt_color)
 
 	if coin_flip_success:
-		print("Coin flip successful!")
+		#print("Coin flip successful!")
 		Logic.addBall()
 
 	else:
-		print("Coin flip failed.")
+		#print("Coin flip failed.")
 		if Logic.ballCount <= 0:
 			Logic.GameOver()
 

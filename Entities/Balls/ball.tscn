@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dquae5dhwvxaj"]
+[gd_scene load_steps=9 format=3 uid="uid://dquae5dhwvxaj"]
 
 [ext_resource type="Script" uid="uid://dibewghdngsep" path="res://Entities/Balls/ball.gd" id="1_x8fbi"]
 [ext_resource type="Texture2D" uid="uid://20wdc0vjoatr" path="res://Entities/Balls/Sprite_Ball.png" id="2_41u45"]
@@ -8,6 +8,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 friction = 0.0
 bounce = 0.7
+
+[sub_resource type="Gradient" id="Gradient_4n2nw"]
+offsets = PackedFloat32Array(0, 0.52381)
+colors = PackedColorArray(0.324799, 0.80165, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 4.47214
@@ -28,7 +32,8 @@ script = ExtResource("1_x8fbi")
 
 [node name="Trail" parent="." instance=ExtResource("2_h3kxn")]
 position = Vector2(8.43028, -9.79382)
-points = PackedVector2Array(-8.43028, 9.79382, -8.43028, 9.79382)
+points = PackedVector2Array(39.5697, 9.79382, -8.43028, 9.79382)
+gradient = SubResource("Gradient_4n2nw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

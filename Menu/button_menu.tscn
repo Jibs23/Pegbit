@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://rrop5duawsrk"]
+
+[ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="1_euhko"]
+
+[node name="Menu" type="VBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 144.0
+offset_right = 96.0
+offset_bottom = 240.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("1_euhko")
+
+[connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]

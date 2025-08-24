@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://caprprr4ubcoq"
+path="res://.godot/imported/Stevia Sphere - A Mimir - 01 Raccoon Dreams.wav-d43cb59a1be13d73007876f5cd7d0b91.sample"
+
+[deps]
+
+source_file="res://Soundtrack/Stevia Sphere - A Mimir - 01 Raccoon Dreams.wav"
+dest_files=["res://.godot/imported/Stevia Sphere - A Mimir - 01 Raccoon Dreams.wav-d43cb59a1be13d73007876f5cd7d0b91.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

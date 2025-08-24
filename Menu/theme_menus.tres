@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ci48i707g43ib"]
+
+[ext_resource type="FontFile" uid="uid://bls8b7rq5ac86" path="res://Fonts/silkscreen/slkscr.ttf" id="1_cc214"]
+[ext_resource type="FontFile" uid="uid://jiisqikkubp7" path="res://Fonts/silkscreen/slkscrb.ttf" id="2_v1alb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq5uw"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5gws"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrmah"]
+bg_color = Color(0, 0, 0, 1)
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.339717, 0.381097, 0.411554, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_cc214")
+Button/styles/disabled = SubResource("StyleBoxFlat_kq5uw")
+Button/styles/focus = SubResource("StyleBoxFlat_w5gws")
+Button/styles/normal = SubResource("StyleBoxFlat_qrmah")
+Label/fonts/font = ExtResource("2_v1alb")

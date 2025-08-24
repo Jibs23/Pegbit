@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwjhqfqv1dkcp"]
+[gd_scene load_steps=3 format=3 uid="uid://cjtptsn0uo3cj"]
 
 [ext_resource type="Script" uid="uid://dwv7wlypvxtnt" path="res://Entities/Pegs/pegs.gd" id="1_o33bt"]
 [ext_resource type="PackedScene" uid="uid://b4lj73n5y8edl" path="res://Entities/Pegs/peg.tscn" id="2_2cc8o"]

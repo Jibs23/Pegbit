@@ -1,7 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtq3ofe78mphc"]
+[gd_scene load_steps=12 format=3 uid="uid://dtq3ofe78mphc"]
 
 [ext_resource type="Script" uid="uid://b1pll6yr0kb5y" path="res://Entities/Pegs/peg.gd" id="1_0cius"]
 [ext_resource type="Texture2D" uid="uid://35v07ai27xkn" path="res://Entities/Pegs/Spritesheet_Pegs_Rectangles.png" id="2_0cius"]
+
+[sub_resource type="Gradient" id="Gradient_0cius"]
+offsets = PackedFloat32Array(0, 0.551237, 0.742049, 1)
+colors = PackedColorArray(0.862745, 0, 0.831373, 1, 0.988235, 0.384314, 0.678431, 1, 0.952941, 0.729412, 0.866667, 1, 1, 1, 1, 0.509804)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ci7cx"]
+gradient = SubResource("Gradient_0cius")
+
+[sub_resource type="Curve" id="Curve_7747n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.271845, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.75248, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ci7cx"]
+curve = SubResource("Curve_7747n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thvl0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+angle_min = -30.0
+angle_max = 30.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -50, 0)
+radial_accel_min = 49.27
+radial_accel_max = 100.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_ci7cx")
+color_ramp = SubResource("GradientTexture1D_ci7cx")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 1.858
+
+[sub_resource type="Curve" id="Curve_d0m2b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.33696, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cu33v"]
+curve = SubResource("Curve_d0m2b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iclik"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 32.56
+initial_velocity_max = 70.02
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_cu33v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7747n"]
 size = Vector2(8, 6)
@@ -10,11 +66,26 @@ size = Vector2(8, 6)
 collision_layer = 2
 script = ExtResource("1_0cius")
 
+[node name="RedParticleCharged" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_thvl0")
+
+[node name="ParticleImpact" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_iclik")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_7747n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0cius")
-hframes = 4
+hframes = 6
 vframes = 2

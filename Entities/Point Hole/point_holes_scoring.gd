@@ -22,6 +22,7 @@ func _on_body_shape_entered(_body_id, _body, _body_shape, area_shape):
 		print("Entered point hole without set 'ScoreValue' meta.")
 
 func _on_level_loaded() -> void:
+	#TODO: figure out why this is called twice
 	print("Level loaded, resetting confetti.")
 	if scoredPointHole:
 		scoredPointHole.get_node("confetti").restart()

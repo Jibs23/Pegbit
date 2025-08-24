@@ -10,7 +10,7 @@ friction = 0.0
 offsets = PackedFloat32Array(0, 0.551237, 0.742049, 1)
 colors = PackedColorArray(0.862745, 0, 0.831373, 1, 0.988235, 0.384314, 0.678431, 1, 0.952941, 0.729412, 0.866667, 1, 1, 1, 1, 0.509804)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ci7cx"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5s76b"]
 gradient = SubResource("Gradient_5s76b")
 
 [sub_resource type="Curve" id="Curve_5s76b"]
@@ -37,7 +37,7 @@ tangential_accel_max = 100.0
 scale_min = 2.0
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_ci7cx")
-color_ramp = SubResource("GradientTexture1D_ci7cx")
+color_ramp = SubResource("GradientTexture1D_5s76b")
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 1.858

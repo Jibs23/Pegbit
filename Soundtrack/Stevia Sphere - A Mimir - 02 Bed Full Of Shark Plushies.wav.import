@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsrdvctjrcs8d"
+path="res://.godot/imported/Stevia Sphere - A Mimir - 02 Bed Full Of Shark Plushies.wav-64004137bcc61f13a09b2ea4c613f997.sample"
+
+[deps]
+
+source_file="res://Soundtrack/Stevia Sphere - A Mimir - 02 Bed Full Of Shark Plushies.wav"
+dest_files=["res://.godot/imported/Stevia Sphere - A Mimir - 02 Bed Full Of Shark Plushies.wav-64004137bcc61f13a09b2ea4c613f997.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

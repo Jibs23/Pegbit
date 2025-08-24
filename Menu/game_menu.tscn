@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://kjsq1vgtwm1r"]
+
+[ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="1_u7ahc"]
+[ext_resource type="Script" uid="uid://cvqdu1gmfpmkq" path="res://Stage/game_menu.gd" id="2_dolhe"]
+[ext_resource type="PackedScene" uid="uid://rrop5duawsrk" path="res://Menu/button_menu.tscn" id="3_dolhe"]
+
+[node name="GameMenu" type="CanvasLayer"]
+script = ExtResource("2_dolhe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 502.0
+offset_bottom = 287.0
+color = Color(0.113725, 0.113725, 0.227451, 0.196078)
+
+[node name="TxtHeader" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 384.0
+offset_bottom = 144.0
+theme = ExtResource("1_u7ahc")
+theme_override_font_sizes/font_size = 32
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Menu" parent="." instance=ExtResource("3_dolhe")]
+
+[node name="BtnRetry" type="Button" parent="Menu"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_u7ahc")
+action_mode = 0
+text = "RETRY"
+metadata/FocusByDefault = true
+
+[node name="BtnMainMenu" type="Button" parent="Menu"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_u7ahc")
+text = "MAIN MENU"
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="Menu/BtnRetry" to="." method="_on_btn_retry_pressed"]
+[connection signal="pressed" from="Menu/BtnMainMenu" to="." method="_on_btn_main_menu_pressed"]

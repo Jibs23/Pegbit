@@ -6,7 +6,6 @@ extends StaticBody2D
 
 var whiteFlashTime: int = 5
 
-
 signal hitPeg
 
 # PEG FRAMES
@@ -43,7 +42,7 @@ signal extraBallCheck
 func _ready():
 	sprite = $Sprite2D 
 	if sprite == null:
-		print("Error: Sprite2D node not found on" , self.name)
+		push_error("Error: Sprite2D node not found on" , self.name)
 	connect("hitPeg", Callable(Logic.pegs, "_on_hit_peg"))
 	connect("extraBallCheck", Callable(Logic, "_on_extra_ball_check"))
 
@@ -57,13 +56,13 @@ func hit():
 		get_node("Sprite2D").set_frame(litColor)
 		pegCount -= 1
 
-		Logic.ballScoreCounter += scoreValue * Logic.scoreMultiplier
+		Logic.addBallScore(scoreValue * Logic.scoreMultiplier)
 		emit_signal("extraBallCheck")
 			
 		var sfxNote: float = 1.0 + (min(pegs.pegsActivated, 25) * 0.083) # 0.083 approximates one semitone
 		audio.playSoundEffect(hitSFX).pitch_scale = sfxNote
 		
-		Ui.update_ui()
+		
 		removePeg()
 
 func removePeg():
@@ -75,8 +74,7 @@ func removePeg():
 		Logic.removedRedPegs += 1
 		Logic.updateMultiplier()
 
-
-	while Logic.isBallInPlay == true: # wait for the ball to NOT be in play
+	while Logic.isBallInPlay and not pegs.ballIsStuck:
 		await get_tree().process_frame
 
 	# shrink animation

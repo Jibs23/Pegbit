@@ -1,0 +1,315 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyyhdbr8xq106"]
+
+[ext_resource type="Script" uid="uid://dtk42ype7nhtc" path="res://Levels/level 3/level_3.gd" id="1_78j0p"]
+[ext_resource type="PackedScene" uid="uid://dli1w07qwn7lp" path="res://Entities/Pegs/pegsGroup.tscn" id="2_4lnie"]
+[ext_resource type="PackedScene" uid="uid://dtq3ofe78mphc" path="res://Entities/Pegs/peg_rect.tscn" id="3_4lnie"]
+
+[node name="Level 3" type="Node2D" groups=["level"]]
+script = ExtResource("1_78j0p")
+levelRedPegs = 3
+levelBalls = 8
+
+[node name="PegsGroup" parent="." instance=ExtResource("2_4lnie")]
+
+[node name="left curve" type="Node2D" parent="PegsGroup" groups=["peg_group"]]
+
+[node name="Peg_rect53" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(69, 99)
+rotation = 0.785397
+
+[node name="Peg_rect54" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(74, 104)
+rotation = 0.785397
+
+[node name="Peg_rect55" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(79, 109)
+rotation = 0.785397
+
+[node name="Peg_rect56" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(84, 114)
+rotation = 0.785397
+
+[node name="Peg_rect57" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(89, 119)
+rotation = 0.785397
+
+[node name="Peg_rect58" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(94, 124)
+rotation = 0.785397
+
+[node name="Peg_rect59" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(99, 129)
+rotation = 0.785397
+
+[node name="Peg_rect60" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(104, 134)
+rotation = 0.785397
+
+[node name="Peg_rect61" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(109, 139)
+rotation = 0.785397
+
+[node name="Peg_rect63" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(56, 90)
+rotation = 0.523598
+
+[node name="Peg_rect64" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(63, 94)
+rotation = 0.523598
+
+[node name="Peg_rect65" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(114, 144)
+rotation = 1.0472
+
+[node name="Peg_rect66" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(118, 151)
+rotation = 1.0472
+
+[node name="Peg_rect67" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(122, 158)
+rotation = 1.0472
+
+[node name="Peg_rect68" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(126, 165)
+rotation = 1.0472
+
+[node name="Peg_rect69" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(130, 172)
+rotation = 1.0472
+
+[node name="Peg_rect70" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(134, 179)
+rotation = 1.0472
+
+[node name="Peg_rect71" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(138, 186)
+rotation = 1.0472
+
+[node name="Peg_rect72" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(142, 193)
+rotation = 1.0472
+
+[node name="Peg_rect73" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(146, 200)
+rotation = 1.0472
+
+[node name="Peg_rect74" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(150, 207)
+rotation = 1.0472
+
+[node name="Peg_rect75" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(155, 214)
+rotation = 0.785397
+
+[node name="Peg_rect76" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(160, 219)
+rotation = 0.785397
+
+[node name="Peg_rect77" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(165, 224)
+rotation = 0.785397
+
+[node name="Peg_rect78" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(171, 229)
+rotation = 0.523598
+
+[node name="Peg_rect79" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(178, 233)
+rotation = 0.523598
+
+[node name="Peg_rect80" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(185, 237)
+rotation = 0.523598
+
+[node name="Peg_rect84" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(192, 240)
+rotation = 0.261799
+
+[node name="Peg_rect85" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(200, 242)
+rotation = 0.261799
+
+[node name="Peg_rect86" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(208, 244)
+rotation = 0.261799
+
+[node name="Peg_rect87" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(216, 245)
+
+[node name="Peg_rect88" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(224, 245)
+
+[node name="Peg_rect89" parent="PegsGroup/left curve" instance=ExtResource("3_4lnie")]
+position = Vector2(232, 245)
+
+[node name="right curve" type="Node2D" parent="PegsGroup" groups=["peg_group"]]
+position = Vector2(480, 0)
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect7" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(69, 99)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect8" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(74, 104)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect9" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(79, 109)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect10" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(84, 114)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect11" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(89, 119)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect12" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(94, 124)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect13" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(99, 129)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect14" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(104, 134)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect15" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(109, 139)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect17" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(56, 90)
+rotation = 0.523598
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect18" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(63, 94)
+rotation = 0.523598
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect19" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(114, 144)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect20" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(118, 151)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect21" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(122, 158)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect22" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(126, 165)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect23" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(130, 172)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect24" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(134, 179)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect25" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(138, 186)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect26" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(142, 193)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect27" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(146, 200)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect28" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(150, 207)
+rotation = 1.0472
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect29" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(155, 214)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect30" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(160, 219)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect31" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(165, 224)
+rotation = 0.785397
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect32" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(171, 229)
+rotation = 0.523598
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect33" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(178, 233)
+rotation = 0.523598
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect34" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(185, 237)
+rotation = 0.523598
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect38" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(192, 240)
+rotation = 0.261799
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect39" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(200, 242)
+rotation = 0.261799
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect40" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(208, 244)
+rotation = 0.261799
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect41" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(216, 245)
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect42" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(224, 245)
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect43" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(232, 245)
+scale = Vector2(-1, 1)
+
+[node name="Peg_rect44" parent="PegsGroup/right curve" instance=ExtResource("3_4lnie")]
+position = Vector2(240, 245)
+scale = Vector2(-1, 1)
+
+[node name="Background" type="Sprite2D" parent="." groups=["Background"]]

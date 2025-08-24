@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ie4fyb2punlu"]
+[gd_scene load_steps=19 format=3 uid="uid://ie4fyb2punlu"]
 
 [ext_resource type="Script" uid="uid://bcetlibe3k4ys" path="res://Stage/audio.gd" id="1_5olcg"]
 [ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="2_pgqns"]
@@ -12,14 +12,16 @@
 [ext_resource type="AudioStream" uid="uid://brvspd8trovat" path="res://Entities/Point Hole/sfx_pointhole_splash.wav" id="10_pgqns"]
 [ext_resource type="AudioStream" uid="uid://gsgb3albm86w" path="res://LevelTransition/sfx_transition_bubble.wav" id="11_564a7"]
 [ext_resource type="AudioStream" uid="uid://cvbifbp80hd6f" path="res://LevelTransition/sfx_transition_bubble_start.wav" id="12_qf6oy"]
+[ext_resource type="AudioStream" uid="uid://dq30ea1gf6mcd" path="res://Menu/sfx_menu_move.wav" id="13_fajnq"]
+[ext_resource type="AudioStream" uid="uid://co2sm1kc0tlr3" path="res://Menu/sfx_menu_select.wav" id="14_f6syg"]
+[ext_resource type="AudioStream" uid="uid://b4amyol5ps7qc" path="res://Menu/sfx_menu_back.wav" id="15_enkql"]
+[ext_resource type="AudioStream" uid="uid://bor8ur6so684v" path="res://Stage/barrel_close_SFX.wav" id="16_f6syg"]
+[ext_resource type="AudioStream" uid="uid://bdn48pj3ya7al" path="res://Stage/coin_transfer_SFX.wav" id="17_enkql"]
+[ext_resource type="Script" uid="uid://bkxpabxstsxfj" path="res://music_manager.gd" id="18_il71m"]
 
 [node name="Audio" type="Node2D" groups=["Audio"]]
 script = ExtResource("1_5olcg")
 metadata/_edit_lock_ = true
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
-visible = false
-panning_strength = 0.0
 
 [node name="SFXHitPeg" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_pgqns")
@@ -42,6 +44,7 @@ panning_strength = 0.0
 [node name="SFXExtraBall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tor12")
 volume_db = 6.0
+panning_strength = 2.0
 
 [node name="SFXCrowdExcited" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fajnq")
@@ -67,3 +70,32 @@ panning_strength = 0.0
 [node name="SFXTransitionBubble" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_564a7")
 panning_strength = 0.0
+
+[node name="SFXMenuMove" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_fajnq")
+panning_strength = 0.0
+
+[node name="SFXMenuSelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_f6syg")
+panning_strength = 0.0
+
+[node name="SFXMenuBack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_enkql")
+panning_strength = 0.0
+
+[node name="SFXBarrelClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_f6syg")
+panning_strength = 2.0
+
+[node name="SFXWealthTransfer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_enkql")
+panning_strength = 2.0
+
+[node name="MusicManager" type="Node2D" parent="."]
+script = ExtResource("18_il71m")
+
+[node name="MusicPlayer1" type="AudioStreamPlayer2D" parent="MusicManager"]
+panning_strength = 0.0
+bus = &"Music"
+
+[connection signal="finished" from="MusicManager/MusicPlayer1" to="MusicManager" method="_on_music_player_1_finished"]

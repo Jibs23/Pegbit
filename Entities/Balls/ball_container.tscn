@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://c134karsmymwf"]
+
+[ext_resource type="Texture2D" uid="uid://j2u760rytn58" path="res://Entities/Launcher/sprite_barrel.png" id="1_amuxv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dxmbr"]
+friction = 2.0
+rough = true
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bq7gr"]
+a = Vector2(0, -28)
+b = Vector2(0, 17)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ahcvu"]
+a = Vector2(20, 10)
+b = Vector2(-8, 10)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mv1yp"]
+a = Vector2(-8, 2)
+
+[node name="BallContainer" type="AnimatableBody2D" groups=["Wall"]]
+collision_layer = 256
+physics_material_override = SubResource("PhysicsMaterial_dxmbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-15, -4)
+shape = SubResource("SegmentShape2D_bq7gr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-6, 8)
+shape = SubResource("SegmentShape2D_ahcvu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-9, 10)
+shape = SubResource("SegmentShape2D_mv1yp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(20, 20)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_mv1yp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(16, -4)
+shape = SubResource("SegmentShape2D_bq7gr")
+
+[node name="Barrel" type="Sprite2D" parent="."]
+z_index = -1000
+z_as_relative = false
+texture = ExtResource("1_amuxv")
+
+[node name="Spawnpoint" type="Marker2D" parent="."]
+position = Vector2(0, -24)

@@ -6,7 +6,6 @@ var balls: Node2D
 var pegs: Node2D
 var audio: Node2D
 var level: Node2D
-var userInterface: CanvasLayer
 var camera: Camera2D
 var game: Node
 var missedBallFeature: Node2D
@@ -38,11 +37,25 @@ var score: int = 0
 var scoreMultiplier: int = 1
 var ballCount: int
 
+signal scoreAdded(amount: int)
+signal ballScoreAdded(amount: int)
+
+func addScore(amount:int):
+	score += amount
+	emit_signal("scoreAdded", amount)
+
+func addBallScore(amount:int):
+	ballScoreCounter += amount
+	emit_signal("ballScoreAdded", amount)
+
 func GameOver():
+	if isGameOver:
+		push_error("Game is already over.")
+		return
 	isGameOver = true
 	isGameStarted = false
 	isBucketMove = false
-	userInterface.menu.toggle_menu(true)
+	Ui.changeActiveUi("gameMenu")
 	isInputDisabled = true
 	print("Game Over! No more balls left.")
 
@@ -74,44 +87,53 @@ func updateMultiplier():
 
 	Ui.update_ui()
 
+var extraBallMilestones := {
+	1: {"score": 25000, "got": false}, #25000
+	2: {"score": 75000, "got": false}, #75000
+	3: {"score": 125000, "got": false} #125000
+}
 
-# Ball Score milestones for getting a free ball
-const extraBall1: int = 25000
-const extraBall2: int = 75000
-const extraBall3: int = 125000
+func nextExtraBallScore() -> int:
+	var mileStones = extraBallMilestones.keys()
+	mileStones.sort()
+	for milestone in mileStones:
+		if not extraBallMilestones[milestone]["got"]:
+			return extraBallMilestones[milestone]["score"]
+	return -1 # All milestones achieved
 
-# Flags to check if extra balls have been obtained. Resets when ball ends.
-var gotExtraBall1: bool = false
-var gotExtraBall2: bool = false
-var gotExtraBall3: bool = false
+func nextExtraBallNumber() -> int:
+	var mileStones = extraBallMilestones.keys()
+	mileStones.sort()
+	for milestone in mileStones:
+		if not extraBallMilestones[milestone]["got"]:
+			return milestone
+	return -1 # All milestones achieved
+
+func reset_extraBallMilestones():
+	for milestone in extraBallMilestones.keys():
+		extraBallMilestones[milestone]["got"] = false
+
+signal extra_ball_added
 
 func _on_extra_ball_check():
-	if ballScoreCounter < extraBall1:
-		return
-	elif ballScoreCounter >= extraBall1 and !gotExtraBall1:
-		gotExtraBall1 = true
-		addBall()
-		audio.playSoundEffect("SFXExtraBall")
-		print("Extra ball 1 added! "+ str(extraBall1))
-	elif ballScoreCounter >= extraBall2 and !gotExtraBall2:
-		gotExtraBall2 = true
-		addBall()
-		audio.playSoundEffect("SFXExtraBall")
-		print("Extra ball 2 added! "+ str(extraBall2))
-	elif ballScoreCounter >= extraBall3 and !gotExtraBall3:
-		gotExtraBall3 = true
-		addBall()
-		audio.playSoundEffect("SFXExtraBall")
-		print("Extra ball 3 added! "+ str(extraBall3))
+	for milestone in extraBallMilestones.keys():
+		var milestone_data = extraBallMilestones[milestone]
+		if ballScoreCounter >= milestone_data["score"] and !milestone_data["got"]:
+			extraBallMilestones[milestone]["got"] = true
+			addBall()
+			audio.playSoundEffect("SFXExtraBall")
+			emit_signal("extra_ball_added", milestone, milestone_data)
+			print("Extra ball %d added! %d" % [milestone, milestone_data["score"]])
 
 func addBall():
 	ballCount += 1
-	ballsUI.call_deferred("maintainBallCount")
+	Ui.update_ui()
 
 func _on_hitLastRedPeg():
 	emit_signal("bullet_time_deactivated")
 	audio.playSoundEffect("SFXCrowdCheer")
 	isOneRedPegRemaining = false
+	isBulletTimeActive = false
 	camera.resetCamera()
 	initializeBonusMode()
 
@@ -121,30 +143,39 @@ func initializeBonusMode():
 	emit_signal("bonusModeActivated")
 	levelClearedBonusMode = true
 	bonusHoles.show_bonus_holes()
-	LevelsManager.level_Clear()
 	Engine.time_scale = 0.5
 
 func levelCompleted(): # call after bonus mode is over.
-	userInterface.menu.toggle_menu(true)
+	Ui.changeActiveUi("gameMenu")
 	isInputDisabled = true
 	Engine.time_scale = 1.0
-
+	LevelsManager.level_Clear()
 
 func _on_bonusHoleEntered(bonusHoleValue: int):
 	score += bonusHoleValue
 	levelCompleted()
 
-
-
 var prepauseTimeScale: float
 
 func _on_game_pause():
+	print("Game paused.")
 	isGamePaused = true
 	isInputDisabled = true
 	prepauseTimeScale = Engine.time_scale
 	Engine.time_scale = 0.0
 
 func _on_game_unpause():
+	print("Game unpaused.")
 	isGamePaused = false
 	isInputDisabled = false
 	Engine.time_scale = prepauseTimeScale
+
+func tween_transfer_points(from_label:Label,to_label:Label,time:float):
+	var tween = create_tween()
+	var start_value = int(to_label.text)
+	var transfer_amount = int(from_label.text)
+	var end_value = start_value + transfer_amount
+	
+	tween.parallel().tween_method(func(value): to_label.text = str(int(value)), start_value, end_value, time)
+	tween.parallel().tween_method(func(value): from_label.text = str(int(value)), transfer_amount, 0, time)
+	await tween.finished
