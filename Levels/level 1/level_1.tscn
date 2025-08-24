@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bqx88teutya4j" path="res://Stage/wall.tscn" id="4_ncvhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aydgu"]
-size = Vector2(115.538, 4.62012)
+size = Vector2(51.2048, 6.46974)
 
 [node name="Level 1" type="Node2D" groups=["level"]]
 script = ExtResource("1_evao8")
@@ -298,23 +298,51 @@ position = Vector2(361, 234)
 [node name="Wall" parent="Walls" instance=ExtResource("4_ncvhp")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
-position = Vector2(40, 129)
+position = Vector2(70, 134)
 rotation = 0.261799
 shape = SubResource("RectangleShape2D_aydgu")
 
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall/CollisionShape2D"]
+offset_left = -25.0
+offset_top = -3.0
+offset_right = 26.0
+offset_bottom = 3.0
+color = Color(0.67451, 0.501961, 0, 1)
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Wall"]
-position = Vector2(52, 201)
+position = Vector2(69, 200)
 rotation = 0.261799
 shape = SubResource("RectangleShape2D_aydgu")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall/CollisionShape2D2"]
+offset_left = -25.0
+offset_top = -3.0
+offset_right = 26.0
+offset_bottom = 3.0
+color = Color(0.67451, 0.501961, 0, 1)
 
 [node name="Wall2" parent="Walls" instance=ExtResource("4_ncvhp")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
-position = Vector2(440, 129)
+position = Vector2(410, 134)
 rotation = -0.261799
 shape = SubResource("RectangleShape2D_aydgu")
 
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall2/CollisionShape2D"]
+offset_left = -25.0
+offset_top = -3.0
+offset_right = 26.0
+offset_bottom = 3.0
+color = Color(0.67451, 0.501961, 0, 1)
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Wall2"]
-position = Vector2(428, 201)
+position = Vector2(408, 199)
 rotation = -0.261799
 shape = SubResource("RectangleShape2D_aydgu")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall2/CollisionShape2D2"]
+offset_left = -25.0
+offset_top = -3.0
+offset_right = 26.0
+offset_bottom = 3.0
+color = Color(0.67451, 0.501961, 0, 1)

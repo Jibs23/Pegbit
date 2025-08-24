@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://prjx0mnlqvnc"]
+[gd_scene load_steps=13 format=3 uid="uid://prjx0mnlqvnc"]
 
 [ext_resource type="Script" uid="uid://k3swnqi85g6l" path="res://Entities/Bucket/bucket.gd" id="1_d3cnq"]
-[ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://Stage/icon.svg" id="1_pssae"]
+[ext_resource type="Texture2D" uid="uid://cw1c4psbb41db" path="res://Entities/Bucket/sprite_bucket.png" id="2_d3cnq"]
+[ext_resource type="Texture2D" uid="uid://ca46goxnxsn3s" path="res://LevelTransition/effect-bubbles-Sheet_small.png" id="3_gkwu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkwu7"]
-size = Vector2(53, 8)
+size = Vector2(52, 8)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pssae"]
 a = Vector2(-16, 4)
@@ -14,19 +15,60 @@ b = Vector2(-16, 15)
 a = Vector2(16, 4)
 b = Vector2(16, 15)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_64fgx"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_gfaew"]
+_limits = [-94.8454, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 16.7218), 0.0, 0.0, 0, 0, Vector2(1, -29.0357), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jw3c6"]
+curve = SubResource("Curve_gfaew")
+
+[sub_resource type="Curve" id="Curve_3sc2n"]
+_data = [Vector2(0, 0), 0.0, 3.15169, 0, 0, Vector2(0.664286, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cubmr"]
+curve = SubResource("Curve_3sc2n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ep5g2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+velocity_pivot = Vector3(0, 0.775, 0)
+direction = Vector3(0, 1.71, 0)
+spread = 149.806
+flatness = 1.0
+radial_velocity_min = 18.87
+radial_velocity_max = 62.89
+gravity = Vector3(0, -1, 0)
+linear_accel_min = 7.54
+linear_accel_max = 10.69
+linear_accel_curve = SubResource("CurveTexture_jw3c6")
+scale_min = 0.9
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_cubmr")
+anim_speed_min = 0.6
+anim_speed_max = 0.65
+
 [node name="Bucket" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_d3cnq")
 
 [node name="BucketSprite" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_pssae")
+position = Vector2(0, 6)
+texture = ExtResource("2_d3cnq")
 
 [node name="ScoreBox" type="Area2D" parent="."]
 collision_layer = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreBox"]
-position = Vector2(-0.5, 9)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_gkwu7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -38,5 +80,18 @@ debug_color = Color(0.977022, 0, 0.407356, 0.42)
 position = Vector2(12, -1)
 shape = SubResource("SegmentShape2D_d3cnq")
 debug_color = Color(0.977022, 0, 0.407356, 0.42)
+
+[node name="SplashGPU" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_64fgx")
+position = Vector2(0, 8)
+emitting = false
+amount = 50
+texture = ExtResource("3_gkwu7")
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.55
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ep5g2")
 
 [connection signal="body_entered" from="ScoreBox" to="." method="_on_score_box_body_entered"]
