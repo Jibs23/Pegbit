@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0nd8mln6gib4"]
+[gd_scene load_steps=4 format=3 uid="uid://b0nd8mln6gib4"]
 
 [ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="1_dtkyu"]
 [ext_resource type="Script" uid="uid://cyoh7e4m0v243" path="res://Menu/main_menu.gd" id="2_ohgnh"]
 [ext_resource type="PackedScene" uid="uid://rrop5duawsrk" path="res://Menu/button_menu.tscn" id="3_ohgnh"]
-[ext_resource type="Script" uid="uid://qn2xw1ip4rdl" path="res://Menu/music.gd" id="4_ohgnh"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("2_ohgnh")
@@ -63,16 +62,9 @@ mouse_filter = 2
 theme = ExtResource("1_dtkyu")
 text = "EXIT"
 
-[node name="music" type="Button" parent="Menu"]
-visible = false
-layout_mode = 2
-text = "play song"
-script = ExtResource("4_ohgnh")
-
 [connection signal="pressed" from="Menu/BtnPlay" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="Menu/BtnSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="Menu/BtnLoad" to="." method="_on_btn_load_pressed"]
 [connection signal="pressed" from="Menu/BtnErase" to="." method="_on_btn_erase_pressed"]
 [connection signal="pressed" from="Menu/BtnLevels" to="." method="_on_btn_levels_pressed"]
 [connection signal="pressed" from="Menu/BtnExit" to="." method="_on_btn_exit_pressed"]
-[connection signal="pressed" from="Menu/music" to="Menu/music" method="_on_pressed"]

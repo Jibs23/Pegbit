@@ -11,16 +11,12 @@ func _ready() -> void:
 	music = $MusicManager as Node2D
 
 func playSoundEffect(effectName: String) -> AudioStreamPlayer2D:
-	if !has_node(effectName): print("Error: Sound effect node not found: ", effectName)  # Check if the node exists
-	var sound_effect = get_node(effectName)
-	if !sound_effect or !sound_effect.has_method("play"):
-		print("Error: Node found but does not have a 'play' method: ", effectName)
+	if !has_node(effectName): 
+		push_error("Error: Sound effect node not found: ", effectName)  # Check if the node exists
+		return
+	var sound_effect: AudioStreamPlayer2D = get_node(effectName)
 	sound_effect.play()
 	return sound_effect
-
-var distanceToPegLastFrame: float
-var gettingCloserToPeg: bool
-var lastPlayedSoundEffect
 
 func buttons_connect_sound() -> void:
 	if !Ui.userInterface.activeUi: 
@@ -35,7 +31,3 @@ func buttons_connect_sound() -> void:
 func _on_button_focus_exited(btn: Button) -> void:
 	if btn.is_inside_tree():
 		playSoundEffect("SFXMenuMove")
-
-### MUSIC ###
-
-

@@ -30,12 +30,12 @@
 [ext_resource type="Texture2D" uid="uid://bp8pgq0y6i7hd" path="res://Stage/ui_ballscore_treasure.png" id="24_c1hin"]
 [ext_resource type="Script" uid="uid://bun5utiyffxhj" path="res://Stage/ui_multiplier_tracker.gd" id="24_jsn2l"]
 [ext_resource type="Texture2D" uid="uid://fft5fpcpm5rh" path="res://Stage/ui_ballscore_barrel_lid.png" id="25_4c66j"]
-[ext_resource type="Texture2D" uid="uid://bu5cja05ujedn" path="res://Stage/icon.svg" id="25_c1hin"]
 [ext_resource type="Script" uid="uid://vc24uucno5dn" path="res://Stage/extra_balls_ui.gd" id="26_c1hin"]
 [ext_resource type="Texture2D" uid="uid://cx5twhcdj80te" path="res://Stage/Balls_UI.png" id="26_jsn2l"]
 [ext_resource type="Texture2D" uid="uid://ckc2bli2mefxq" path="res://Stage/ui_orb.png" id="26_kx5li"]
 [ext_resource type="Script" uid="uid://c20uwx3rhdsw2" path="res://Stage/current_level_ui.gd" id="28_3fsj3"]
 [ext_resource type="PackedScene" uid="uid://tn0w0pkk5sp8" path="res://Stage/particle_glitter_explosion.tscn" id="28_kx5li"]
+[ext_resource type="Texture2D" uid="uid://cww5bwgblq8v" path="res://Stage/ui_map_boat.png" id="34_02cl4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(500, 8)
@@ -577,15 +577,13 @@ curve = SubResource("Curve2D_qfyof")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="LevelUI/MultiplierUI/Map/Path2D"]
 position = Vector2(-19, -16)
-rotation = 1.46592
 rotates = false
 loop = false
 script = ExtResource("24_jsn2l")
 
 [node name="Sprite2D" type="Sprite2D" parent="LevelUI/MultiplierUI/Map/Path2D/PathFollow2D"]
 z_index = 5
-scale = Vector2(0.045, 0.045)
-texture = ExtResource("25_c1hin")
+texture = ExtResource("34_02cl4")
 
 [node name="Orb" type="Sprite2D" parent="LevelUI/MultiplierUI"]
 position = Vector2(79, 50)

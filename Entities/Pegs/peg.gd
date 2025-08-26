@@ -62,7 +62,6 @@ func hit():
 		var sfxNote: float = 1.0 + (min(pegs.pegsActivated, 25) * 0.083) # 0.083 approximates one semitone
 		audio.playSoundEffect(hitSFX).pitch_scale = sfxNote
 		
-		
 		removePeg()
 
 func removePeg():

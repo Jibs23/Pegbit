@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ie4fyb2punlu"]
+[gd_scene load_steps=22 format=3 uid="uid://ie4fyb2punlu"]
 
 [ext_resource type="Script" uid="uid://bcetlibe3k4ys" path="res://Stage/audio.gd" id="1_5olcg"]
 [ext_resource type="AudioStream" uid="uid://bxikib2edqd2o" path="res://Entities/Balls/sfx_Ball_Bounce_Peg.wav" id="2_pgqns"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://47bcnxeyrhqp" path="res://Entities/Launcher/sfx_shoot.wav" id="5_qf6oy"]
 [ext_resource type="AudioStream" uid="uid://t4ithbjdh5hs" path="res://Entities/Balls/sfx_extra_ball.wav" id="6_tor12"]
 [ext_resource type="AudioStream" uid="uid://uh3ng45y3ant" path="res://Entities/Balls/sfx_crowd_anticipation.wav" id="7_fajnq"]
-[ext_resource type="AudioStream" uid="uid://dmfw0541is3i6" path="res://Entities/Balls/sfx_crowd_anticipation_disapointed.wav" id="8_f6syg"]
+[ext_resource type="AudioStream" uid="uid://dmfw0541is3i6" path="res://Entities/Balls/sfx_crowd_anticipation_disappointed.wav" id="8_f6syg"]
 [ext_resource type="AudioStream" uid="uid://b7x6g8okvpa0f" path="res://Entities/Balls/sfx_crowd_cheering.wav" id="9_pgqns"]
 [ext_resource type="AudioStream" uid="uid://brvspd8trovat" path="res://Entities/Point Hole/sfx_pointhole_splash.wav" id="10_pgqns"]
 [ext_resource type="AudioStream" uid="uid://gsgb3albm86w" path="res://LevelTransition/sfx_transition_bubble.wav" id="11_564a7"]
@@ -18,6 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://bor8ur6so684v" path="res://Stage/barrel_close_SFX.wav" id="16_f6syg"]
 [ext_resource type="AudioStream" uid="uid://bdn48pj3ya7al" path="res://Stage/coin_transfer_SFX.wav" id="17_enkql"]
 [ext_resource type="Script" uid="uid://bkxpabxstsxfj" path="res://music_manager.gd" id="18_il71m"]
+[ext_resource type="AudioStream" uid="uid://dfwffwoql32te" path="res://Entities/MissedBallFeature/coin_flip.wav" id="18_v84do"]
+[ext_resource type="AudioStream" uid="uid://tutbsqwhrhp5" path="res://Entities/MissedBallFeature/coin_toss.wav" id="19_3gqo2"]
+[ext_resource type="AudioStream" uid="uid://dpomjhpdvy3q2" path="res://Entities/MissedBallFeature/sad.wav" id="20_3gqo2"]
 
 [node name="Audio" type="Node2D" groups=["Audio"]]
 script = ExtResource("1_5olcg")
@@ -90,6 +93,19 @@ panning_strength = 2.0
 [node name="SFXWealthTransfer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_enkql")
 panning_strength = 2.0
+
+[node name="SFXCoinFlip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_v84do")
+panning_strength = 0.0
+
+[node name="SFXCoinToss" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_3gqo2")
+panning_strength = 0.0
+
+[node name="SFXSad" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_3gqo2")
+volume_db = 7.638
+panning_strength = 0.0
 
 [node name="MusicManager" type="Node2D" parent="."]
 script = ExtResource("18_il71m")

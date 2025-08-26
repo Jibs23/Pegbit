@@ -31,7 +31,6 @@ func stop_bubbles_effect():
 	bubbles_large.emitting = false
 	bubbles_Xlarge.emitting = false
 	transitionActive = false
-	await get_tree().create_timer(transition_time*1.10).timeout
 	if bubblesNode:
 		var tween = create_tween()
 		tween.tween_property(bubblesNode, "volume_db", -30, 2.5)

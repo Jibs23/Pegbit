@@ -11,7 +11,7 @@ var levelsLibrary: Dictionary = {
 var gameStage: PackedScene = preload("res://Stage/stage.tscn")
 var reached_level: int = 0
 var levelTransition: Node2D
-var unlocked_all_levels: bool = true
+@export var unlocked_all_levels: bool = false
 signal levelLoaded
 signal gameUnpause
 
@@ -58,12 +58,11 @@ func load_level(level_number: int):
 		return
 
 	# Remove all active balls
-	if Logic.balls:
-		for ball in Logic.balls.get_children():
+	if Logic.balls and Logic.balls.get_child_count() > 0:
+		for ball:Ball in Logic.balls.get_children():
 			ball.queue_free()
 
 	levelTransition.play_bubbles_effect()
-	await get_tree().create_timer(levelTransition.transition_time).timeout
 
 	# Unload the current stage if it exists
 	if Logic.stage: unload_stage()
@@ -71,17 +70,16 @@ func load_level(level_number: int):
 	stage_instance.name = "Stage"
 	Logic.game.add_child(stage_instance)
 	Logic.stage.visible = false
-	print("Stage initialized.")
 
 	var new_level = levelsLibrary[level_number]["scene"].instantiate()
 	set_current_level(level_number, new_level)
 	Logic.stage.levelContainer.add_child(new_level)
 	
+	await get_tree().create_timer(levelTransition.transition_time).timeout	
 	levelTransition.stop_bubbles_effect()
 	Logic.stage.visible = true
 	Logic.audio.music.song_play(Logic.audio.music.random_item_from_dic(Logic.audio.music.music_libraries["game_music"]), Logic.audio.music.music_libraries["game_music"])
 	emit_signal("levelLoaded")
-	print("Level loaded: " + str(level_number))
 
 func level_Restart():
 	print("Level restarted: " + str(get_current_level()))

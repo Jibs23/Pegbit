@@ -4,6 +4,10 @@ const START: int = 0
 const MOVE_SPEED: float = .25
 var goal: int
 var progressAlongPath: float = 0.0
+var sprite: Sprite2D
+
+func _ready():
+	sprite = $Sprite2D
 
 func _physics_process(_delta):
 	if Logic.level == null: return

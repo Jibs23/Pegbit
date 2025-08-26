@@ -20,8 +20,8 @@ func _ready() -> void:
 
 
 func _on_btn_play_pressed() -> void:
-	Ui.clearActiveUi()
 	LevelsManager.load_level(LevelsManager.reached_level)
+	Ui.clearActiveUi()
 
 func _on_btn_levels_pressed() -> void:
 	Ui.changeActiveUi("mainMenu_levels")
