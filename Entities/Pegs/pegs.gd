@@ -1,15 +1,17 @@
-@tool
 extends Node2D
 
 # Define the level requirement for red pegs
 var pegsActivated: int = 0
 var ballIsStuck: bool = false
+var level: Level
+var pegs: Array = []
 func _enter_tree() -> void:
 	if Engine.is_editor_hint():return
 	Logic.pegs = self
 
 func _ready():
 	if Engine.is_editor_hint():return
+	level = Logic.level
 	call_deferred("establish_pegs")
 
 
@@ -36,27 +38,27 @@ func callReady(peg):
 		peg._ready()
 
 func establish_pegs():
-	var level = Logic.level  
-	var pegs: = []
 	for child in get_children():
-		if child.is_in_group("peg_group"):
+		if child.is_in_group("Peg"): add_to_pegs(child as Peg)
+		elif child.is_in_group("peg_group"):
 			for node in child.get_children():
-				if node is Peg:
-					pegs.append(node as Peg)
+				if node.is_in_group("Peg"): add_to_pegs(node as Peg)
 				elif node.is_in_group("peg_group"):
 					for peg in node.get_children():
-						if peg is Peg:
-							pegs.append(peg as Peg)
-		elif child is Peg:
-			pegs.append(child as Peg)
-
+						if peg.is_in_group("Peg"): add_to_pegs(peg as Peg)
 		else:
 			push_error(child.name ," is not a peg or peg group")
+	
 	pegs.shuffle()
+	assign_peg_types()
+
+func add_to_pegs(peg: Peg):
+	pegs.append(peg)
+
+func assign_peg_types():
 	var red_peg_requirement: int = level.levelRedPegs	
 	var red_pegs_assigned: int = 0
 	var blue_pegs_assigned: int = 0
-
 	for peg in pegs:
 		if red_pegs_assigned < red_peg_requirement:
 			peg.set_script(preload("res://Entities/Pegs/redPeg.gd"))
@@ -75,33 +77,3 @@ func establish_pegs():
 
 	#print("Total pegs: ", len(pegs))
 	Logic.totalPegCount = len(pegs)
-
-
-
-####### EDITOR TOOLS ########
-
-var scene_peg: PackedScene = preload("res://Entities/Pegs/peg.tscn")
-var scene_pegRect: PackedScene = preload("res://Entities/Pegs/peg_rect.tscn")
-
-@export_group("Editor Tools")
-@export_tool_button("Add Peg")
-var button_add_peg = create_peg
-@export_tool_button("Add Peg_Rect")
-var button_add_pegRect = create_pegRect
-
-func create_peg() -> void:
-	var peg_instance = scene_peg.instantiate()
-	peg_instance.name = "Peg"
-	add_to_scene(peg_instance)
-
-func create_pegRect() -> void:
-	var pegRect_instance = scene_pegRect.instantiate()
-	pegRect_instance.name = "Peg_rect"
-	add_to_scene(pegRect_instance)
-
-func add_to_scene(instance: Node2D) -> void:
-	add_child(instance)
-	instance.global_position = get_viewport().get_visible_rect().size / 2
-	instance.owner = self
-	print("Added " + instance.name + " at position: " + str(instance.global_position))
-

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://72abm8choxrx"]
+[gd_scene load_steps=12 format=3 uid="uid://72abm8choxrx"]
 
 [ext_resource type="Script" uid="uid://bpddpikntimjk" path="res://Entities/Point Hole/point_hole.gd" id="1_l6i8y"]
 [ext_resource type="Texture2D" uid="uid://du3iqbym376xj" path="res://Entities/Point Hole/spritesheet_treasure.png" id="2_udqb0"]
+[ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="3_516ka"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8sb86"]
 a = Vector2(20, 0)
@@ -133,13 +134,17 @@ libraries = {
 }
 
 [node name="ScoreContainer" type="CenterContainer" parent="."]
-visible = false
+z_index = 400
+z_as_relative = false
 offset_right = 40.0
 offset_bottom = 40.0
 use_top_left = true
 
 [node name="TxtScore" type="Label" parent="ScoreContainer"]
 layout_mode = 2
+theme = ExtResource("3_516ka")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 21
 text = "PLACEHOLDER"
 horizontal_alignment = 1

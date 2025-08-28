@@ -2,7 +2,6 @@ extends Node2D
 
 signal ballEnded
 
-
 func _enter_tree() -> void:
 	Logic.balls = self
 
@@ -29,9 +28,3 @@ func _on_ball_end(ballMissed):
 	if Logic.levelClearedBonusMode:
 		Logic.levelCompleted()
 	Ui.update_ui()
-
-const LONG_SHOT_BONUS = 25000
-
-func _on_long_shot_bonus():
-	Logic.addBallScore(LONG_SHOT_BONUS)
-	Logic.audio.playSoundEffect("SFXHitPegLongShot")

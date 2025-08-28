@@ -46,10 +46,15 @@ func delete_save():
 		var dir = DirAccess.open("user://")
 		if dir:
 			LevelsManager.reached_level = 0
+			for level in levelsLibrary.keys():
+				levelsLibrary[level]["isLevelCleared"] = false
+				levelsLibrary[level]["HighScore"] = 0
 			dir.remove("SaveData.cfg")
+			LevelsManager.unlocked_all_levels = false
 			print("Save file deleted: " + CONFIG_PATH)
 			emit_signal("saveDataDeleted")
 		else:
 			print("Could not open user directory to delete save file.")
 	else:
-		print("No save file to delete at: " + CONFIG_PATH)
+		save_game()
+		delete_save()

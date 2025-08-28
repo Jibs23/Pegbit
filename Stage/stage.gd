@@ -30,3 +30,4 @@ func _on_level_loaded() -> void:
 	Ui.uiMultiplierCounter.mapIndicator.goal = Logic.level.levelRedPegs
 	#bucket
 	bucketTracker.get_node("PathFollow2D").reset_bucket()
+

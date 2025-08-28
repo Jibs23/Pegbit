@@ -11,7 +11,7 @@ var levelsLibrary: Dictionary = {
 var gameStage: PackedScene = preload("res://Stage/stage.tscn")
 var reached_level: int = 0
 var levelTransition: Node2D
-@export var unlocked_all_levels: bool = false
+var unlocked_all_levels: bool = false
 signal levelLoaded
 signal gameUnpause
 
@@ -57,12 +57,14 @@ func load_level(level_number: int):
 		push_error("Level " + str(level_number) + " does not exist in levelsLibrary.")
 		return
 
-	# Remove all active balls
+	levelTransition.play_bubbles_effect()
+
+	# Remove all, if any, active balls
 	if Logic.balls and Logic.balls.get_child_count() > 0:
 		for ball:Ball in Logic.balls.get_children():
 			ball.queue_free()
 
-	levelTransition.play_bubbles_effect()
+	await get_tree().create_timer(levelTransition.transition_time).timeout	
 
 	# Unload the current stage if it exists
 	if Logic.stage: unload_stage()
@@ -75,11 +77,10 @@ func load_level(level_number: int):
 	set_current_level(level_number, new_level)
 	Logic.stage.levelContainer.add_child(new_level)
 	
-	await get_tree().create_timer(levelTransition.transition_time).timeout	
-	levelTransition.stop_bubbles_effect()
 	Logic.stage.visible = true
 	Logic.audio.music.song_play(Logic.audio.music.random_item_from_dic(Logic.audio.music.music_libraries["game_music"]), Logic.audio.music.music_libraries["game_music"])
 	emit_signal("levelLoaded")
+	levelTransition.stop_bubbles_effect()
 
 func level_Restart():
 	print("Level restarted: " + str(get_current_level()))
@@ -142,12 +143,24 @@ func level_Clear():
 	print("Level cleared: " + str(current_level))
 
 func return_to_main_menu():
+	levelTransition.play_bubbles_effect()
 	Logic.isGameStarted = false
 	Logic.isGameOver = false
 	Ui.clearActiveUi()
-	levelTransition.play_bubbles_effect()
 	await get_tree().create_timer(levelTransition.transition_time).timeout
 	unload_stage()
-	levelTransition.stop_bubbles_effect()
 	Ui.changeActiveUi("mainMenu")
 	print("Returned to main menu.")
+	levelTransition.stop_bubbles_effect()
+
+func unlock_all_levels():
+	var all_unlocked = true
+	unlocked_all_levels = true
+	reached_level = levelsLibrary.keys().size()-1
+	for level in levelsLibrary.keys():
+		if levelsLibrary[level]["isLevelCleared"] == false:
+			levelsLibrary[level]["isLevelCleared"] = true
+			all_unlocked = false
+			print("Level " + str(level+1) + " unlocked.")
+	if not all_unlocked:
+		Logic.audio.playSoundEffect("SFXCrowdCheer")

@@ -20,7 +20,7 @@ func addLevelToMenu() -> void:
 		button.focus_neighbor_bottom = get_parent().btn_back.get_path()
 		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		button.custom_minimum_size = Vector2(BUTTON_SIZE, BUTTON_SIZE)
-		if levels > LevelsManager.reached_level and not LevelsManager.unlocked_all_levels:
+		if levels > LevelsManager.reached_level:
 			button.disabled = true
 			#print("Button for level: "+ str(levels) + " is disabled, as it is not yet reached.")
 		else:

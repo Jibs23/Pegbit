@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dfrujxa3upvlx"]
+[gd_scene load_steps=52 format=3 uid="uid://dfrujxa3upvlx"]
 
 [ext_resource type="Script" uid="uid://b51ki01xoaewv" path="res://Stage/stage.gd" id="1_11sey"]
 [ext_resource type="Script" uid="uid://b61i76v82pin1" path="res://level_container.gd" id="1_w6qq7"]
@@ -36,6 +36,8 @@
 [ext_resource type="Script" uid="uid://c20uwx3rhdsw2" path="res://Stage/current_level_ui.gd" id="28_3fsj3"]
 [ext_resource type="PackedScene" uid="uid://tn0w0pkk5sp8" path="res://Stage/particle_glitter_explosion.tscn" id="28_kx5li"]
 [ext_resource type="Texture2D" uid="uid://cww5bwgblq8v" path="res://Stage/ui_map_boat.png" id="34_02cl4"]
+[ext_resource type="Texture2D" uid="uid://d7kt1ytkg5o1" path="res://Stage/tutorial_controls.png" id="37_euytt"]
+[ext_resource type="Script" uid="uid://svcbh8e3eoxb" path="res://Stage/tutorial_controls.gd" id="38_1mx6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(500, 8)
@@ -326,7 +328,7 @@ script = ExtResource("10_8edkk")
 position = Vector2(240, 296)
 
 [node name="MissedBallFeature" parent="." instance=ExtResource("12_1gh8b")]
-position = Vector2(272, 144)
+position = Vector2(272, 154)
 
 [node name="BonusHoles" type="Node2D" parent="."]
 position = Vector2(248, 264)
@@ -612,6 +614,14 @@ theme = ExtResource("16_11sey")
 text = "#"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tutorial_controls" type="Sprite2D" parent="."]
+visible = false
+z_index = 30
+position = Vector2(272, 125)
+scale = Vector2(2, 2)
+texture = ExtResource("37_euytt")
+script = ExtResource("38_1mx6o")
 
 [connection signal="child_order_changed" from="Balls" to="Balls" method="_on_child_order_changed"]
 [connection signal="body_shape_entered" from="BonusHoles/PointHoles" to="BonusHoles/PointHoles" method="_on_body_shape_entered"]

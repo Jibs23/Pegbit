@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0nd8mln6gib4"]
+[gd_scene load_steps=5 format=3 uid="uid://b0nd8mln6gib4"]
 
 [ext_resource type="Theme" uid="uid://ci48i707g43ib" path="res://Menu/theme_menus.tres" id="1_dtkyu"]
 [ext_resource type="Script" uid="uid://cyoh7e4m0v243" path="res://Menu/main_menu.gd" id="2_ohgnh"]
 [ext_resource type="PackedScene" uid="uid://rrop5duawsrk" path="res://Menu/button_menu.tscn" id="3_ohgnh"]
+[ext_resource type="Texture2D" uid="uid://d5gj4mtuqkgq" path="res://Stage/sprite_bumper.png" id="4_ohgnh"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("2_ohgnh")
@@ -30,6 +31,12 @@ theme = ExtResource("1_dtkyu")
 text = "PLAY"
 metadata/FocusByDefault = true
 
+[node name="BtnLevels" type="Button" parent="Menu"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_dtkyu")
+text = "Levels"
+
 [node name="BtnSave" type="Button" parent="Menu"]
 visible = false
 layout_mode = 2
@@ -50,21 +57,20 @@ mouse_filter = 2
 theme = ExtResource("1_dtkyu")
 text = "ERASE"
 
-[node name="BtnLevels" type="Button" parent="Menu"]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("1_dtkyu")
-text = "Levels"
-
 [node name="BtnExit" type="Button" parent="Menu"]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_dtkyu")
 text = "EXIT"
 
+[node name="Unlocked all!" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(451, 241)
+texture = ExtResource("4_ohgnh")
+
 [connection signal="pressed" from="Menu/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="Menu/BtnLevels" to="." method="_on_btn_levels_pressed"]
 [connection signal="pressed" from="Menu/BtnSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="Menu/BtnLoad" to="." method="_on_btn_load_pressed"]
 [connection signal="pressed" from="Menu/BtnErase" to="." method="_on_btn_erase_pressed"]
-[connection signal="pressed" from="Menu/BtnLevels" to="." method="_on_btn_levels_pressed"]
 [connection signal="pressed" from="Menu/BtnExit" to="." method="_on_btn_exit_pressed"]

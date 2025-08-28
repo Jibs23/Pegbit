@@ -11,8 +11,11 @@ func _ready() -> void:
 	valueCount = $Score
 	chestSprite = $Chest
 
+var last_score := -1
+
 func _process(_delta: float) -> void:
-	if Logic.level == null: return
+	if Logic.level == null or Logic.score == last_score: return# Only update if score changed and level is active
+	last_score = Logic.score
 
 	var chestFrameCount = chestSprite.hframes - 1
 	var frame = 0
