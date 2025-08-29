@@ -12,7 +12,7 @@ var gameStage: PackedScene = preload("res://Stage/stage.tscn")
 var reached_level: int = 0
 var levelTransition: Node2D
 var unlocked_all_levels: bool = false
-signal levelLoaded
+
 signal gameUnpause
 
 func _init() -> void:
@@ -64,23 +64,20 @@ func load_level(level_number: int):
 		for ball:Ball in Logic.balls.get_children():
 			ball.queue_free()
 
-	await get_tree().create_timer(levelTransition.transition_time).timeout	
+	await get_tree().create_timer(levelTransition.transition_time).timeout
 
+	#breakpoint
 	# Unload the current stage if it exists
 	if Logic.stage: unload_stage()
-	var stage_instance = gameStage.instantiate()
-	stage_instance.name = "Stage"
-	Logic.game.add_child(stage_instance)
-	Logic.stage.visible = false
+	await get_tree().process_frame
+	call_deferred("add_stage",level_number)
 
-	var new_level = levelsLibrary[level_number]["scene"].instantiate()
-	set_current_level(level_number, new_level)
-	Logic.stage.levelContainer.add_child(new_level)
-	
-	Logic.stage.visible = true
-	Logic.audio.music.song_play(Logic.audio.music.random_item_from_dic(Logic.audio.music.music_libraries["game_music"]), Logic.audio.music.music_libraries["game_music"])
-	emit_signal("levelLoaded")
-	levelTransition.stop_bubbles_effect()
+func add_stage(level_number:int):
+	var new_stage = gameStage.instantiate()
+	new_stage.add_level(level_number)
+	Logic.stage = new_stage
+	Logic.game.add_child(new_stage)
+
 
 func level_Restart():
 	print("Level restarted: " + str(get_current_level()))

@@ -8,17 +8,18 @@ var lastPeg: Peg
 var distanceToPeg: float = 0.0
 var lastRedPegPositon: Vector2
 
-
-func _physics_process(_delta):
-	if isFollowBall:
-		global_position = ballToFollow.global_position
-		distanceToPeg = ballToFollow.global_position.distance_to(lastRedPegPositon)
-
 func _enter_tree() -> void:
 	Logic.camera = self
 
 func _ready() -> void:
 	standardPosition = global_position
+
+func _physics_process(_delta):
+	if isFollowBall and ballToFollow:
+		global_position = ballToFollow.global_position
+		distanceToPeg = ballToFollow.global_position.distance_to(lastRedPegPositon)
+	else:
+		set_physics_process(false)
 
 func _on_bullet_time_activated(ball: Ball, peg: Peg):
 	lastPeg = peg
@@ -31,6 +32,8 @@ func _on_bullet_time_activated(ball: Ball, peg: Peg):
 	var tween_zoom := create_tween()
 	var zoom_speed := .1
 	tween_zoom.tween_property(self, "zoom", Vector2(3, 3), zoom_speed).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	set_physics_process(true)
+
 
 func _on_bullet_time_deactivated():
 	resetCamera()

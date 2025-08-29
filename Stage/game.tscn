@@ -19,7 +19,6 @@ script = ExtResource("15_8xlxb")
 script = ExtResource("5_43gal")
 
 [node name="Level Transition" parent="." instance=ExtResource("12_64443")]
-position = Vector2(240, 276)
 
 [connection signal="child_entered_tree" from="UserInterface" to="UserInterface" method="_on_child_entered_tree"]
 [connection signal="tree_entered" from="UserInterface" to="UserInterface" method="_on_tree_entered"]

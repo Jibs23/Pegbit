@@ -1,5 +1,5 @@
-class_name Level
 extends Node2D
+class_name Level
 
 @export var levelRedPegs: int
 @export var levelBalls: int = 10
@@ -12,8 +12,7 @@ signal levelLoaded
 
 func _enter_tree() -> void:
 	Logic.level = self
-	connect("levelLoaded", Callable(Logic.stage, "_on_level_loaded"))
-
+	self.connect("levelLoaded", Callable(get_parent().get_parent(), "_on_level_loaded"))
 func _ready() -> void:
 	
 	# Initialize Logic variables
@@ -33,6 +32,7 @@ func _ready() -> void:
 	Logic.removedRedPegs = 0
 
 	Logic.isInputDisabled = false
-	Logic.bonusHoles.hide_bonus_holes()
+	
 	Engine.time_scale = 1.0
-	Ui.update_ui()
+	emit_signal("levelLoaded")
+	Ui.call_deferred("update_ui")

@@ -6,7 +6,7 @@
 
 [node name="Level 3" type="Node2D" groups=["level"]]
 script = ExtResource("1_78j0p")
-levelRedPegs = 3
+levelRedPegs = 30
 levelBalls = 8
 
 [node name="PegsGroup" parent="." instance=ExtResource("2_4lnie")]

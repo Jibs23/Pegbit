@@ -4,6 +4,7 @@ var valueCount: Label
 var mapIndicator: Node2D
 var levelUi: Node2D
 
+
 func _ready() -> void:
 	levelUi = get_parent()
 	Ui.uiMultiplierCounter = self

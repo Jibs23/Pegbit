@@ -97,14 +97,19 @@ turbulence_influence_over_life = SubResource("CurveTexture_r0aox")
 top_level = true
 z_index = 4096
 z_as_relative = false
+position = Vector2(240, 288)
 script = ExtResource("1_onqtn")
 
 [node name="XLBubbles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_sik7n")
 emitting = false
-amount = 500
+amount = 400
 texture = ExtResource("2_r0aox")
 lifetime = 1.2
+explosiveness = 0.09
+fixed_fps = 20
+fract_delta = false
+visibility_rect = Rect2(-300, -800, 600, 800)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_x8gpu")
 
@@ -113,6 +118,9 @@ material = SubResource("CanvasItemMaterial_sik7n")
 emitting = false
 amount = 100
 texture = ExtResource("2_jljgm")
+fixed_fps = 20
+fract_delta = false
+visibility_rect = Rect2(-300, -800, 600, 800)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_wqv35")
 
@@ -121,6 +129,9 @@ material = SubResource("CanvasItemMaterial_sik7n")
 emitting = false
 amount = 100
 texture = ExtResource("4_x8gpu")
+fixed_fps = 20
+fract_delta = false
+visibility_rect = Rect2(-300, -800, 600, 800)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5wghq")
 
@@ -130,5 +141,8 @@ position = Vector2(-1, 0)
 emitting = false
 amount = 200
 texture = ExtResource("3_r0aox")
+fixed_fps = 20
+fract_delta = false
+visibility_rect = Rect2(-300, -800, 600, 800)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_elpx0")

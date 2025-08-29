@@ -119,12 +119,13 @@ z_index = 710
 z_as_relative = false
 material = SubResource("CanvasItemMaterial_516ka")
 emitting = false
-amount = 1600
+amount = 400
 texture = ExtResource("2_udqb0")
 lifetime = 2.0
 one_shot = true
 explosiveness = 0.7
-fixed_fps = 60
+fixed_fps = 20
+fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_udqb0")
 
 [node name="ScoreAnimation" type="AnimationPlayer" parent="."]

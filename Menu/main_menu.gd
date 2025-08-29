@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _on_btn_play_pressed() -> void:
 	LevelsManager.load_level(LevelsManager.reached_level)
+	await get_tree().process_frame
 	Ui.clearActiveUi()
 
 func _on_btn_levels_pressed() -> void:

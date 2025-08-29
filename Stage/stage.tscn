@@ -1,10 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://dfrujxa3upvlx"]
+[gd_scene load_steps=53 format=3 uid="uid://dfrujxa3upvlx"]
 
 [ext_resource type="Script" uid="uid://b51ki01xoaewv" path="res://Stage/stage.gd" id="1_11sey"]
 [ext_resource type="Script" uid="uid://b61i76v82pin1" path="res://level_container.gd" id="1_w6qq7"]
 [ext_resource type="PackedScene" uid="uid://dqxj2ml38s08u" path="res://Stage/killzone.tscn" id="2_epof2"]
 [ext_resource type="PackedScene" uid="uid://dscd5yhlqj2ec" path="res://Entities/Launcher/launcher.tscn" id="5_1eb57"]
 [ext_resource type="Script" uid="uid://ct857ri57hvh8" path="res://Stage/balls.gd" id="7_vmvf4"]
+[ext_resource type="Script" uid="uid://caj73j1eysswf" path="res://Stage/bucket_track.gd" id="8_0pqb0"]
 [ext_resource type="Texture2D" uid="uid://dg2karma41bfv" path="res://Stage/sprite_stage_border.png" id="8_jcfu8"]
 [ext_resource type="PackedScene" uid="uid://bqx88teutya4j" path="res://Stage/wall.tscn" id="9_oxjqm"]
 [ext_resource type="Script" uid="uid://df83v8i5kp6wd" path="res://Entities/Bucket/bucket_move.gd" id="10_8edkk"]
@@ -316,6 +317,7 @@ shape = SubResource("RectangleShape2D_w6qq7")
 
 [node name="Bucket track" type="Path2D" parent="."]
 curve = SubResource("Curve2D_08agn")
+script = ExtResource("8_0pqb0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Bucket track"]
 modulate = Color(1, 0, 0, 1)

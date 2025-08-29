@@ -14,9 +14,11 @@ func _ready():
 	level = Logic.level
 	call_deferred("establish_pegs")
 
+signal a_peg_hit
 
 
 func _on_hit_peg(peg):
+	emit_signal("a_peg_hit", peg)
 	pegsActivated += 1
 	Ui.update_ui()
 	if peg.pegType == "red":

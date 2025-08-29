@@ -23,6 +23,8 @@ func play_bubbles_effect():
 	bubbles_medium.emitting = true
 	bubbles_large.emitting = true
 	bubbles_Xlarge.emitting = true
+	await get_tree().create_timer(transition_time).timeout	
+	stop_bubbles_effect()
 
 func stop_bubbles_effect():
 	var bubblesNode = Logic.audio.get_node("SFXTransitionBubble")

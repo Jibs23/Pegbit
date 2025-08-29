@@ -81,6 +81,8 @@ texture = ExtResource("5_bq7gr")
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 20
+fract_delta = false
 visibility_rect = Rect2(-20.13, -0.81, 39.365, 33.255)
 process_material = SubResource("ParticleProcessMaterial_cptt5")
 

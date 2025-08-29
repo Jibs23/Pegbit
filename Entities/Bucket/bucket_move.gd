@@ -7,6 +7,7 @@ var tween: Tween
 var direction := 1
 
 func _physics_process(_delta):
+	if !Logic.isBucketMove: return
 	if bucket:
 		bucket.global_position = global_position
 
@@ -18,7 +19,7 @@ func _physics_process(_delta):
 func _ready():
 	bucket = get_parent().get_node("Bucket")
 	tween = create_tween()
-	LevelsManager.connect("levelLoaded", Callable(self, "_on_level_loaded"))
+	Logic.stage.connect("stageLoaded", Callable(self, "_on_stage_loaded"))
 	_move_bucket()
 
 # movement logic

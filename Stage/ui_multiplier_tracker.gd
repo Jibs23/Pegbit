@@ -8,9 +8,10 @@ var sprite: Sprite2D
 
 func _ready():
 	sprite = $Sprite2D
+	Logic.pegs.connect("a_peg_hit", Callable(self, "_on_hit_peg"))
 
-func _physics_process(_delta):
-	if Logic.level == null: return
+func _on_hit_peg(peg) -> void:
+	if Logic.level == null or peg.pegType != "red": return
 	# 1.0 progress_ratio
 	goal = Logic.level.levelRedPegs
 

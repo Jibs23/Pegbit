@@ -1,7 +1,7 @@
 class_name Launcher
 extends Node2D
 
-var ball: PackedScene = load("res://Entities/Balls/ball.tscn")
+var ball: PackedScene = preload("res://Entities/Balls/ball.tscn")
 var ballSpeed: float = 300
 var rotationSpeed: float = 1.5
 @export var maxRotation: float = deg_to_rad(90)
@@ -38,7 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		LevelsManager.level_Restart()
 
 func shoot():
-	var new_ball = ball.instantiate() as RigidBody2D  # Ensure the ball is a RigidBody2D
+	var new_ball = ball.instantiate()
 	if new_ball: #instantiate new ball
 		Logic.audio.playSoundEffect("SFXShoot")
 		smoke.restart()

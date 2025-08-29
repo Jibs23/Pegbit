@@ -6,6 +6,7 @@ var uiMultiplierCounter
 var uiScoreCounterBall
 var uiCurrentLevel
 
+
 var userInterface: CanvasLayer
 
 var buttonsLibrary: Dictionary = {
@@ -46,12 +47,12 @@ func clearActiveUi():
 
 func update_ui() -> void:
 	var ui_elements = [
-		{"label": uiBallsCounter.valueCount if uiBallsCounter else null, "value": Logic.ballCount},
-		{"label": uiMultiplierCounter.valueCount if uiMultiplierCounter else null, "value": Logic.scoreMultiplier},
-		{"label": uiScoreCounter.valueCount if uiScoreCounter else null, "value": Logic.score},
-		{"label": uiScoreCounterBall.valueCount if uiScoreCounterBall else null, "value": Logic.ballScoreCounter},
-		{"label": uiCurrentLevel.valueCount if uiCurrentLevel else null, "value": int(LevelsManager.get_current_level()+1)},
-	]
+			{"label": uiBallsCounter.valueCount if uiBallsCounter else null, "value": Logic.ballCount},
+			{"label": uiMultiplierCounter.valueCount if uiMultiplierCounter else null, "value": Logic.scoreMultiplier},
+			{"label": uiScoreCounter.valueCount if uiScoreCounter else null, "value": Logic.score},
+			{"label": uiScoreCounterBall.valueCount if uiScoreCounterBall else null, "value": Logic.ballScoreCounter},
+			{"label": uiCurrentLevel.valueCount if uiCurrentLevel else null, "value": int(LevelsManager.get_current_level()+1)},
+		]
 	for element in ui_elements:
 		if element["label"] == null or element["value"] == null:
 			# push_error("Label: " + str(element["label"]) + " Value: " + str(element["value"]) + " cannot update UI.")

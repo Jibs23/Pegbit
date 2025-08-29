@@ -1,6 +1,6 @@
 extends Node2D
 
-var ui_ball: PackedScene = load("res://Entities/Balls/UI_ball.tscn")
+var ui_ball: PackedScene = preload("res://Entities/Balls/UI_ball.tscn")
 
 var ballContainer: AnimatableBody2D
 var ballSpawnPoint: Marker2D

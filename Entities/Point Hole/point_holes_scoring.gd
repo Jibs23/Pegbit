@@ -6,7 +6,7 @@ var scoredPointHole
 
 func _ready():
 	connect("bonusHoleEntered", Callable(Logic, "_on_bonusHoleEntered"))
-	LevelsManager.connect("levelLoaded", Callable(self, "_on_level_loaded"))
+	Logic.stage.connect("stageLoaded", Callable(self, "_on_stage_loaded"))
 
 func _on_body_shape_entered(_body_id, _body, _body_shape, area_shape):
 	scoredPointHole = self.shape_owner_get_owner(area_shape)
@@ -21,9 +21,7 @@ func _on_body_shape_entered(_body_id, _body, _body_shape, area_shape):
 	else:
 		print("Entered point hole without set 'ScoreValue' meta.")
 
-func _on_level_loaded() -> void:
-	#TODO: figure out why this is called twice
-	print("Level loaded, resetting confetti.")
+func _on_stage_loaded() -> void:
 	if scoredPointHole:
 		scoredPointHole.get_node("confetti").restart()
 		scoredPointHole.get_node("confetti").emitting = false

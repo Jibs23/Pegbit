@@ -9,10 +9,17 @@ var walls: Node2D
 var bucketTracker: Path2D
 var missedBallFeature: Node2D
 var bonusHoles: Node2D
+var levelNumber: int
+
+signal stageLoaded
 
 func _init() -> void:
+	self.connect("stageLoaded", Callable(LevelsManager, "_on_stage_loaded"))
+	self.connect("stageLoaded", Callable(self, "_on_stage_loaded"))
+
 	Logic.stage = self
-	LevelsManager.connect("levelLoaded", Callable(self, "_on_level_loaded"))
+	visible = false
+	self.name = "Stage"
 
 func _ready() -> void:
 	levelContainer = $LevelContainer
@@ -24,10 +31,14 @@ func _ready() -> void:
 	bucketTracker = $"Bucket track"
 	missedBallFeature = $MissedBallFeature
 	bonusHoles = $BonusHoles
+	Logic.bonusHoles.hide_bonus_holes()
 
 func _on_level_loaded() -> void:
-	#UI
-	Ui.uiMultiplierCounter.mapIndicator.goal = Logic.level.levelRedPegs
-	#bucket
-	bucketTracker.get_node("PathFollow2D").reset_bucket()
+	visible = true
+	print("Stage loaded: " + str(levelNumber))
 
+func add_level(level_number:int):
+	var new_level = LevelsManager.levelsLibrary[level_number]["scene"].instantiate()
+	LevelsManager.set_current_level(level_number, new_level)
+	get_node("LevelContainer").add_child(new_level)
+	Logic.audio.music.song_play(Logic.audio.music.random_item_from_dic(Logic.audio.music.music_libraries["game_music"]), Logic.audio.music.music_libraries["game_music"])

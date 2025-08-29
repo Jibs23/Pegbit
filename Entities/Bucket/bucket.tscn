@@ -91,7 +91,8 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 1.5
 explosiveness = 0.55
-fixed_fps = 60
+fixed_fps = 20
+fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_ep5g2")
 
 [connection signal="body_entered" from="ScoreBox" to="." method="_on_score_box_body_entered"]
