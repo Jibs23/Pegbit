@@ -14,7 +14,9 @@ config/name="Pegbit"
 run/main_scene="uid://b1ovf5tp3cmpp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
-config/icon="res://Stage/icon.svg"
+config/icon="uid://bx7ne3rwp1k4a"
+config/macos_native_icon="uid://bx7ne3rwp1k4a"
+config/windows_native_icon="res://thumbnail.ico"
 
 [autoload]
 
